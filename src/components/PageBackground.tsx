@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+﻿import type { ReactNode } from "react";
 
 type PageBackgroundProps = {
   children: ReactNode;
@@ -12,7 +12,8 @@ function PageBackground({
   contentClassName = "",
 }: PageBackgroundProps) {
   const rootClassName = `mindbloom-bg ${className}`.trim();
-  const innerClassName = `relative z-10 ${contentClassName}`.trim();
+  const innerClassName =
+    `relative z-10 mx-auto flex min-h-dvh w-full max-w-[1280px] flex-col items-center ${contentClassName}`.trim();
 
   return (
     <div className={rootClassName}>
