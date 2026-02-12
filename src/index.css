@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 30rem;
+}
+
+body {
+  @apply text-slate-900;
+}
+
+.mindbloom-bg {
+  position: relative;
+  min-height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #f4efeb 0%, #f7f2ee 45%, #f3ede8 100%);
+}
+
+.mindbloom-bg__shape {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--left {
+  width: min(58vw, 38rem);
+  height: min(58vw, 38rem);
+  bottom: 8rem;
+  left: -20rem;
+  background: radial-gradient(
+    circle at center,
+    #fbeee8 0%,
+    #edcdc8 42%,
+    transparent 72%
+  );
+}
+
+.mindbloom-bg__shape--right {
+  width: min(58vw, 38rem);
+  height: min(58vw, 38rem);
+  bottom: 8rem;
+  right: -20rem;
+  background: radial-gradient(
+    circle at center,
+    #fbeee8 0%,
+    #edcdc8 42%,
+    transparent 72%
+  );
+}
+
+.mindbloom-bg__shape--top {
+  width: min(90vw, 60rem);
+  height: min(90vw, 60rem);
+  top: -20rem;
+  left: 22%;
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 0%,
+    #ecd4c8 42%,
+    transparent 74%
+  );
+}
+
+.mindbloom-bg__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
