@@ -11,7 +11,7 @@ const linkClassName = ({ isActive }: { isActive: boolean }) =>
 
 const Nav = () => {
   return (
-    <div className="w-full mx-auto py-6 flex items-center justify-between z-50">
+    <div className="w-full px-6 mx-auto py-6 flex items-center justify-between z-50 ">
       <img
         src={svgs.logoMindbloom}
         alt="mindbloom"
@@ -20,7 +20,7 @@ const Nav = () => {
         className="object-cover"
       />
 
-      <div className="flex flex-1 items-center justify-center gap-5 font-sans text-base">
+      <div className="flex flex-1 items-center justify-center gap-5 text-base">
         <NavLink to="/" end className={linkClassName}>
           หน้าหลัก
         </NavLink>
