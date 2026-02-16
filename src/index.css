@@ -41,6 +41,8 @@ body {
   --color-neutral-grey: #7c7c7c;
   --color-main-beige: #e5dacf;
   --color-white: #ffffff;
+  --color-main-pink: #e7b8b1;
+  --color-sub-beige: #c7a491;
 }
 
 /* Reusable responsive font sizes (XS/S/M/L) */
@@ -51,34 +53,41 @@ body {
 }
 
 .rf-h1 {
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.25;
 }
 
 .rf-h2 {
-  font-size: 36px;
+  font-size: 28px;
   line-height: 1.3;
 }
 
+.rf-h3 {
+  font-size: 24px;
+}
+
+.rf-h4 {
+  font-size: 20px;
+}
+
 .rf-title {
-  font-size: 1.125rem;
+  font-size: 16px;
   line-height: 1.4;
 }
 
 .rf-body {
-  font-size: 0.9375rem;
+  font-size: 14px;
   line-height: 1.65;
 }
 
 .rf-small {
-  font-size: 0.8125rem;
+  font-size: 12px;
   line-height: 1.55;
 }
 
 .rf-nav {
-  font-size: 1rem;
+  font-size: 14px;
   line-height: 1.5;
-  font-weight: 500;
 }
 
 /* S: 481-768 */
@@ -88,15 +97,23 @@ body {
   }
 
   .rf-h1 {
-    font-size: 40px;
-  }
-
-  .rf-h2 {
     font-size: 36px;
   }
 
-  .rf-title {
+  .rf-h2 {
+    font-size: 32px;
+  }
+
+  .rf-h3 {
+    font-size: 28px;
+  }
+
+  .rf-h4 {
     font-size: 24px;
+  }
+
+  .rf-title {
+    font-size: 20px;
   }
 
   .rf-body {
@@ -104,7 +121,7 @@ body {
   }
 
   .rf-small {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .rf-nav {
@@ -119,23 +136,31 @@ body {
   }
 
   .rf-h1 {
-    font-size: 48px;
-  }
-
-  .rf-h2 {
     font-size: 36px;
   }
 
-  .rf-title {
+  .rf-h2 {
+    font-size: 32px;
+  }
+
+  .rf-h3 {
     font-size: 28px;
   }
 
-  .rf-body {
+  .rf-h4 {
+    font-size: 24px;
+  }
+
+  .rf-title {
     font-size: 20px;
   }
 
-  .rf-small {
+  .rf-body {
     font-size: 16px;
+  }
+
+  .rf-small {
+    font-size: 14px;
   }
 
   .rf-nav {
@@ -154,19 +179,27 @@ body {
   }
 
   .rf-h2 {
+    font-size: 48px;
+  }
+
+  .rf-h3 {
     font-size: 40px;
   }
 
-  .rf-title {
+  .rf-h4 {
     font-size: 32px;
   }
 
-  .rf-body {
+  .rf-title {
     font-size: 24px;
   }
 
-  .rf-small {
+  .rf-body {
     font-size: 16px;
+  }
+
+  .rf-small {
+    font-size: 14px;
   }
 
   .rf-nav {
@@ -198,7 +231,7 @@ body {
   background: radial-gradient(
     circle at center,
     #edcdc8 10%,
-    #fbeee8 42%,
+    #fbeee8 30%,
     transparent 72%
   );
   z-index: 0;
@@ -212,7 +245,7 @@ body {
   background: radial-gradient(
     circle at center,
     #edcdc8 10%,
-    #fbeee8 42%,
+    #fbeee8 32%,
     transparent 72%
   );
   z-index: 0;
