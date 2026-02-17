@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Nav from "../navbar/Nav";
 import PageBackground from "../PageBackground";
 import Footer from "../footer/Footer";
+import ContactButton from "../button/ContactButton";
 
 function MainLayout() {
   return (
@@ -13,6 +14,7 @@ function MainLayout() {
         </div>
       </PageBackground>
       <Footer />
+      <ContactButton />
     </div>
   );
 }
