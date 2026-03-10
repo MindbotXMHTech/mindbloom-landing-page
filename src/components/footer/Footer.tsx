@@ -1,9 +1,8 @@
-import React from "react";
 import { svgs } from "../../constants/svgs";
 
 const Footer = () => {
   return (
-    <div className="py-10 mx-auto px-6 bg-main-beige w-full flex flex-col items-center gap-4">
+    <div className="relative py-10 mx-auto px-6 bg-main-beige w-full flex flex-col items-center gap-4 z-10">
       <div className="  w-full flex flex-col gap-4 l:max-w-7xl">
         <img src={svgs.logoMindbloom} alt="mindbloom" width={65} height={34} />
         <div className="grid grid-cols-3 gap-10">
