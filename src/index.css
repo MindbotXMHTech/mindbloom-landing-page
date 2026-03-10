@@ -216,7 +216,7 @@ body {
 }
 
 .mindbloom-bg__shape {
-  position: absolute;
+  position: fixed;
   border-radius: 9999px;
   filter: blur(50px);
   opacity: 0.8;
@@ -224,10 +224,10 @@ body {
 }
 
 .mindbloom-bg__shape--left {
-  width: min(80vw, 50rem);
-  height: min(80vw, 50rem);
-  bottom: -5rem;
-  left: -20rem;
+  width: min(110vw, 70rem);
+  height: min(110vw, 70rem);
+  top: -10rem;
+  left: -28rem;
   background: radial-gradient(
     circle at center,
     #edcdc8 10%,
@@ -238,10 +238,10 @@ body {
 }
 
 .mindbloom-bg__shape--right {
-  width: min(80vw, 50rem);
-  height: min(80vw, 50rem);
-  bottom: -10rem;
-  right: -20rem;
+  width: min(110vw, 70rem);
+  height: min(110vw, 70rem);
+  top: -15rem;
+  right: -28rem;
   background: radial-gradient(
     circle at center,
     #edcdc8 10%,

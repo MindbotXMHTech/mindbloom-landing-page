@@ -4,12 +4,14 @@ type PageBackgroundProps = {
   children: ReactNode;
   className?: string;
   contentClassName?: string;
+  showTopShape?: boolean;
 };
 
 function PageBackground({
   children,
   className = "",
   contentClassName = "",
+  showTopShape = false,
 }: PageBackgroundProps) {
   const rootClassName = `mindbloom-bg ${className}`.trim();
   const innerClassName =
@@ -17,10 +19,12 @@ function PageBackground({
 
   return (
     <div className={rootClassName}>
-      <div
-        aria-hidden
-        className="mindbloom-bg__shape mindbloom-bg__shape--top"
-      />
+      {showTopShape && (
+        <div
+          aria-hidden
+          className="mindbloom-bg__shape mindbloom-bg__shape--top"
+        />
+      )}
       <div
         aria-hidden
         className="mindbloom-bg__shape mindbloom-bg__shape--right"
