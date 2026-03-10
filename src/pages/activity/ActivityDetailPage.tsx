@@ -74,12 +74,12 @@ function ActivityDetailPage() {
           duration: 1.6,
           ease: "easeOut" as const,
         }}
-        className="mt-9.5 grid grid-cols-3 gap-4 w-full max-w-212.5"
+        className="mt-9.5 grid grid-cols-3 gap-4 "
       >
         {activity.image.map((img, index) => (
           <div
             key={index}
-            className="aspect-square overflow-hidden rounded-2xl"
+            className="aspect-square overflow-hidden rounded-2xl h-60.25"
           >
             <img
               src={img}

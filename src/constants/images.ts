@@ -7,7 +7,7 @@ import act2 from "../assets/images/act-2.png";
 import act3 from "../assets/images/act-3.png";
 import act4 from "../assets/images/act-4.png";
 import act5 from "../assets/images/act-5.png";
-import act6 from "../assets/images/act-5.png";
+import act6 from "../assets/images/act-6.png";
 import blog1 from "../assets/images/blog-1.png";
 import blog2 from "../assets/images/blog-2.png";
 import blog3 from "../assets/images/blog-3.png";
