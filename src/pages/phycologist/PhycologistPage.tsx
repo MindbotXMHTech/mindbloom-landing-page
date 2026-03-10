@@ -6,7 +6,7 @@ function PhycologistPage() {
     <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 flex flex-col items-center">
       <div className="flex flex-col items-center justify-start w-full gap-6 sm:gap-8 md:gap-9.5">
         <h4 className="rf-h4">นักจิตวิทยา</h4>
-        <span className="rf-title font-normal text-neutral-grey text-center max-w-272">
+        <span className="rf-body font-normal text-neutral-grey text-center max-w-272">
           ผู้ให้บริการของนายด์บลูมเป็นผู้ประกอบ โรศ.ศิลปะ สาขาจิตวิทยาคลินิก
           ตามพระราชบัญญัติการประกอบโรคศิลปะ พ.ศ 23336 จึงมีทักษะต่าง ๆ
           ทั้งด้านการประเมินภาวะทางจิตใจการทำความเข้าใจผู้รับบริการและดูแลจิตใจตาม
@@ -24,7 +24,7 @@ function PhycologistPage() {
           }}
           className="bg-main-pink px-6 py-4 flex justify-center items-center rounded-[40px] w-full max-w-109.5 shadow-lg"
         >
-          <span className="rf-title text-white text-center">
+          <span className="rf-body text-white text-center">
             พร้อมจะรับฟังคุณด้วยความเข้าใจ
             และอยู่เคียงข้างคุณในทุกการเปลี่ยนแปลง
           </span>
@@ -41,7 +41,7 @@ function PhycologistPage() {
           }}
           className="bg-main-pink px-6 py-4 flex justify-center items-center rounded-[40px] w-full max-w-133.5 shadow-lg"
         >
-          <span className="rf-title text-white text-center">
+          <span className="rf-body text-white text-center">
             ไม่เพียงแต่เป็นผู้รับฟัง แต่จะช่วยให้คุณเดิบโตขึ้นได้ <br />
             จากทรัพยากรที่มีอยู่ในตัวของคุณ
             <br />
