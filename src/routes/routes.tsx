@@ -1,13 +1,15 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import MainLayout from '../components/layouts/MainLayout';
-import AboutPage from '../pages/about/AboutPage';
-import ActivityDetailPage from '../pages/activity/ActivityDetailPage';
-import ActivityPage from '../pages/activity/ActivityPage';
-import BlogDetailPage from '../pages/blog/BlogDetailPage';
-import BlogPage from '../pages/blog/BlogPage';
-import HomePage from '../pages/home/HomePage';
-import PhycologistPage from '../pages/phycologist/PhycologistPage';
-import ServicePage from '../pages/service/ServicePage';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainLayout from "../components/layouts/MainLayout";
+import AboutPage from "../pages/about/AboutPage";
+import ActivityDetailPage from "../pages/activity/ActivityDetailPage";
+import ActivityPage from "../pages/activity/ActivityPage";
+import BlogDetailPage from "../pages/blog/BlogDetailPage";
+import BlogPage from "../pages/blog/BlogPage";
+import HomePage from "../pages/home/HomePage";
+import PhycologistPage from "../pages/phycologist/PhycologistPage";
+import ServicePage from "../pages/service/ServicePage";
+import Condition from "../pages/condition/Condition";
+import Policy from "../pages/policy/Policy";
 
 function AppRoutes() {
   return (
@@ -22,6 +24,8 @@ function AppRoutes() {
           <Route path="blog/:id" element={<BlogDetailPage />} />
           <Route path="service" element={<ServicePage />} />
           <Route path="phycologist" element={<PhycologistPage />} />
+          <Route path="policy" element={<Policy />} />
+          <Route path="term-condition" element={<Condition />} />
           <Route path="*" element={<HomePage />} />
         </Route>
       </Routes>

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Nav from "../navbar/Nav";
 import PageBackground from "../PageBackground";
@@ -6,6 +7,10 @@ import ContactButton from "../button/ContactButton";
 
 function MainLayout() {
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="overflow-w-hidden max-w-screen">
