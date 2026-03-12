@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
+import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
 import Snackbar from "@mui/material/Snackbar";
 import { BlogList } from "../../constants/blogData";
@@ -109,7 +110,7 @@ function BlogDetailPage() {
     openSnackbar(ok ? "Link copied" : "Copy failed");
   };
 
-  const handleInstagramShare = async () => {
+  const handleShare = async () => {
     const { url, text, title } = getSharePayload();
 
     if (navigator.share) {
@@ -117,13 +118,12 @@ function BlogDetailPage() {
         await navigator.share({ title, text, url });
         return;
       } catch {
-        // fall through to copy + open instagram
+        // fall through to copy link
       }
     }
 
     const ok = await copyLink();
-    openSnackbar(ok ? "Link copied, paste on Instagram" : "Copy failed");
-    window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
+    openSnackbar(ok ? "Link copied" : "Copy failed");
   };
 
   return (
@@ -155,16 +155,20 @@ function BlogDetailPage() {
             aria-label="Share on Facebook"
             className="inline-flex h-6 w-6 items-center justify-center"
           >
-            <img src={svgs.facebookIcon} alt="share facebook" className="w-4 h-4" />
+            <img
+              src={svgs.facebookIcon}
+              alt="share facebook"
+              className="w-4 h-4"
+            />
           </button>
 
           <button
             type="button"
-            onClick={handleInstagramShare}
-            aria-label="Share on Instagram"
+            onClick={handleShare}
+            aria-label="Share"
             className="inline-flex h-6 w-6 items-center justify-center"
           >
-            <img src={svgs.instagramIcon} alt="share instagram" className="w-4 h-4" />
+            <IosShareRoundedIcon sx={{ fontSize: 16 }} />
           </button>
 
           <button
@@ -181,7 +185,10 @@ function BlogDetailPage() {
 
         <div className="mt-6 space-y-4">
           {blog.content.map((paragraph, index) => (
-            <p key={index} className="rf-body text-neutral-grey whitespace-pre-line">
+            <p
+              key={index}
+              className="rf-body text-neutral-grey whitespace-pre-line"
+            >
               {paragraph}
             </p>
           ))}
@@ -190,7 +197,10 @@ function BlogDetailPage() {
         {videoId && (
           <section className="mt-10 flex justify-center">
             <div className="w-full min-w-50 s:min-w-62.5 m:min-w-124 rounded-xl border border-[#e8e1d8] bg-white p-2 shadow-sm">
-              <div className="relative w-full overflow-hidden rounded-lg bg-black" style={{ paddingTop: "56.25%" }}>
+              <div
+                className="relative w-full overflow-hidden rounded-lg bg-black"
+                style={{ paddingTop: "56.25%" }}
+              >
                 {isPlaying ? (
                   <iframe
                     className="absolute top-0 left-0 h-full w-full"
@@ -222,10 +232,16 @@ function BlogDetailPage() {
               </div>
 
               <div className="px-1 pt-2 pb-1">
-                <p className="text-[13px] text-neutral-black truncate">{blog.title}</p>
+                <p className="text-[13px] text-neutral-black truncate">
+                  {blog.title}
+                </p>
                 <div className="mt-1 flex items-center justify-between text-[11px] text-[#8a8a8a]">
                   <div className="flex items-center gap-1.5">
-                    <img src={svgs.youtubeIcon} alt="youtube icon" className="w-4 h-4" />
+                    <img
+                      src={svgs.youtubeIcon}
+                      alt="youtube icon"
+                      className="w-4 h-4"
+                    />
                     <span>YouTube</span>
                   </div>
                 </div>
