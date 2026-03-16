@@ -6,6 +6,19 @@ import Snackbar from "@mui/material/Snackbar";
 import { BlogList } from "../../constants/blogData";
 import { svgs } from "../../constants/svgs";
 
+const PUBLIC_SITE_URL = (
+  import.meta.env.VITE_PUBLIC_SITE_URL || "https://www.mindbloom-wellness.com"
+).replace(/\/+$/, "");
+
+function isLocalHost(hostname: string) {
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "::1" ||
+    hostname.endsWith(".local")
+  );
+}
+
 function getYouTubeVideoId(input?: string) {
   if (!input) return "";
 
@@ -57,7 +70,16 @@ function BlogDetailPage() {
     : "";
 
   const getSharePayload = () => {
-    const url = typeof window !== "undefined" ? window.location.href : "";
+    const articlePath = `/blog/${blog.id}`;
+    const url =
+      typeof window !== "undefined"
+        ? new URL(
+            articlePath,
+            isLocalHost(window.location.hostname)
+              ? PUBLIC_SITE_URL
+              : window.location.origin
+          ).toString()
+        : `${PUBLIC_SITE_URL}${articlePath}`;
     const title = blog.title;
     const text = `${blog.title} | MindBloom`;
     return { url, title, text };
@@ -69,10 +91,10 @@ function BlogDetailPage() {
   };
 
   const handleFacebookShare = () => {
-    const { url } = getSharePayload();
+    const { title, url } = getSharePayload();
     if (!url) return;
 
-    const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title)}`;
     window.open(fbUrl, "_blank", "noopener,noreferrer");
   };
 
