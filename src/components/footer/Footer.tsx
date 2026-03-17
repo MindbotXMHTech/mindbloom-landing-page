@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="relative py-10 mx-auto px-6 bg-main-beige w-full flex flex-col items-center gap-4 z-10">
-      <div className="  w-full flex flex-col gap-4 l:max-w-7xl">
+      <div className=" w-full flex flex-col gap-4 l:max-w-7xl">
         <img src={svgs.logoMindbloom} alt="mindbloom" width={65} height={34} />
-        <div className="grid grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 m:grid-cols-3 gap-10">
           <div className="grid gap-4 ">
             <p className="text-xl font-bold">
               บริษัท มายด์บอท จำกัด (สำนักงานใหญ่)
@@ -16,7 +16,7 @@ const Footer = () => {
               <br /> แขวงศิริราช เขตบางกอกน้อย
               <br /> กรุงเทพฯ 10700
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-col m:flex-row gap-6">
               <a
                 href="https://line.me/R/ti/p/@mindbloom"
                 target="_blank"
@@ -47,7 +47,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="grid  pl-[30%]">
+          <div className="grid  m:pl-[30%]">
             <Link to="/about" className="rf-small">
               เกี่ยวกับเรา
             </Link>
@@ -58,7 +58,7 @@ const Footer = () => {
               นโยบายความเป็นส่วนตัว
             </Link>
           </div>
-          <div className="flex flex-col items-center ">
+          <div className="flex flex-col items-start m:items-center ">
             <img
               src={svgs.logoMindbloomSquare}
               alt="mind bloom"
@@ -66,7 +66,7 @@ const Footer = () => {
               height={87}
             />
             <p className="rf-small font-bold mt-2">Mind Bloom</p>
-            <p className="rf-small text-center mt-4">
+            <p className="rf-small text-left m:text-center mt-4">
               มายด์บลูม คลินิกการประกอบ <br /> โรคศิลปะสาขาจิตวิทยาคลินิก
               <br />
               ใบอนุญาตเลขที่ 10109003467
