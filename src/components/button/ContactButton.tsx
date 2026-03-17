@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { svgs } from "../../constants/svgs";
 import { motion } from "framer-motion";
+import { svgs } from "../../constants/svgs";
 
 const ContactButton = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(
@@ -25,22 +25,18 @@ const ContactButton = () => {
   }
 
   return (
-    <motion.button
+    <motion.a
+      href="https://line.me/R/ti/p/@mindbloom"
+      target="_blank"
+      rel="noreferrer"
       animate={{ scale: 1, opacity: 1 }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.85 }}
-      className="fixed bottom-8 right-10 m:right-30 z-20 bg-white px-2 py-1 rounded-full flex justify-center items-center gap-2.5 cursor-pointer"
+      className="fixed bottom-8 right-10 m:right-30 z-20 flex items-center justify-center gap-2.5 rounded-full bg-white px-2 py-1 cursor-pointer"
     >
-      <a
-        href="https://line.me/R/ti/p/@mindbloom"
-        target="_blank"
-        rel="noreferrer"
-        className="flex justify-start items-center gap-2"
-      >
-        <img src={svgs.contactIcon} alt="contact us" width={24} height={24} />
-        <p className="rf-nav">ติดต่อเรา</p>
-      </a>
-    </motion.button>
+      <img src={svgs.contactIcon} alt="contact us" width={24} height={24} />
+      <p className="rf-nav">ติดต่อเรา</p>
+    </motion.a>
   );
 };
 
