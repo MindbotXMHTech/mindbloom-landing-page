@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { svgs } from "../../constants/svgs";
 
 const linkClassName = ({ isActive }: { isActive: boolean }) =>
@@ -28,12 +28,7 @@ const navItems = [
 ] as const;
 
 const Nav = () => {
-  const { pathname } = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -59,10 +54,6 @@ const Nav = () => {
       }
     };
 
-    if (desktopMediaQuery.matches) {
-      setIsMobileMenuOpen(false);
-    }
-
     desktopMediaQuery.addEventListener("change", handleDesktopChange);
 
     return () => {
@@ -73,7 +64,7 @@ const Nav = () => {
   return (
     <div
       className={`relative w-full px-6 mx-auto py-6 flex items-center justify-between  ${
-        isMobileMenuOpen ? "z-[9998]" : "z-50"
+        isMobileMenuOpen ? "z-9998" : "z-50"
       }`}
     >
       <img
@@ -136,7 +127,7 @@ const Nav = () => {
       </button>
 
       {isMobileMenuOpen && (
-        <div className="m:hidden fixed inset-0 z-[9999] bg-black/30 px-6 py-6">
+        <div className="m:hidden fixed inset-0 z-9999 bg-black/30 px-6 py-6">
           <div className="ml-auto flex h-full w-full max-w-90 flex-col rounded-4xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
             <div className="flex items-center justify-between">
               <img
