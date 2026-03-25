@@ -704,13 +704,11 @@ function ServicePage() {
 
                         {section.ctaLabel ? (
                           <div className="pt-2 flex justify-center">
-                            <Link to={"/service/workshop"}>
-                              <button
-                                type="button"
-                                className="rounded-full bg-white px-5 py-2 text-[15px] font-semibold text-neutral-grey shadow-[0_8px_20px_rgba(93,83,76,0.12)]"
-                              >
-                                {section.ctaLabel}
-                              </button>
+                            <Link
+                              to={"/service/workshop"}
+                              className="rounded-full bg-white px-5 py-2 text-[15px] font-semibold text-neutral-grey shadow-[0_8px_20px_rgba(93,83,76,0.12)]"
+                            >
+                              {section.ctaLabel}
                             </Link>
                           </div>
                         ) : null}
