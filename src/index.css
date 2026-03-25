@@ -227,11 +227,11 @@ body {
   width: min(110vw, 70rem);
   height: min(110vw, 70rem);
   top: -10rem;
-  left: -28rem;
+  left: -34rem;
   background: radial-gradient(
     circle at center,
-    #edcdc8 10%,
-    #fbeee8 30%,
+    #C6D5C4 10%,
+    #c6d5c4c9 30%,
     transparent 72%
   );
   z-index: 0;
@@ -241,11 +241,11 @@ body {
   width: min(110vw, 70rem);
   height: min(110vw, 70rem);
   top: -15rem;
-  right: -28rem;
+  right: -34rem;
   background: radial-gradient(
     circle at center,
-    #edcdc8 10%,
-    #fbeee8 32%,
+    #C6D5C4 10%,
+    #c6d5c4c9 30%,
     transparent 72%
   );
   z-index: 0;

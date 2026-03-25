@@ -10,6 +10,7 @@ import PhycologistPage from "../pages/phycologist/PhycologistPage";
 import ServicePage from "../pages/service/ServicePage";
 import Condition from "../pages/condition/Condition";
 import Policy from "../pages/policy/Policy";
+import Workshop from "../pages/service/Workshop";
 
 function AppRoutes() {
   return (
@@ -23,6 +24,7 @@ function AppRoutes() {
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:id" element={<BlogDetailPage />} />
           <Route path="service" element={<ServicePage />} />
+          <Route path="service/workshop" element={<Workshop />} />
           <Route path="phycologist" element={<PhycologistPage />} />
           <Route path="policy" element={<Policy />} />
           <Route path="term-condition" element={<Condition />} />
