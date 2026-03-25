@@ -118,21 +118,21 @@ const companyService = [
     icon: svgs.ideaLightGreen,
     title: "เพิ่ม Productivity",
     detail:
-      "พบกับนักจิตวิทยาได้ที่ Mindbloom Clinic\nติดอยู่ใกล้ MRT บางขุนนนท์ ทางออก 4\nเดินทางสะดวกในเขตกรุงเทพฯ",
+      "พนักงานที่มีสุขภาพจิตดีทำงานได้ดีขึ้น มีสมาธิ ตัดสินใจแม่นยำ และสร้างสรรค์มากขึ้น",
   },
   {
     id: "รักษา Talent",
     icon: svgs.peopleGreen,
     title: "รักษา Talent",
     detail:
-      "พบกับนักจิตวิทยาได้ที่ Mindbloom Clinic\nติดอยู่ใกล้ MRT บางขุนนนท์ ทางออก 4\nเดินทางสะดวกในเขตกรุงเทพฯ",
+      "องค์กรที่ดูแล Well-being ลดอัตราTurnover และสร้างความผูกพันต่อองค์กรระยะยาว",
   },
   {
     id: "เสริม Employer Brand",
     icon: svgs.starGreen,
     title: "เสริม Employer Brand",
     detail:
-      "พบกับนักจิตวิทยาได้ที่ Mindbloom Clinic\nติดอยู่ใกล้ MRT บางขุนนนท์ ทางออก 4\nเดินทางสะดวกในเขตกรุงเทพฯ",
+      "วัฒนธรรมองค์กรที่ใส่ใจสุขภาพจิตดึงดูดบุคลากรคุณภาพ และสร้าง Brand ที่แข็งแกร่ง",
   },
 ];
 
