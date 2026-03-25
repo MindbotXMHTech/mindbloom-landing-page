@@ -14,6 +14,11 @@ import calendarBlack from "../assets/svgs/calendar-brown.svg";
 import pinBlack from "../assets/svgs/pin-black-filled.svg";
 import videoBlack from "../assets/svgs/video-black-filled.svg";
 import pinkLine from "../assets/svgs/pink-line.svg";
+import peopleGreen from "../assets/svgs/people-fill-green.svg"
+import starGreen from "../assets/svgs/star-fill-green.svg"
+import ideaLightGreen from "../assets/svgs/idea-light-fill-green.svg"
+import personBlack from "../assets/svgs/person.svg"
+import groupBlack from "../assets/svgs/group.svg"
 
 export const svgs = {
   contactIcon,
@@ -32,4 +37,9 @@ export const svgs = {
   pinBlack,
   videoBlack,
   pinkLine,
+  peopleGreen,
+  starGreen,
+  ideaLightGreen,
+  personBlack,
+  groupBlack
 };
