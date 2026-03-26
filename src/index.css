@@ -273,6 +273,8 @@ body {
   );
 }
 
+
+
 .mindbloom-bg__shape--middle {
   width: min(120vw, 80rem);
   height: min(80vw, 60rem);
@@ -289,18 +291,46 @@ body {
 
 
 .mindbloom-bg__shape--top {
-  width: min(180vw, 110rem);
-  height: min(180vw, 110rem);
-  top: -50rem;
+  width: min(160vw, 100rem);
+  height: min(160vw, 100rem);
+  top: -70rem;
   left: 10rem;
   /* transform: translateX(-50%); */
   background: radial-gradient(
     circle at center,
     /* #edcdc8 20%,
     #fbeee8 15%, */
-     #C6D5C4 20%,
-    #c6d5c47c 15%,
+     #C6D5C4 10%,
+    #c6d5c47c 0%,
     transparent 82%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-left {
+  width: min(100vw, 50rem);
+  height: min(100vw, 50rem);
+  bottom: -10rem;
+  left: -30rem;
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 20%,
+    #fbeee8 30%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-right {
+  width: min(100vw, 50rem);
+  height: min(100vw, 50rem);
+  bottom: -20rem;
+  right: -30rem;
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 0%,
+    #fbeee8 20%,
+    transparent 70%
   );
   z-index: 0;
 }
