@@ -7,6 +7,8 @@ import ContactButton from "../button/ContactButton";
 
 function MainLayout() {
   const { pathname } = useLocation();
+  const isPsychologistPage = pathname === "/phycologist";
+  const isAboutPage = pathname === "/about";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,18 +18,20 @@ function MainLayout() {
     <div className="overflow-w-hidden max-w-screen">
       <PageBackground
         showTopShape={pathname === "/"}
-        showMiddleShape={pathname === "/phycologist"}
-        showSideVectors={pathname === "/phycologist"}
+        showMiddleShape={isPsychologistPage}
+        showBottomShape={isAboutPage}
+        showSideVectors={isPsychologistPage}
         showArticleVector={pathname === "/blog"}
         showArticleDetailsVector={
           pathname.startsWith("/blog/") && pathname !== "/blog"
         }
         variant={
-          pathname === "/phycologist" ||
+          isPsychologistPage ||
           (pathname.startsWith("/blog/") && pathname !== "/blog")
             ? "pink"
             : "green"
         }
+        plain={isAboutPage}
       >
         <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />

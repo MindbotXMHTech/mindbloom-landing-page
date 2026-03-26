@@ -1,16 +1,19 @@
-﻿import type { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { images } from "../constants/images";
+import bottomGlow from "../assets/images/background/bottom-glow.svg";
 
 type PageBackgroundProps = {
   children: ReactNode;
   className?: string;
   contentClassName?: string;
   showTopShape?: boolean;
+  showBottomShape?: boolean;
   showSideVectors?: boolean;
   showMiddleShape?: boolean;
   showArticleVector?: boolean;
   showArticleDetailsVector?: boolean;
   variant?: "green" | "pink";
+  plain?: boolean;
 };
 
 function PageBackground({
@@ -18,11 +21,13 @@ function PageBackground({
   className = "",
   contentClassName = "",
   showTopShape = false,
+  showBottomShape = false,
   showSideVectors = false,
   showMiddleShape = false,
   showArticleVector = false,
   showArticleDetailsVector = false,
   variant = "green",
+  plain = false,
 }: PageBackgroundProps) {
   const rootClassName =
     `mindbloom-bg mindbloom-bg--${variant} ${className}`.trim();
@@ -31,28 +36,40 @@ function PageBackground({
 
   return (
     <div className={rootClassName}>
-      {showTopShape && (
+      {!plain && showTopShape && (
         <div
           aria-hidden
           className="mindbloom-bg__shape mindbloom-bg__shape--top"
         />
       )}
-      <div
-        aria-hidden
-        className="mindbloom-bg__shape mindbloom-bg__shape--right"
-      />
-      <div
-        aria-hidden
-        className="mindbloom-bg__shape mindbloom-bg__shape--left"
-      />
-      {showMiddleShape && (
+      {!plain && (
+        <div
+          aria-hidden
+          className="mindbloom-bg__shape mindbloom-bg__shape--right"
+        />
+      )}
+      {!plain && (
+        <div
+          aria-hidden
+          className="mindbloom-bg__shape mindbloom-bg__shape--left"
+        />
+      )}
+      {!plain && showMiddleShape && (
         <div
           aria-hidden
           className="mindbloom-bg__shape mindbloom-bg__shape--middle"
         />
       )}
-      <div aria-hidden className="mindbloom-bg__grain" />
-      {showSideVectors && (
+      {showBottomShape && (
+        <img
+          src={bottomGlow}
+          aria-hidden
+          alt=""
+          className="mindbloom-bg__shape mindbloom-bg__shape--bottom-svg"
+        />
+      )}
+      {!plain && <div aria-hidden className="mindbloom-bg__grain" />}
+      {!plain && showSideVectors && (
         <>
           <img
             src={images.vector5}
@@ -87,7 +104,7 @@ function PageBackground({
         </>
       )}
 
-      {showArticleVector && (
+      {!plain && showArticleVector && (
         <>
           <img
             src={images.vector6}
@@ -116,7 +133,7 @@ function PageBackground({
         </>
       )}
 
-      {showArticleDetailsVector && (
+      {!plain && showArticleDetailsVector && (
         <>
           <img
             src={images.vector10}
