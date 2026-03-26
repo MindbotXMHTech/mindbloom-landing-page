@@ -18,7 +18,16 @@ function MainLayout() {
         showTopShape={pathname === "/"}
         showMiddleShape={pathname === "/phycologist"}
         showSideVectors={pathname === "/phycologist"}
-        variant={pathname === "/phycologist" ? "pink" : "green"}
+        showArticleVector={pathname === "/blog"}
+        showArticleDetailsVector={
+          pathname.startsWith("/blog/") && pathname !== "/blog"
+        }
+        variant={
+          pathname === "/phycologist" ||
+          (pathname.startsWith("/blog/") && pathname !== "/blog")
+            ? "pink"
+            : "green"
+        }
       >
         <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />

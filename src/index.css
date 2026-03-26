@@ -229,12 +229,12 @@ body {
   width: min(100vw, 60rem);
   height: min(100vw, 60rem);
   top: -10rem;
-  left: -38rem;
+  left: -40rem;
   background: radial-gradient(
     circle at center,
     #C6D5C4 0%,
-    #c6d5c4  10%,
-    transparent 72%
+    #c6d5c4a4  10%,
+    transparent 82%
   );
   z-index: 0;
 }
