@@ -43,7 +43,7 @@ const Footer = () => {
         src={footerBottomLeftCurve}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute right-0 bottom-0 z-0 w-40 s:right-0 s:w-64 m:left-0 m:w-md opacity-70"
+        className="pointer-events-none absolute right-0 bottom-0 z-0 w-40 s:right-0 s:w-64 m:left-0 m:w-[28rem] opacity-70"
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 s:gap-12">
