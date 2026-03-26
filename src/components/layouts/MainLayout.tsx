@@ -25,6 +25,8 @@ function MainLayout() {
         showArticleDetailsVector={
           pathname.startsWith("/blog/") && pathname !== "/blog"
         }
+        showBottomShapes={pathname === "/"}
+        hideSideShape={pathname === "/"}
         variant={
           isPsychologistPage ||
           (pathname.startsWith("/blog/") && pathname !== "/blog")
