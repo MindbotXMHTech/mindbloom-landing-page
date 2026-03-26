@@ -43,6 +43,7 @@ body {
   --color-white: #ffffff;
   --color-main-pink: #e7b8b1;
   --color-sub-beige: #c7a491;
+
 }
 
 /* Reusable responsive font sizes (XS/S/M/L) */
@@ -209,6 +210,7 @@ body {
 
 .mindbloom-bg {
   position: relative;
+  z-index: 2;
   min-height: 100dvh;
   overflow: hidden;
   isolation: isolate;
@@ -216,7 +218,7 @@ body {
 }
 
 .mindbloom-bg__shape {
-  position: fixed;
+  position: absolute;
   border-radius: 9999px;
   filter: blur(50px);
   opacity: 0.8;
@@ -224,32 +226,48 @@ body {
 }
 
 .mindbloom-bg__shape--left {
-  width: min(110vw, 70rem);
-  height: min(110vw, 70rem);
+  width: min(100vw, 60rem);
+  height: min(100vw, 60rem);
   top: -10rem;
-  left: -34rem;
+  left: -38rem;
   background: radial-gradient(
     circle at center,
-    #C6D5C4 10%,
-    #c6d5c4c9 30%,
+    #C6D5C4 0%,
+    #c6d5c4  10%,
     transparent 72%
   );
   z-index: 0;
 }
 
 .mindbloom-bg__shape--right {
-  width: min(110vw, 70rem);
-  height: min(110vw, 70rem);
+  width: min(100vw, 60rem);
+  height: min(100vw, 60rem);
   top: -15rem;
-  right: -34rem;
+  right: -38rem;
   background: radial-gradient(
     circle at center,
     #C6D5C4 10%,
-    #c6d5c4c9 30%,
+    #c6d5c47c 30%,
+    transparent 72%
+  );
+  z-index: 0;
+  opacity: 10;
+}
+
+.mindbloom-bg__shape--middle {
+  width: min(120vw, 80rem);
+  height: min(120vw, 80rem);
+  top: 0;
+  left: 10rem;
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 20%,
+    #fbeee8 45%,
     transparent 72%
   );
   z-index: 0;
 }
+
 
 .mindbloom-bg__shape--top {
   width: min(150vw, 110rem);
@@ -264,6 +282,7 @@ body {
     transparent 82%
   );
   z-index: 0;
+
 }
 
 .mindbloom-bg__grain {
