@@ -39,7 +39,7 @@ const psychologists = [
       "การงาน",
     ],
     quote:
-      "เราทุกคนมีศักยภาพในการก้าวข้าม ผ่านช่วงเวลายากลำบากได้มากกว่าที่เราคิ",
+      "เราทุกคนมีศักยภาพในการก้าวข้าม ผ่านช่วงเวลายากลำบากได้มากกว่าที่เราคิด",
   },
   {
     id: 3,
@@ -110,7 +110,7 @@ function PhycologistPage() {
           ทำให้นักจิตวิทยาคลินิกของเรามีทักษะทั้งในด้านการประเมินภาวะทางจิตใจ
           การทำความเข้าใจผู้รับบริการ
           และการดูแลจิตใจตามกระบวนการบำบัดทางจิตวิทยาคลินิก ภายใต้มาตรฐาน
-          และจริยธรรมวิชาชีพอย่างเคร่งครัด อย่างเคร่งครัด
+          และจริยธรรมวิชาชีพอย่างเคร่งครัด
         </span>
 
         <motion.div
@@ -134,10 +134,10 @@ function PhycologistPage() {
           className="bg-[#EBCDC9] px-6 py-4 flex justify-center items-center rounded-2xl w-full max-w-103.25 shadow-lg self-end"
         >
           <span className="rf-body text-white text-center">
-            ไม่เพียงแต่เป็นผู้รับฟัง แต่จะช่วยให้คุณเดิบโตขึ้นได้ <br />
+            ไม่เพียงแต่เป็นผู้รับฟัง แต่จะช่วยให้คุณเติบโตขึ้นได้ <br />
             จากทรัพยากรที่มีอยู่ในตัวของคุณ
             <br />
-            นำทีมโดยนักจัดวิทยาคลินิทที่มีประสบการณ์
+            นำทีมโดยนักจิตวิทยาคลินิกที่มีประสบการณ์
             <br />
             ด้านการดูแลสุขภาพใจมาแล้วกว่า 15 ปี
           </span>
@@ -151,7 +151,7 @@ function PhycologistPage() {
           className="bg-main-pink px-6 py-4 flex justify-center items-center rounded-2xl w-full max-w-103.25 shadow-lg self-start"
         >
           <span className="rf-body text-white text-center">
-            แนวคิดการบำบัดทมายด์บลูม ใช้ <br /> Integrative therapy CBT <br />
+            แนวคิดการบำบัดที่มายด์บลูมใช้ <br /> Integrative therapy CBT <br />
             Mindfulness Positive psychology
           </span>
         </motion.div>

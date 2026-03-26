@@ -3,7 +3,7 @@ import vector1 from "../assets/images/background/vector1.png";
 import vector2 from "../assets/images/background/vector2.png";
 import vector3 from "../assets/images/background/vector3.png";
 import vector4 from "../assets/images/background/vector4.png";
-import vector5 from "../assets/images/background/vector5.png";
+import vector5 from "../assets/images/background/Vector5.png";
 
 type PageBackgroundProps = {
   children: ReactNode;
