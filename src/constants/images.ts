@@ -32,6 +32,11 @@ import ws18 from "../assets/images/ws18.png"
 import ws19 from "../assets/images/ws19.png"
 import ws20 from "../assets/images/ws20.png"
 import ws21 from "../assets/images/ws21.png"
+import psychoBg from "../assets/images/background/Psy-profile-bg.png"
+import psycho1 from "../assets/images/psycho1.png"
+import psycho2 from "../assets/images/psycho2.png"
+import psycho3 from "../assets/images/psycho3.png"
+import psycho4 from "../assets/images/psycho4.png"
 
 export const images = {
   therapist1,
@@ -67,5 +72,10 @@ export const images = {
   ws18,
   ws19,
   ws20,
-  ws21
+  ws21,
+  psychoBg,
+  psycho1,
+  psycho2,
+  psycho3,
+  psycho4,
 };

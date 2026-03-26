@@ -14,8 +14,13 @@ function MainLayout() {
 
   return (
     <div className="overflow-w-hidden max-w-screen">
-      <PageBackground showTopShape={pathname === "/"}>
-        <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center ">
+      <PageBackground
+        showTopShape={pathname === "/"}
+        showMiddleShape={pathname === "/phycologist"}
+        showSideVectors={pathname === "/phycologist"}
+        variant={pathname === "/phycologist" ? "pink" : "green"}
+      >
+        <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />
           <Outlet />
         </div>
