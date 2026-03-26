@@ -287,7 +287,6 @@ body {
   z-index: 0;
 }
 
-
 .mindbloom-bg__shape--top {
   width: min(180vw, 110rem);
   height: min(180vw, 110rem);
@@ -303,6 +302,30 @@ body {
     transparent 82%
   );
   z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-svg {
+  position: absolute;
+  width: min(1120px, 100vw);
+  height: auto;
+  left: 50%;
+  bottom: -10rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+@media (min-width: 769px) {
+  .mindbloom-bg__shape--bottom-svg {
+    bottom: -14rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mindbloom-bg__shape--bottom-svg {
+    bottom: -18rem;
+  }
 }
 
 .mindbloom-bg__grain {
