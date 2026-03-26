@@ -1,9 +1,5 @@
 ﻿import type { ReactNode } from "react";
-import vector1 from "../assets/images/background/vector1.png";
-import vector2 from "../assets/images/background/vector2.png";
-import vector3 from "../assets/images/background/vector3.png";
-import vector4 from "../assets/images/background/vector4.png";
-import vector5 from "../assets/images/background/Vector5.png";
+import { images } from "../constants/images";
 
 type PageBackgroundProps = {
   children: ReactNode;
@@ -12,6 +8,8 @@ type PageBackgroundProps = {
   showTopShape?: boolean;
   showSideVectors?: boolean;
   showMiddleShape?: boolean;
+  showArticleVector?: boolean;
+  showArticleDetailsVector?: boolean;
   variant?: "green" | "pink";
 };
 
@@ -22,9 +20,12 @@ function PageBackground({
   showTopShape = false,
   showSideVectors = false,
   showMiddleShape = false,
+  showArticleVector = false,
+  showArticleDetailsVector = false,
   variant = "green",
 }: PageBackgroundProps) {
-  const rootClassName = `mindbloom-bg mindbloom-bg--${variant} ${className}`.trim();
+  const rootClassName =
+    `mindbloom-bg mindbloom-bg--${variant} ${className}`.trim();
   const innerClassName =
     `relative z-20 mx-auto flex min-h-dvh w-full max-w-[1280px] flex-col items-center ${contentClassName}`.trim();
 
@@ -54,34 +55,80 @@ function PageBackground({
       {showSideVectors && (
         <>
           <img
-            src={vector5}
+            src={images.vector5}
             aria-hidden
             alt=""
             className="absolute right-0 -top-40 w-44 pointer-events-none select-none hidden m:block z-10"
           />
           <img
-            src={vector1}
+            src={images.vector1}
             aria-hidden
             alt=""
             className="absolute right-0 bottom-180 w-44 pointer-events-none select-none hidden m:block z-10"
           />
           <img
-            src={vector2}
+            src={images.vector2}
             aria-hidden
             alt=""
             className="absolute left-0 top-20 w-44 pointer-events-none select-none hidden m:block z-10"
           />
           <img
-            src={vector4}
+            src={images.vector4}
             aria-hidden
             alt=""
             className="absolute left-0 bottom-1/3 w-44 pointer-events-none select-none hidden m:block z-10"
           />
           <img
-            src={vector3}
+            src={images.vector3}
             aria-hidden
             alt=""
             className="absolute left-1/6 h-1/2 -bottom-100 w-[90%] pointer-events-none select-none hidden m:block z-10"
+          />
+        </>
+      )}
+
+      {showArticleVector && (
+        <>
+          <img
+            src={images.vector6}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-0 w-40 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector7}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector8}
+            aria-hidden
+            alt=""
+            className="absolute left-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector9}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-1/3 w-44 pointer-events-none select-none hidden m:block z-10"
+          />
+        </>
+      )}
+
+      {showArticleDetailsVector && (
+        <>
+          <img
+            src={images.vector10}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-0 w-40 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector11}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
           />
         </>
       )}

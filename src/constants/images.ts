@@ -37,6 +37,17 @@ import psycho1 from "../assets/images/psycho1.png"
 import psycho2 from "../assets/images/psycho2.png"
 import psycho3 from "../assets/images/psycho3.png"
 import psycho4 from "../assets/images/psycho4.png"
+import vector1 from "../assets/images/background/vector1.png";
+import vector2 from "../assets/images/background/vector2.png";
+import vector3 from "../assets/images/background/vector3.png";
+import vector4 from "../assets/images/background/vector4.png";
+import vector5 from "../assets/images/background/Vector5.png";
+import vector6 from "../assets/images/background/Vector6.png";
+import vector7 from "../assets/images/background/Vector7.png";
+import vector8 from "../assets/images/background/Vector8.png";
+import vector9 from "../assets/images/background/Vector9.png";
+import vector10 from "../assets/images/background/vector10.png";
+import vector11 from "../assets/images/background/Vector11.png";
 
 export const images = {
   therapist1,
@@ -78,4 +89,15 @@ export const images = {
   psycho2,
   psycho3,
   psycho4,
+  vector1,
+  vector2,
+  vector3,
+  vector4,
+  vector5,
+  vector6,
+  vector7,
+  vector8,
+  vector9,
+  vector10,
+  vector11
 };

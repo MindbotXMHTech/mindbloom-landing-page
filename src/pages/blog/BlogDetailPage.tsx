@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
 import Snackbar from "@mui/material/Snackbar";
@@ -77,7 +77,7 @@ function BlogDetailPage() {
             articlePath,
             isLocalHost(window.location.hostname)
               ? PUBLIC_SITE_URL
-              : window.location.origin
+              : window.location.origin,
           ).toString()
         : `${PUBLIC_SITE_URL}${articlePath}`;
     const title = blog.title;
@@ -151,8 +151,10 @@ function BlogDetailPage() {
   return (
     <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <div className="flex items-center gap-4 justify-center mb-4">
-        <p className="text-body text-neutral-black">บทความ</p>/
-        <p className="text-body text-neutral-grey">{blog.title}</p>
+        <Link to={"/blog"}>
+          <p className="text-body text-neutral-black">บทความ</p>
+        </Link>
+        <p className="text-body text-neutral-grey">/ {blog.title}</p>
       </div>
 
       <article className="w-full flex flex-col items-center mx-auto">
