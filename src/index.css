@@ -254,11 +254,30 @@ body {
   opacity: 10;
 }
 
+/* Pink variant — psychologist page */
+.mindbloom-bg--pink .mindbloom-bg__shape--left {
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 0%,
+    #edcdc8 10%,
+    transparent 72%
+  );
+}
+
+.mindbloom-bg--pink .mindbloom-bg__shape--right {
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 10%,
+    #fbeee8 30%,
+    transparent 72%
+  );
+}
+
 .mindbloom-bg__shape--middle {
   width: min(120vw, 80rem);
-  height: min(120vw, 80rem);
+  height: min(80vw, 60rem);
   top: 0;
-  left: 10rem;
+  left: 15rem;
   background: radial-gradient(
     circle at center,
     #edcdc8 20%,
@@ -270,19 +289,20 @@ body {
 
 
 .mindbloom-bg__shape--top {
-  width: min(150vw, 110rem);
-  height: min(150vw, 110rem);
-  top: -60rem;
-  left: 50%;
-  transform: translateX(-50%);
+  width: min(180vw, 110rem);
+  height: min(180vw, 110rem);
+  top: -50rem;
+  left: 10rem;
+  /* transform: translateX(-50%); */
   background: radial-gradient(
     circle at center,
-    #edcdc8 20%,
-    #fbeee8 45%,
+    /* #edcdc8 20%,
+    #fbeee8 15%, */
+     #C6D5C4 20%,
+    #c6d5c47c 15%,
     transparent 82%
   );
   z-index: 0;
-
 }
 
 .mindbloom-bg__grain {

@@ -12,6 +12,7 @@ type PageBackgroundProps = {
   showTopShape?: boolean;
   showSideVectors?: boolean;
   showMiddleShape?: boolean;
+  variant?: "green" | "pink";
 };
 
 function PageBackground({
@@ -21,8 +22,9 @@ function PageBackground({
   showTopShape = false,
   showSideVectors = false,
   showMiddleShape = false,
+  variant = "green",
 }: PageBackgroundProps) {
-  const rootClassName = `mindbloom-bg ${className}`.trim();
+  const rootClassName = `mindbloom-bg mindbloom-bg--${variant} ${className}`.trim();
   const innerClassName =
     `relative z-20 mx-auto flex min-h-dvh w-full max-w-[1280px] flex-col items-center ${contentClassName}`.trim();
 
