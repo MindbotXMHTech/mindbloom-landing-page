@@ -12,6 +12,8 @@ type PageBackgroundProps = {
   showMiddleShape?: boolean;
   showArticleVector?: boolean;
   showArticleDetailsVector?: boolean;
+  showBottomShapes?: boolean;
+  hideSideShape?: boolean;
   variant?: "green" | "pink";
   plain?: boolean;
 };
@@ -26,6 +28,8 @@ function PageBackground({
   showMiddleShape = false,
   showArticleVector = false,
   showArticleDetailsVector = false,
+  showBottomShapes = false,
+  hideSideShape = false,
   variant = "green",
   plain = false,
 }: PageBackgroundProps) {
@@ -42,23 +46,39 @@ function PageBackground({
           className="mindbloom-bg__shape mindbloom-bg__shape--top"
         />
       )}
+      {!hideSideShape && (
+        <>
+          {!plain && (
+        <div
+              aria-hidden
+              className="mindbloom-bg__shape mindbloom-bg__shape--right"
+            />
+          )}
       {!plain && (
         <div
-          aria-hidden
-          className="mindbloom-bg__shape mindbloom-bg__shape--right"
-        />
+              aria-hidden
+              className="mindbloom-bg__shape mindbloom-bg__shape--left"
+            />
+        </>
       )}
-      {!plain && (
-        <div
-          aria-hidden
-          className="mindbloom-bg__shape mindbloom-bg__shape--left"
-        />
       )}
       {!plain && showMiddleShape && (
         <div
           aria-hidden
           className="mindbloom-bg__shape mindbloom-bg__shape--middle"
         />
+      )}
+      {showBottomShapes && (
+        <>
+          <div
+            aria-hidden
+            className="mindbloom-bg__shape mindbloom-bg__shape--bottom-left"
+          />
+          <div
+            aria-hidden
+            className="mindbloom-bg__shape mindbloom-bg__shape--bottom-right"
+          />
+        </>
       )}
       {showBottomShape && (
         <img
