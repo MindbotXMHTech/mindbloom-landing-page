@@ -16,16 +16,17 @@ function MainLayout() {
     <div className="overflow-w-hidden max-w-screen">
       <PageBackground
         showTopShape={pathname === "/"}
-        showMiddleShape={pathname === "/phycologist"}
-        showSideVectors={pathname === "/phycologist"}
+        showMiddleShape={pathname === "/psychologist"}
+        showSideVectors={pathname === "/psychologist"}
         showArticleVector={pathname === "/blog"}
         showArticleDetailsVector={
           pathname.startsWith("/blog/") && pathname !== "/blog"
         }
         showBottomShapes={pathname === "/"}
         hideSideShape={pathname === "/"}
+        showHomeVector={pathname === "/"}
         variant={
-          pathname === "/phycologist" ||
+          pathname === "/psychologist" ||
           (pathname.startsWith("/blog/") && pathname !== "/blog")
             ? "pink"
             : "green"
