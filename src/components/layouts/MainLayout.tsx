@@ -7,7 +7,7 @@ import ContactButton from "../button/ContactButton";
 
 function MainLayout() {
   const { pathname } = useLocation();
-  const isPsychologistPage = pathname === "/phycologist";
+  const isPsychologistPage = pathname === "/psychologist";
   const isAboutPage = pathname === "/about";
 
   useEffect(() => {

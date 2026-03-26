@@ -21,7 +21,7 @@ const mobileLinkClassName = ({ isActive }: { isActive: boolean }) =>
 const navItems = [
   { to: "/", label: "หน้าหลัก", end: true },
   { to: "/service", label: "บริการของเรา", end: false },
-  { to: "/phycologist", label: "นักจิตวิทยา", end: false },
+  { to: "/psychologist", label: "นักจิตวิทยา", end: false },
   { to: "/activity", label: "กิจกรรม", end: false },
   { to: "/blog", label: "บทความ", end: false },
   { to: "/about", label: "เกี่ยวกับเรา", end: false },

@@ -51,18 +51,18 @@ function PageBackground({
       {!hideSideShape && (
         <>
           {!plain && (
-        <div
+            <div
               aria-hidden
               className="mindbloom-bg__shape mindbloom-bg__shape--right"
             />
           )}
-      {!plain && (
-        <div
+          {!plain && (
+            <div
               aria-hidden
               className="mindbloom-bg__shape mindbloom-bg__shape--left"
             />
+          )}
         </>
-      )}
       )}
       {!plain && showMiddleShape && (
         <div
@@ -97,31 +97,31 @@ function PageBackground({
             src={images.vector5}
             aria-hidden
             alt=""
-            className="absolute right-0 -top-40 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 -top-20 m:-top-40 w-20 m:w-44 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector1}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-180 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 top-1/2 w-30 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector2}
             aria-hidden
             alt=""
-            className="absolute left-0 top-20 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 top-20 w-44 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector4}
             aria-hidden
             alt=""
-            className="absolute left-0 bottom-1/3 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 bottom-1/3 w-35 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector3}
             aria-hidden
             alt=""
-            className="absolute left-1/6 h-1/2 -bottom-100 w-[90%] pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-1/6 h-1/2 -bottom-100 w-[90%] pointer-events-none select-none block z-10"
           />
         </>
       )}
@@ -132,25 +132,25 @@ function PageBackground({
             src={images.vector6}
             aria-hidden
             alt=""
-            className="absolute left-0 top-0 w-40 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 top-0 w-40 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector7}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 bottom-0 w-40 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector8}
             aria-hidden
             alt=""
-            className="absolute left-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 bottom-0 w-20 m:w-38 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector9}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-1/3 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 top-10 m:-top-20 w-20 m:w-38 pointer-events-none select-none block z-10"
           />
         </>
       )}
@@ -161,13 +161,13 @@ function PageBackground({
             src={images.vector10}
             aria-hidden
             alt=""
-            className="absolute left-0 top-0 w-40 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 top-0 w-40 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector11}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none block z-10"
           />
         </>
       )}
