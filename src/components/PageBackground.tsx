@@ -11,6 +11,8 @@ type PageBackgroundProps = {
   showMiddleShape?: boolean;
   showArticleVector?: boolean;
   showArticleDetailsVector?: boolean;
+  showActivityVector?: boolean;
+  showActivityDetailsVector?: boolean;
   showBottomShapes?: boolean;
   hideSideShape?: boolean;
   showHomeVector?: boolean;
@@ -28,6 +30,8 @@ function PageBackground({
   showMiddleShape = false,
   showArticleVector = false,
   showArticleDetailsVector = false,
+  showActivityVector = false,
+  showActivityDetailsVector = false,
   showBottomShapes = false,
   hideSideShape = false,
   showHomeVector = false,
@@ -207,6 +211,52 @@ function PageBackground({
             aria-hidden
             alt=""
             className="absolute left-0 top-0 w-64 pointer-events-none select-none block z-10"
+          />
+        </>
+      )}
+
+      {!plain && showActivityVector && (
+        <>
+          <img
+            src={images.vector15}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-40 w-40 m:w-60 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector12}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-100 m:bottom-70 w-30 m:w-44 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector13}
+            aria-hidden
+            alt=""
+            className="absolute left-0 bottom-0 m:bottom-40 w-50 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector14}
+            aria-hidden
+            alt=""
+            className="absolute right-0 top-65 w-40 m:w-50 pointer-events-none select-none block z-10"
+          />
+        </>
+      )}
+
+      {plain && showActivityDetailsVector && (
+        <>
+          <img
+            src={images.vector15}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-50 w-40 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector14}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-50 w-44 pointer-events-none select-none hidden m:block z-10"
           />
         </>
       )}

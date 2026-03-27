@@ -48,12 +48,39 @@ import vector8 from "../assets/images/background/Vector8.png";
 import vector9 from "../assets/images/background/Vector9.png";
 import vector10 from "../assets/images/background/vector10.png";
 import vector11 from "../assets/images/background/Vector11.png";
-import vector12 from "../assets/images/background/Vector12.png";
-import vector13 from "../assets/images/background/Vector13.png";
-import vector14 from "../assets/images/background/Vector14.png";
-import vector15 from "../assets/images/background/Vector15.png";
-import vector16 from "../assets/images/background/Vector16.png";
-import vector17 from "../assets/images/background/Vector17.png";
+import vector18 from "../assets/images/background/Vector18.png";
+import vector19 from "../assets/images/background/Vector19.png";
+import vector20 from "../assets/images/background/Vector20.png";
+import vector21 from "../assets/images/background/Vector21.png";
+import gal1 from "../assets/images/gal1.jpg"
+import gal2 from "../assets/images/gal2.jpg"
+import gal3 from "../assets/images/gal3.jpg"
+import gal4 from "../assets/images/gal4.jpg"
+import gal5 from "../assets/images/gal5.jpg"
+import gal6 from "../assets/images/gal6.jpg"
+import gal7 from "../assets/images/gal7.jpg"
+import gal8 from "../assets/images/gal8.jpg"
+import gal9 from "../assets/images/gal9.jpg"
+import gal10 from "../assets/images/gal10.jpg"
+import gal11 from "../assets/images/gal11.jpg"
+import gal12 from "../assets/images/gal12.jpg"
+import gal13 from "../assets/images/gal13.jpg"
+import gal14 from "../assets/images/gal14.jpg"
+import gal15 from "../assets/images/gal15.jpg"
+import un1 from "../assets/images/un1.jpg"
+import un2 from "../assets/images/un2.jpg"
+import un3 from "../assets/images/un3.jpg"
+import un4 from "../assets/images/un4.jpg"
+import un5 from "../assets/images/un5.jpg"
+import un6 from "../assets/images/un6.jpg"
+import un7 from "../assets/images/un7.jpg"
+import un8 from "../assets/images/un8.jpg"
+import tod1 from "../assets/images/tod1.jpg"
+import tod2 from "../assets/images/tod2.jpg"
+import tod3 from "../assets/images/tod3.jpg"
+import tod4 from "../assets/images/tod4.jpg"
+import tod5 from "../assets/images/tod5.jpg"
+import tod6 from "../assets/images/tod6.jpg"
 
 export const images = {
   therapist1,
@@ -106,10 +133,37 @@ export const images = {
   vector9,
   vector10,
   vector11,
-  vector12,
-  vector13,
-  vector14,
-  vector15,
-  vector16,
-  vector17,
+  gal1,
+  gal2,
+  gal3,
+  gal4,
+  gal5,
+  gal6,
+  gal7,
+  gal8,
+  gal9,
+  gal10,
+  gal11,
+  gal12,
+  gal13,
+  gal14,
+  gal15,
+  un1,
+  un2,
+  un3,
+  un4,
+  un5,
+  un6,
+  un7,
+  un8,
+  tod1,
+  tod2,
+  tod3,
+  tod4,
+  tod5,
+  tod6,
+  vector18,
+  vector19,
+  vector20,
+  vector21,
 };

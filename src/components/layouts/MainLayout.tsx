@@ -8,6 +8,9 @@ import ContactButton from "../button/ContactButton";
 function MainLayout() {
   const { pathname } = useLocation();
   const isPsychologistPage = pathname === "/psychologist";
+  const isActivityPage = pathname === "/activity";
+  const isActivityDetailPage =
+    pathname.startsWith("/activity/") && pathname !== "/activity";
   const isAboutPage = pathname === "/about";
 
   useEffect(() => {
@@ -28,13 +31,15 @@ function MainLayout() {
         showBottomShapes={pathname === "/"}
         hideSideShape={pathname === "/"}
         showHomeVector={pathname === "/"}
+        showActivityVector={isActivityPage}
+        showActivityDetailsVector={isActivityDetailPage}
         variant={
           isPsychologistPage ||
           (pathname.startsWith("/blog/") && pathname !== "/blog")
             ? "pink"
             : "green"
         }
-        plain={isAboutPage}
+        plain={isAboutPage || isActivityDetailPage}
       >
         <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />
