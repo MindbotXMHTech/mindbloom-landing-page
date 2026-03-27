@@ -5,6 +5,19 @@ import PageBackground from "../PageBackground";
 import Footer from "../footer/Footer";
 import ContactButton from "../button/ContactButton";
 
+function getPage(pathname: string): string {
+  if (pathname === "/") return "home";
+  if (pathname === "/psychologist") return "psychologist";
+  if (pathname === "/about") return "about";
+  if (pathname === "/blog") return "blog";
+  if (pathname.startsWith("/blog/")) return "blog-detail";
+  if (pathname === "/activity") return "activity";
+  if (pathname.startsWith("/activity/")) return "activity-detail";
+  if (pathname === "/service/workshop") return "workshop";
+  if (pathname === "/service") return "service";
+  return "default";
+}
+
 function MainLayout() {
   const { pathname } = useLocation();
 
@@ -14,8 +27,8 @@ function MainLayout() {
 
   return (
     <div className="overflow-w-hidden max-w-screen">
-      <PageBackground showTopShape={pathname === "/"}>
-        <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center ">
+      <PageBackground page={getPage(pathname)}>
+        <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />
           <Outlet />
         </div>

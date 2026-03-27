@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { activityData } from "../../constants/activityData";
 import { motion } from "framer-motion";
 
@@ -21,32 +21,26 @@ function ActivityDetailPage() {
   return (
     <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut" as const,
-        }}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex items-center gap-4 justify-center mb-4"
       >
-        <p className="text-body text-neutral-black">กิจกรรม</p>/
-        <p className="text-body text-neutral-grey">{activity.title}</p>
+        <Link to={"/activity"}>
+          <p className="text-body text-neutral-black">กิจกรรม</p>
+        </Link>
+        <p className="text-body text-neutral-grey"> / {activity.title}</p>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{
-          duration: 1,
-          ease: "easeOut" as const,
-        }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
         className="flex flex-col items-center text-center gap-4"
       >
         <div>
           <h1 className="rf-title">{activity.title}</h1>
-          <p className="text-2xl text-neutral-black font-normal">
+          <p className="text-base m:text-2xl text-neutral-black font-normal">
             {activity.text}
           </p>
         </div>
@@ -66,29 +60,30 @@ function ActivityDetailPage() {
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{
-          duration: 1.6,
-          ease: "easeOut" as const,
-        }}
-        className="mt-9.5 grid grid-cols-3 gap-4 "
-      >
+      <div className="mt-9.5 grid grid-cols-1 m:grid-cols-3 gap-4">
         {activity.image.map((img, index) => (
-          <div
+          <motion.div
             key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+              delay: Math.min(index * 0.08, 0.5),
+            }}
             className="aspect-square overflow-hidden rounded-2xl h-60.25"
           >
-            <img
+            <motion.img
               src={img}
               alt={`${activity.title} ${index + 1}`}
               className="w-full h-full object-cover"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             />
-          </div>
+          </motion.div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

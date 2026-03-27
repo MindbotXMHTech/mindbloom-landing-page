@@ -1,80 +1,171 @@
-import { svgs } from "../../constants/svgs";
 import { Link } from "react-router-dom";
+import { svgs } from "../../constants/svgs";
+import footerTopRightDecor from "../../assets/images/footer/footer-top-right-decor.svg";
+import footerBottomLeftDecor from "../../assets/images/footer/footer-bottom-left-decor.svg";
+import footerBottomLeftCurve from "../../assets/images/footer/footer-bottom-left-curve.svg";
+
+const navLinks = [
+  { to: "/", label: "หน้าแรก" },
+  { to: "/service", label: "บริการของเรา" },
+  { to: "/psychologist", label: "นักจิตวิทยา" },
+  { to: "/activity", label: "กิจกรรม" },
+  { to: "/blog", label: "บทความ" },
+  { to: "/about", label: "เกี่ยวกับเรา" },
+] as const;
+
+const legalLinks = [
+  { to: "/term-condition", label: "ข้อกำหนดและเงื่อนไข" },
+  { to: "/policy", label: "นโยบายความเป็นส่วนตัว" },
+] as const;
 
 const Footer = () => {
   return (
-    <div className="relative py-10 mx-auto px-6 bg-main-beige w-full flex flex-col items-center gap-4 z-10">
-      <div className="  w-full flex flex-col gap-4 l:max-w-7xl">
-        <img src={svgs.logoMindbloom} alt="mindbloom" width={65} height={34} />
-        <div className="grid grid-cols-3 gap-10">
-          <div className="grid gap-4 ">
-            <p className="text-xl font-bold">
+    <footer
+      className="relative w-full overflow-hidden px-6 py-12 text-neutral-black s:px-8 m:px-10 l:px-12"
+      style={{
+        background: "linear-gradient(180deg, #E5DACF 89.59%, #C7A491 166.54%)",
+      }}
+    >
+      <img
+        src={footerTopRightDecor}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 z-0 w-20 s:w-24 m:w-28"
+      />
+      <img
+        src={footerBottomLeftDecor}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute left-0 bottom-0 z-0 w-16 s:w-20 m:w-24"
+      />
+      <img
+        src={footerBottomLeftCurve}
+        alt=""
+        aria-hidden
+        className="pointer-events-none absolute right-0 bottom-0 z-0 w-40 s:right-0 s:w-64 m:left-0 m:w-md opacity-70"
+      />
+
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-10 s:gap-12">
+        <img
+          src={svgs.logoMindbloom}
+          alt="mindbloom"
+          width={65}
+          height={34}
+          className="object-contain"
+        />
+
+        <div className="flex flex-col gap-10 s:gap-12 m:grid m:grid-cols-[minmax(0,1.45fr)_minmax(0,0.8fr)_minmax(0,0.95fr)] m:items-start m:gap-12">
+          <div className="flex flex-col gap-6 text-center s:max-w-176 s:items-center s:text-center m:max-w-110 m:items-start m:text-left">
+            <p className="rf-title font-bold">
               บริษัท มายด์บอท จำกัด (สำนักงานใหญ่)
             </p>
-            <p className="rf-small">
-              ตึก 667/15 อาคารอรรถบูรณ์ ชั้น 5 ห้อง 502/2 <br /> ถ.จรัญสนิทวงศ์
-              แขวงอรุณอมรินทร์ เขตบางกอกน้อย
-              <br /> กรุงเทพฯ 10700
-            </p>
-            <div className="flex gap-6">
-              <a
-                href="https://line.me/R/ti/p/@mindbloom"
-                target="_blank"
-                rel="noreferrer"
-                className="flex justify-start items-center gap-2"
-              >
-                <img src={svgs.lineIcon} alt="line" width={24} height={24} />
-                <p className="rf-small">Line</p>
-              </a>
 
-              <a
-                href="https://www.facebook.com/mindbloom.th/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex justify-start items-center gap-2"
-              >
-                <img
-                  src={svgs.facebookIcon}
-                  alt="facebook"
-                  width={24}
-                  height={24}
-                />
-                <p className="rf-small">Facebook</p>
-              </a>
-              <div className="flex justify-start items-center gap-2">
-                <img src={svgs.logoMindbot} alt="line" width={24} height={24} />
-                <p className="rf-small">บริษัทมายด์บอท จำกัด</p>
+            <div className="flex flex-col gap-5 text-neutral-black s:items-center m:items-start">
+              <p className="rf-body leading-7 block s:hidden text-center m:text-left">
+                มายด์บลูม คลินิกการประกอบ โรคศิลปะสาขาจิตวิทยาคลินิก
+                <br />
+                ใบอนุญาตเลขที่ 10109003467
+              </p>
+
+              <p className="rf-body leading-7 hidden s:block m:hidden text-center whitespace-nowrap">
+                มายด์บลูม คลินิกการประกอบ โรคศิลปะสาขาจิตวิทยาคลินิก
+                <br />
+                ใบอนุญาตเลขที่ 10109003467
+              </p>
+
+              <p className="rf-body leading-7 hidden m:block text-left">
+                มายด์บลูม คลินิกการประกอบ
+                <br />
+                โรคศิลปะสาขาจิตวิทยาคลินิก
+                <br />
+                ใบอนุญาตเลขที่ 10109003467
+              </p>
+
+              <p className="rf-body leading-7 block s:hidden text-center m:text-left">
+                292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช
+                <br />
+                เขตบางกอกน้อย กรุงเทพฯ 10700
+              </p>
+
+              <p className="rf-body leading-7 hidden s:block m:hidden text-center whitespace-nowrap">
+                292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช เขตบางกอกน้อย กรุงเทพฯ 10700
+              </p>
+
+              <p className="rf-body leading-7 hidden m:block text-left">
+                292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช
+                <br />
+                เขตบางกอกน้อย กรุงเทพฯ 10700
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-6 text-neutral-black s:grid s:grid-cols-2 s:justify-items-center s:gap-x-16 s:gap-y-0 m:contents">
+            <div className="flex flex-col gap-4 s:gap-8 m:gap-4">
+              {navLinks.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="rf-body transition-colors hover:text-neutral-black text-left"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="flex flex-col gap-6 text-neutral-black s:gap-8 m:gap-6">
+              <div className="flex flex-col gap-4 s:gap-8 m:gap-4">
+                {legalLinks.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    className="rf-body transition-colors hover:text-neutral-black text-left"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="flex flex-col gap-4 pt-2 s:gap-8 m:gap-4">
+                <a
+                  href="https://line.me/R/ti/p/@mindbloom"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2.5 transition-opacity hover:opacity-80 s:gap-3 justify-start"
+                >
+                  <img src={svgs.lineIcon} alt="line" width={24} height={24} />
+                  <span className="rf-body">Line</span>
+                </a>
+
+                <a
+                  href="https://www.facebook.com/mindbloom.th/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2.5 transition-opacity hover:opacity-80 s:gap-3 justify-start"
+                >
+                  <img
+                    src={svgs.facebookIcon}
+                    alt="facebook"
+                    width={24}
+                    height={24}
+                  />
+                  <span className="rf-body">Facebook</span>
+                </a>
+
+                <div className="flex items-center gap-2.5 s:gap-3 justify-start">
+                  <img
+                    src={svgs.logoMindbot}
+                    alt="mindbot"
+                    width={24}
+                    height={24}
+                  />
+                  <span className="rf-body">บริษัทมายด์บอท จำกัด</span>
+                </div>
               </div>
             </div>
           </div>
-          <div className="grid  pl-[30%]">
-            <Link to="/about" className="rf-small">
-              เกี่ยวกับเรา
-            </Link>
-            <Link to="/term-condition" className="rf-small">
-              ข้อกำหนดและเงื่อนไข
-            </Link>
-            <Link to="/policy" className="rf-small">
-              นโยบายความเป็นส่วนตัว
-            </Link>
-          </div>
-          <div className="flex flex-col items-center ">
-            <img
-              src={svgs.logoMindbloomSquare}
-              alt="mind bloom"
-              width={87}
-              height={87}
-            />
-            <p className="rf-small font-bold mt-2">Mind Bloom</p>
-            <p className="rf-small text-center mt-4">
-              มายด์บลูม คลินิกการประกอบ <br /> โรคศิลปะสาขาจิตวิทยาคลินิก
-              <br />
-              ใบอนุญาตเลขที่ 10109003467
-            </p>
-          </div>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

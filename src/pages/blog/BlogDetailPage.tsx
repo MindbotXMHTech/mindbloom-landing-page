@@ -1,9 +1,24 @@
 import { useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
+import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
 import Snackbar from "@mui/material/Snackbar";
 import { BlogList } from "../../constants/blogData";
 import { svgs } from "../../constants/svgs";
+
+const PUBLIC_SITE_URL = (
+  import.meta.env.VITE_PUBLIC_SITE_URL || "https://www.mindbloom-wellness.com"
+).replace(/\/+$/, "");
+
+function isLocalHost(hostname: string) {
+  return (
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "::1" ||
+    hostname.endsWith(".local")
+  );
+}
 
 function getYouTubeVideoId(input?: string) {
   if (!input) return "";
@@ -56,7 +71,16 @@ function BlogDetailPage() {
     : "";
 
   const getSharePayload = () => {
-    const url = typeof window !== "undefined" ? window.location.href : "";
+    const articlePath = `/blog/${blog.id}`;
+    const url =
+      typeof window !== "undefined"
+        ? new URL(
+            articlePath,
+            isLocalHost(window.location.hostname)
+              ? PUBLIC_SITE_URL
+              : window.location.origin,
+          ).toString()
+        : `${PUBLIC_SITE_URL}${articlePath}`;
     const title = blog.title;
     const text = `${blog.title} | MindBloom`;
     return { url, title, text };
@@ -68,10 +92,10 @@ function BlogDetailPage() {
   };
 
   const handleFacebookShare = () => {
-    const { url } = getSharePayload();
+    const { title, url } = getSharePayload();
     if (!url) return;
 
-    const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(title)}`;
     window.open(fbUrl, "_blank", "noopener,noreferrer");
   };
 
@@ -109,7 +133,7 @@ function BlogDetailPage() {
     openSnackbar(ok ? "Link copied" : "Copy failed");
   };
 
-  const handleInstagramShare = async () => {
+  const handleShare = async () => {
     const { url, text, title } = getSharePayload();
 
     if (navigator.share) {
@@ -117,36 +141,55 @@ function BlogDetailPage() {
         await navigator.share({ title, text, url });
         return;
       } catch {
-        // fall through to copy + open instagram
+        // fall through to copy link
       }
     }
 
     const ok = await copyLink();
-    openSnackbar(ok ? "Link copied, paste on Instagram" : "Copy failed");
-    window.open("https://www.instagram.com/", "_blank", "noopener,noreferrer");
+    openSnackbar(ok ? "Link copied" : "Copy failed");
   };
 
   return (
     <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
-      <div className="flex items-center gap-4 justify-center mb-4">
-        <p className="text-body text-neutral-black">บทความ</p>/
-        <p className="text-body text-neutral-grey">{blog.title}</p>
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex items-center gap-4 justify-center mb-4"
+      >
+        <Link to={"/blog"}>
+          <p className="text-body text-neutral-black">บทความ</p>
+        </Link>
+        <p className="text-body text-neutral-grey">/ {blog.title}</p>
+      </motion.div>
 
       <article className="w-full flex flex-col items-center mx-auto">
-        <img
+        <motion.img
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           src={blog.image}
           alt={blog.title}
           className="w-full rounded-3xl object-cover max-w-81.5"
         />
 
-        <div className="mt-4 flex justify-center items-center gap-2">
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
+          className="mt-4 flex justify-center items-center gap-2"
+        >
           <p className="rf-small">{blog.date}</p>
           <p className="rf-small">โดย</p>
           <p className="rf-small text-main-pink">Mind Bloom</p>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center items-center gap-2 mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
+          className="flex justify-center items-center gap-2 mt-4"
+        >
           <p className="rf-small">แชร์บน</p>
 
           <button
@@ -155,16 +198,20 @@ function BlogDetailPage() {
             aria-label="Share on Facebook"
             className="inline-flex h-6 w-6 items-center justify-center"
           >
-            <img src={svgs.facebookIcon} alt="share facebook" className="w-4 h-4" />
+            <img
+              src={svgs.facebookIcon}
+              alt="share facebook"
+              className="w-4 h-4"
+            />
           </button>
 
           <button
             type="button"
-            onClick={handleInstagramShare}
-            aria-label="Share on Instagram"
+            onClick={handleShare}
+            aria-label="Share"
             className="inline-flex h-6 w-6 items-center justify-center"
           >
-            <img src={svgs.instagramIcon} alt="share instagram" className="w-4 h-4" />
+            <IosShareRoundedIcon sx={{ fontSize: 16 }} />
           </button>
 
           <button
@@ -175,22 +222,45 @@ function BlogDetailPage() {
           >
             <img src={svgs.linkIcon} alt="share link" className="w-4 h-4" />
           </button>
-        </div>
+        </motion.div>
 
-        <h1 className="rf-body font-bold mt-4">{blog.title}</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}
+          className="rf-body font-bold mt-4"
+        >
+          {blog.title}
+        </motion.h1>
 
-        <div className="mt-6 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.55 }}
+          className="mt-6 space-y-4"
+        >
           {blog.content.map((paragraph, index) => (
-            <p key={index} className="rf-body text-neutral-grey whitespace-pre-line">
+            <p
+              key={index}
+              className="rf-body text-neutral-grey whitespace-pre-line"
+            >
               {paragraph}
             </p>
           ))}
-        </div>
+        </motion.div>
 
         {videoId && (
-          <section className="mt-10 flex justify-center">
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.65 }}
+            className="mt-10 flex justify-center"
+          >
             <div className="w-full min-w-50 s:min-w-62.5 m:min-w-124 rounded-xl border border-[#e8e1d8] bg-white p-2 shadow-sm">
-              <div className="relative w-full overflow-hidden rounded-lg bg-black" style={{ paddingTop: "56.25%" }}>
+              <div
+                className="relative w-full overflow-hidden rounded-lg bg-black"
+                style={{ paddingTop: "56.25%" }}
+              >
                 {isPlaying ? (
                   <iframe
                     className="absolute top-0 left-0 h-full w-full"
@@ -222,16 +292,22 @@ function BlogDetailPage() {
               </div>
 
               <div className="px-1 pt-2 pb-1">
-                <p className="text-[13px] text-neutral-black truncate">{blog.title}</p>
+                <p className="text-[13px] text-neutral-black truncate">
+                  {blog.title}
+                </p>
                 <div className="mt-1 flex items-center justify-between text-[11px] text-[#8a8a8a]">
                   <div className="flex items-center gap-1.5">
-                    <img src={svgs.youtubeIcon} alt="youtube icon" className="w-4 h-4" />
+                    <img
+                      src={svgs.youtubeIcon}
+                      alt="youtube icon"
+                      className="w-4 h-4"
+                    />
                     <span>YouTube</span>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         )}
       </article>
 

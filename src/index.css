@@ -43,6 +43,7 @@ body {
   --color-white: #ffffff;
   --color-main-pink: #e7b8b1;
   --color-sub-beige: #c7a491;
+
 }
 
 /* Reusable responsive font sizes (XS/S/M/L) */
@@ -209,6 +210,7 @@ body {
 
 .mindbloom-bg {
   position: relative;
+  z-index: 2;
   min-height: 100dvh;
   overflow: hidden;
   isolation: isolate;
@@ -216,7 +218,7 @@ body {
 }
 
 .mindbloom-bg__shape {
-  position: fixed;
+  position: absolute;
   border-radius: 9999px;
   filter: blur(50px);
   opacity: 0.8;
@@ -224,44 +226,120 @@ body {
 }
 
 .mindbloom-bg__shape--left {
-  width: min(110vw, 70rem);
-  height: min(110vw, 70rem);
+  width: min(100vw, 60rem);
+  height: min(100vw, 60rem);
   top: -10rem;
-  left: -28rem;
+  left: -45rem;
+  background: radial-gradient(
+    circle at center,
+    #C6D5C4 0%,
+    #c6d5c4  10%,
+    transparent 82%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--right {
+  width: min(100vw, 60rem);
+  height: min(100vw, 60rem);
+  top: -15rem;
+  right: -45rem;
+  background: radial-gradient(
+    circle at center,
+    #C6D5C4 0%,
+    #c6d5c4 10%,
+    transparent 72%
+  );
+  z-index: 0;
+  opacity: 10;
+}
+
+/* Pink variant — psychologist page */
+.mindbloom-bg--pink .mindbloom-bg__shape--left {
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 0%,
+    #edcdc8 10%,
+    transparent 72%
+  );
+}
+
+.mindbloom-bg--pink .mindbloom-bg__shape--right {
   background: radial-gradient(
     circle at center,
     #edcdc8 10%,
     #fbeee8 30%,
     transparent 72%
   );
-  z-index: 0;
 }
 
-.mindbloom-bg__shape--right {
-  width: min(110vw, 70rem);
-  height: min(110vw, 70rem);
-  top: -15rem;
-  right: -28rem;
+.mindbloom-bg__shape--middle {
+  width: min(120vw, 80rem);
+  height: min(80vw, 60rem);
+  top: 0;
+  left: 15rem;
   background: radial-gradient(
     circle at center,
-    #edcdc8 10%,
-    #fbeee8 32%,
+    #edcdc8 20%,
+    #fbeee8 45%,
     transparent 72%
   );
   z-index: 0;
 }
 
 .mindbloom-bg__shape--top {
-  width: min(150vw, 110rem);
-  height: min(150vw, 110rem);
-  top: -60rem;
-  left: 50%;
-  transform: translateX(-50%);
+  width: min(160vw, 100rem);
+  height: min(160vw, 100rem);
+  top: -70rem;
+  left: 10rem;
+  /* transform: translateX(-50%); */
+  background: radial-gradient(
+    circle at center,
+     #C6D5C4 10%,
+    #c6d5c47c 0%,
+    transparent 82%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-left {
+  width: min(100vw, 50rem);
+  height: min(100vw, 50rem);
+  bottom: -10rem;
+  left: -30rem;
   background: radial-gradient(
     circle at center,
     #edcdc8 20%,
-    #fbeee8 45%,
-    transparent 82%
+    #fbeee8 30%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-right {
+  width: min(100vw, 50rem);
+  height: min(100vw, 50rem);
+  bottom: -20rem;
+  right: -30rem;
+  background: radial-gradient(
+    circle at center,
+    #edcdc8 0%,
+    #fbeee8 20%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-middle {
+  width: min(120vw, 80rem);
+  height: min(120vw, 80rem);
+  bottom: -40rem;
+  left: 15%;
+  background: radial-gradient(
+    circle at center,
+    #e9dfd0 10%,
+    #fbeee8 30%,
+    transparent 70%
   );
   z-index: 0;
 }

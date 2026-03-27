@@ -7,9 +7,7 @@ const contactItems = [
     id: "facebook",
     label: "Mind Bloom",
     href: "https://www.facebook.com/mindbloom.th/",
-    icon: (
-      <img src={svgs.facebookIcon} alt="facebook" width={32} height={32} />
-    ),
+    icon: <img src={svgs.facebookIcon} alt="facebook" width={32} height={32} />,
   },
   {
     id: "line",
@@ -42,43 +40,24 @@ function AboutPage() {
         transition={{ duration: 0.5, ease: "easeOut" as const }}
         className="w-full max-w-212.5 flex flex-col items-center"
       >
-        <h1 className="rf-h4 font-normal text-center text-neutral-black">เกี่ยวกับเรา</h1>
-        <p className="rf-body text-neutral-grey text-center mt-7">
-          คือ บริการให้คำปรึกษาด้านสุขภาพจิตโดยนักจิตวิทยาคลินิก
-        </p>
-        <p className="rf-body text-neutral-grey text-center mt-2 whitespace-pre-line">
-          {`นำทีมโดยนักจิตวิทยาคลินิกผู้มีประสบการณ์ด้านการดูแลจิตใจผู้คนมากว่า 15 ปี
-ร่วมกับกลุ่มนักจิตวิทยาคลินิกที่มีความเชื่อเดียวกันว่า
-“ไม่ว่าคนเราจะเผชิญอุปสรรคอะไร เราทุกคนมีศักยภาพที่จะก้าวข้ามสิ่งนั้น”
+        <h1 className="rf-h4 font-normal text-center text-neutral-black">
+          เกี่ยวกับเรา
+        </h1>
+        <p className="rf-body text-neutral-grey text-center mt-8 whitespace-pre-line">
+          {`บริษัท มายด์บอท จำกัด ก่อตั้งขึ้นในปี 2019 โดยแยกตัวออกมาจากมหาวิทยาลัยมหิดล ซึ่งผสานรวมปัญญาประดิษฐ์ (AI) วิทยาศาสตร์พฤติกรรม และจิตวิทยาคลินิก เพื่อสร้างสรรค์โซลูชันด้านสุขภาวะที่เป็นนวัตกรรมใหม่
 
-นักจิตวิทยาของเราจึงมุ่งเน้นแนวทางการให้คำปรึกษา
-ที่จะช่วยให้ผู้รับบริการได้มองเห็นถึงศักยภาพที่มีอยู่ในตนเอง
-และใช้ศักยภาพนั้นดูแลจิตใจตนเองให้แข็งแรงจากภายใน`}
+บนพื้นฐานนี้ มายด์บลูม จึงถูกก่อตั้งขึ้นในฐานะหน่วยงานเฉพาะด้านการให้บริการด้านสุขภาพจิต
+เรามีส่วนร่วมในโครงการที่ไม่แสวงหาผลกำไรอย่างสม่ำเสมอ รวมถึงการบรรยายสาธารณะ แคมเปญที่ใช้ศิลปะเป็นสื่อ และโปรแกรมการศึกษา ที่ออกแบบมาเพื่อส่งเสริมความตระหนักรู้ด้านสุขภาพจิต ลดการตีตรา และสร้างสังคมที่เข้มแข็งยิ่งขึ้น`}
         </p>
 
         <div className="w-full h-[0.7px] bg-sub-beige mt-3.5" />
 
         <div className="mt-4 flex items-center justify-center gap-2">
-          <img
-            src={svgs.logoMindbot}
-            alt="mind bloom"
-            width={22}
-            height={22}
-          />
+          <img src={svgs.logoMindbot} alt="mind bloom" width={22} height={22} />
           <p className="rf-body text-neutral-grey">
             พัฒนาโดย บริษัท มายด์บอท จำกัด ผู้พัฒนาเทคโนโลยีสุขภาพจิต
           </p>
         </div>
-
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.94 }}
-          className="mt-5 rounded-full bg-white px-5 py-2 shadow-[0_4px_16px_rgba(0,0,0,0.12)]"
-        >
-          <p className="rf-nav font-semibold text-neutral-black">
-            ดูข้อมูลเพิ่มเติม
-          </p>
-        </motion.button>
       </motion.section>
 
       <motion.section
@@ -86,12 +65,12 @@ function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" as const }}
-        className="w-full max-w-212.5 mt-24 flex flex-col items-center"
+        className="w-full max-w-212.5 mt-12 flex flex-col items-center"
       >
         <h2 className="rf-h4 font-normal text-center">ช่องทางการติดต่อ</h2>
 
         <div className="mt-8 w-full grid grid-cols-2 m:grid-cols-4 gap-y-8">
-          {contactItems.map((item) => (
+          {contactItems.map((item) =>
             item.href ? (
               <a
                 key={item.id}
@@ -115,8 +94,8 @@ function AboutPage() {
                   {item.label}
                 </p>
               </div>
-            )
-          ))}
+            ),
+          )}
         </div>
       </motion.section>
     </div>
