@@ -21,13 +21,9 @@ function ActivityDetailPage() {
   return (
     <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <motion.div
-        initial={{ opacity: 0, y: 14 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{
-          duration: 0.8,
-          ease: "easeOut" as const,
-        }}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="flex items-center gap-4 justify-center mb-4"
       >
         <Link to={"/activity"}>
@@ -38,12 +34,8 @@ function ActivityDetailPage() {
 
       <motion.div
         initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{
-          duration: 1,
-          ease: "easeOut" as const,
-        }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
         className="flex flex-col items-center text-center gap-4"
       >
         <div>
@@ -76,11 +68,12 @@ function ActivityDetailPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0 }}
             transition={{
-              duration: 0.6,
-              ease: "easeOut" as const,
-              delay: index * 0.1,
+              duration: 0.5,
+              ease: "easeOut",
+              delay: Math.min(index * 0.08, 0.5),
             }}
             className="aspect-square overflow-hidden rounded-2xl h-60.25"
+            whileHover={{ scale: 1.03 }}
           >
             <img
               src={img}
