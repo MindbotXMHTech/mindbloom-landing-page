@@ -48,6 +48,10 @@ import vector8 from "../assets/images/background/Vector8.png";
 import vector9 from "../assets/images/background/Vector9.png";
 import vector10 from "../assets/images/background/vector10.png";
 import vector11 from "../assets/images/background/Vector11.png";
+import vector12 from "../assets/images/background/Vector12.png";
+import vector13 from "../assets/images/background/Vector13.png";
+import vector14 from "../assets/images/background/Vector14.png";
+import vector15 from "../assets/images/background/Vector15.png";
 import vector18 from "../assets/images/background/Vector18.png";
 import vector19 from "../assets/images/background/Vector19.png";
 import vector20 from "../assets/images/background/Vector20.png";
@@ -162,6 +166,10 @@ export const images = {
   tod4,
   tod5,
   tod6,
+  vector12,
+  vector13,
+  vector14,
+  vector15,
   vector18,
   vector19,
   vector20,
