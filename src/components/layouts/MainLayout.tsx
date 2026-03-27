@@ -7,7 +7,7 @@ import ContactButton from "../button/ContactButton";
 
 function MainLayout() {
   const { pathname } = useLocation();
-  const isPsychologistPage = pathname === "/phycologist";
+  const isPsychologistPage = pathname === "/psychologist";
   const isAboutPage = pathname === "/about";
 
   useEffect(() => {
@@ -25,6 +25,9 @@ function MainLayout() {
         showArticleDetailsVector={
           pathname.startsWith("/blog/") && pathname !== "/blog"
         }
+        showBottomShapes={pathname === "/"}
+        hideSideShape={pathname === "/"}
+        showHomeVector={pathname === "/"}
         variant={
           isPsychologistPage ||
           (pathname.startsWith("/blog/") && pathname !== "/blog")

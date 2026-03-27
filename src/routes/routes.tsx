@@ -25,7 +25,7 @@ function AppRoutes() {
           <Route path="blog/:id" element={<BlogDetailPage />} />
           <Route path="service" element={<ServicePage />} />
           <Route path="service/workshop" element={<Workshop />} />
-          <Route path="phycologist" element={<PhycologistPage />} />
+          <Route path="psychologist" element={<PhycologistPage />} />
           <Route path="policy" element={<Policy />} />
           <Route path="term-condition" element={<Condition />} />
           <Route path="*" element={<HomePage />} />

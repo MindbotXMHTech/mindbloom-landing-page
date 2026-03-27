@@ -1,4 +1,5 @@
 import { motion, type Variants } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const bubbleListVariants: Variants = {
@@ -99,9 +100,12 @@ function HomePage() {
             เพียงแค่บางช่วงเวลาอาจต้องการการดูแลและสิ่งแวดล้อมที่ปลอดภัยเป็นพิเศษ
           </p>
 
-          <div className="bg-white px-6 py-2 flex justify-center items-center rounded-3xl">
+          <Link
+            to={"/service"}
+            className="bg-white px-6 py-2 flex justify-center items-center rounded-3xl"
+          >
             <p className="rf-body font-bold">ปัญหาที่เราดูแล</p>
-          </div>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -117,14 +121,19 @@ function HomePage() {
         >
           <p className="rf-title">คุณค่าของเรา</p>
           <p className="text-body text-center text-neutral-grey">
-            MindBloom คือพันธมิตรด้านสุขภาพจิต <br />
-            ที่ช่วยสร้างสิ่งแวดล้อมทางใจที่ปลอดภัย
-            <br />
-            เพื่อให้บุคลากรทำงานและใช้ชีวิตได้อย่างยั่งยืน
+            มายด์บลูม
+            คือพันธมิตรด้านสุขภาพจิตที่ช่วยสร้างสิ่งแวดล้อมทางใจที่ปลอดภัย
+            เพื่อให้บุคลากรทำงานและใช้ชีวิตได้อย่างยั่งยืน <br />
+            มันคือการเดินทางแห่งการค้นพบตนเอง การยอมรับตนเอง
+            และการบำรุงรักษาความเป็นอยู่ที่ดีในหลายระดับ ทั้งด้านจิตใจ อารมณ์
+            และบางครั้งอาจรวมถึงด้านจิตวิญญาณด้วย
           </p>
-          <div className="bg-white px-6 py-2 flex justify-center items-center rounded-3xl">
+          <Link
+            to={"/psychologist"}
+            className="bg-white px-6 py-2 flex justify-center items-center rounded-3xl"
+          >
             <p className="rf-body font-bold">นักจิตวิทยา</p>
-          </div>
+          </Link>
         </motion.div>
       </section>
     </div>

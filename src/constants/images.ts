@@ -48,6 +48,12 @@ import vector8 from "../assets/images/background/Vector8.png";
 import vector9 from "../assets/images/background/Vector9.png";
 import vector10 from "../assets/images/background/vector10.png";
 import vector11 from "../assets/images/background/Vector11.png";
+import vector12 from "../assets/images/background/Vector12.png";
+import vector13 from "../assets/images/background/Vector13.png";
+import vector14 from "../assets/images/background/Vector14.png";
+import vector15 from "../assets/images/background/Vector15.png";
+import vector16 from "../assets/images/background/Vector16.png";
+import vector17 from "../assets/images/background/Vector17.png";
 
 export const images = {
   therapist1,
@@ -99,5 +105,11 @@ export const images = {
   vector8,
   vector9,
   vector10,
-  vector11
+  vector11,
+  vector12,
+  vector13,
+  vector14,
+  vector15,
+  vector16,
+  vector17,
 };

@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { images } from "../constants/images";
-import bottomGlow from "../assets/images/background/bottom-glow.svg";
 
 type PageBackgroundProps = {
   children: ReactNode;
@@ -12,6 +11,9 @@ type PageBackgroundProps = {
   showMiddleShape?: boolean;
   showArticleVector?: boolean;
   showArticleDetailsVector?: boolean;
+  showBottomShapes?: boolean;
+  hideSideShape?: boolean;
+  showHomeVector?: boolean;
   variant?: "green" | "pink";
   plain?: boolean;
 };
@@ -26,6 +28,9 @@ function PageBackground({
   showMiddleShape = false,
   showArticleVector = false,
   showArticleDetailsVector = false,
+  showBottomShapes = false,
+  hideSideShape = false,
+  showHomeVector = false,
   variant = "green",
   plain = false,
 }: PageBackgroundProps) {
@@ -42,17 +47,21 @@ function PageBackground({
           className="mindbloom-bg__shape mindbloom-bg__shape--top"
         />
       )}
-      {!plain && (
-        <div
-          aria-hidden
-          className="mindbloom-bg__shape mindbloom-bg__shape--right"
-        />
-      )}
-      {!plain && (
-        <div
-          aria-hidden
-          className="mindbloom-bg__shape mindbloom-bg__shape--left"
-        />
+      {!hideSideShape && (
+        <>
+          {!plain && (
+            <div
+              aria-hidden
+              className="mindbloom-bg__shape mindbloom-bg__shape--right"
+            />
+          )}
+          {!plain && (
+            <div
+              aria-hidden
+              className="mindbloom-bg__shape mindbloom-bg__shape--left"
+            />
+          )}
+        </>
       )}
       {!plain && showMiddleShape && (
         <div
@@ -60,12 +69,23 @@ function PageBackground({
           className="mindbloom-bg__shape mindbloom-bg__shape--middle"
         />
       )}
-      {showBottomShape && (
-        <img
-          src={bottomGlow}
+
+      {showBottomShapes && (
+        <>
+          <div
+            aria-hidden
+            className="mindbloom-bg__shape mindbloom-bg__shape--bottom-left"
+          />
+          <div
+            aria-hidden
+            className="mindbloom-bg__shape mindbloom-bg__shape--bottom-right"
+          />
+        </>
+      )}
+      {plain && showBottomShape && (
+        <div
           aria-hidden
-          alt=""
-          className="mindbloom-bg__shape mindbloom-bg__shape--bottom-svg"
+          className="mindbloom-bg__shape mindbloom-bg__shape--bottom-middle"
         />
       )}
       {!plain && <div aria-hidden className="mindbloom-bg__grain" />}
@@ -75,31 +95,31 @@ function PageBackground({
             src={images.vector5}
             aria-hidden
             alt=""
-            className="absolute right-0 -top-40 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 -top-20 m:-top-40 w-20 m:w-44 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector1}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-180 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 top-1/2 w-30 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector2}
             aria-hidden
             alt=""
-            className="absolute left-0 top-20 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 top-20 w-44 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector4}
             aria-hidden
             alt=""
-            className="absolute left-0 bottom-1/3 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 bottom-1/3 w-35 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector3}
             aria-hidden
             alt=""
-            className="absolute left-1/6 h-1/2 -bottom-100 w-[90%] pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-1/6 h-1/2 -bottom-100 w-[90%] pointer-events-none select-none block z-10"
           />
         </>
       )}
@@ -110,25 +130,25 @@ function PageBackground({
             src={images.vector6}
             aria-hidden
             alt=""
-            className="absolute left-0 top-0 w-40 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 top-0 w-40 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector7}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 bottom-0 w-40 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector8}
             aria-hidden
             alt=""
-            className="absolute left-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 bottom-0 w-20 m:w-38 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector9}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-1/3 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 top-10 m:-top-20 w-20 m:w-38 pointer-events-none select-none block z-10"
           />
         </>
       )}
@@ -139,13 +159,54 @@ function PageBackground({
             src={images.vector10}
             aria-hidden
             alt=""
-            className="absolute left-0 top-0 w-40 pointer-events-none select-none hidden m:block z-10"
+            className="absolute left-0 top-0 w-40 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector11}
             aria-hidden
             alt=""
-            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none hidden m:block z-10"
+            className="absolute right-0 bottom-0 w-44 pointer-events-none select-none block z-10"
+          />
+        </>
+      )}
+
+      {showHomeVector && (
+        <>
+          <img
+            src={images.vector12}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-1/4 w-45 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector13}
+            aria-hidden
+            alt=""
+            className="absolute left-10 m:left-[38%] -bottom-40 m:-bottom-65 w-80 m:w-110 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector14}
+            aria-hidden
+            alt=""
+            className="absolute right-0 top-30 w-30 m:w-50 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector15}
+            aria-hidden
+            alt=""
+            className="absolute left-0 -bottom-20 w-30 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector16}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-0 w-24 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector17}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-0 w-64 pointer-events-none select-none block z-10"
           />
         </>
       )}
