@@ -41,7 +41,7 @@ import vector1 from "../assets/images/background/vector1.png";
 import vector2 from "../assets/images/background/vector2.png";
 import vector3 from "../assets/images/background/vector3.png";
 import vector4 from "../assets/images/background/vector4.png";
-import vector5 from "../assets/images/background/vector5.png";
+import vector5 from "../assets/images/background/Vector5.png";
 import vector6 from "../assets/images/background/vector6.png";
 import vector7 from "../assets/images/background/vector7.png";
 import vector8 from "../assets/images/background/vector8.png";
