@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
 import Snackbar from "@mui/material/Snackbar";
@@ -150,27 +151,45 @@ function BlogDetailPage() {
 
   return (
     <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
-      <div className="flex items-center gap-4 justify-center mb-4">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex items-center gap-4 justify-center mb-4"
+      >
         <Link to={"/blog"}>
           <p className="text-body text-neutral-black">บทความ</p>
         </Link>
         <p className="text-body text-neutral-grey">/ {blog.title}</p>
-      </div>
+      </motion.div>
 
       <article className="w-full flex flex-col items-center mx-auto">
-        <img
+        <motion.img
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           src={blog.image}
           alt={blog.title}
           className="w-full rounded-3xl object-cover max-w-81.5"
         />
 
-        <div className="mt-4 flex justify-center items-center gap-2">
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
+          className="mt-4 flex justify-center items-center gap-2"
+        >
           <p className="rf-small">{blog.date}</p>
           <p className="rf-small">โดย</p>
           <p className="rf-small text-main-pink">Mind Bloom</p>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center items-center gap-2 mt-4">
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
+          className="flex justify-center items-center gap-2 mt-4"
+        >
           <p className="rf-small">แชร์บน</p>
 
           <button
@@ -203,11 +222,23 @@ function BlogDetailPage() {
           >
             <img src={svgs.linkIcon} alt="share link" className="w-4 h-4" />
           </button>
-        </div>
+        </motion.div>
 
-        <h1 className="rf-body font-bold mt-4">{blog.title}</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}
+          className="rf-body font-bold mt-4"
+        >
+          {blog.title}
+        </motion.h1>
 
-        <div className="mt-6 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.55 }}
+          className="mt-6 space-y-4"
+        >
           {blog.content.map((paragraph, index) => (
             <p
               key={index}
@@ -216,10 +247,15 @@ function BlogDetailPage() {
               {paragraph}
             </p>
           ))}
-        </div>
+        </motion.div>
 
         {videoId && (
-          <section className="mt-10 flex justify-center">
+          <motion.section
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.65 }}
+            className="mt-10 flex justify-center"
+          >
             <div className="w-full min-w-50 s:min-w-62.5 m:min-w-124 rounded-xl border border-[#e8e1d8] bg-white p-2 shadow-sm">
               <div
                 className="relative w-full overflow-hidden rounded-lg bg-black"
@@ -271,7 +307,7 @@ function BlogDetailPage() {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         )}
       </article>
 

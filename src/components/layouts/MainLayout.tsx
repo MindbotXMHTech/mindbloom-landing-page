@@ -5,10 +5,21 @@ import PageBackground from "../PageBackground";
 import Footer from "../footer/Footer";
 import ContactButton from "../button/ContactButton";
 
+function getPage(pathname: string): string {
+  if (pathname === "/") return "home";
+  if (pathname === "/psychologist") return "psychologist";
+  if (pathname === "/about") return "about";
+  if (pathname === "/blog") return "blog";
+  if (pathname.startsWith("/blog/")) return "blog-detail";
+  if (pathname === "/activity") return "activity";
+  if (pathname.startsWith("/activity/")) return "activity-detail";
+  if (pathname === "/service/workshop") return "workshop";
+  if (pathname === "/service") return "service";
+  return "default";
+}
+
 function MainLayout() {
   const { pathname } = useLocation();
-  const isPsychologistPage = pathname === "/psychologist";
-  const isAboutPage = pathname === "/about";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,26 +27,7 @@ function MainLayout() {
 
   return (
     <div className="overflow-w-hidden max-w-screen">
-      <PageBackground
-        showTopShape={pathname === "/"}
-        showMiddleShape={isPsychologistPage}
-        showBottomShape={isAboutPage}
-        showSideVectors={isPsychologistPage}
-        showArticleVector={pathname === "/blog"}
-        showArticleDetailsVector={
-          pathname.startsWith("/blog/") && pathname !== "/blog"
-        }
-        showBottomShapes={pathname === "/"}
-        hideSideShape={pathname === "/"}
-        showHomeVector={pathname === "/"}
-        variant={
-          isPsychologistPage ||
-          (pathname.startsWith("/blog/") && pathname !== "/blog")
-            ? "pink"
-            : "green"
-        }
-        plain={isAboutPage}
-      >
+      <PageBackground page={getPage(pathname)}>
         <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />
           <Outlet />

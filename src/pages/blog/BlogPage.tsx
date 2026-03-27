@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { BlogList } from "../../constants/blogData";
 
 type BlogCardProps = {
@@ -61,10 +62,22 @@ function BlogPage() {
 
   return (
     <div className="mt-14.75 w-full max-w-245 px-4 sm:px-6 md:px-8 flex flex-col items-center">
-      <h4 className="rf-h4">บทความ</h4>
+      <motion.h4
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="rf-h4"
+      >
+        บทความ
+      </motion.h4>
 
       {/* Search & Sort */}
-      <div className="flex gap-3 w-full max-w-219.75 mt-6">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+        className="flex gap-3 w-full max-w-219.75 mt-6"
+      >
         <div className="flex items-center w-45 gap-2 border border-[#E5DACF] rounded-full px-4 py-2 bg-white">
           <svg
             className="w-4 h-4 text-neutral-grey shrink-0"
@@ -133,9 +146,13 @@ function BlogPage() {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="hidden lg:flex w-full mt-9.5 flex-col items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+        className="hidden lg:flex w-full mt-9.5 flex-col items-center">
         <div className="w-full max-w-219.75 overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -171,9 +188,14 @@ function BlogPage() {
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
 
-      <div className="w-full mt-9.5 lg:hidden flex flex-col items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+        className="w-full mt-9.5 lg:hidden flex flex-col items-center"
+      >
         <div className="w-full max-w-[24rem] overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -204,7 +226,7 @@ function BlogPage() {
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }
