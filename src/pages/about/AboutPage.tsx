@@ -7,9 +7,7 @@ const contactItems = [
     id: "facebook",
     label: "Mind Bloom",
     href: "https://www.facebook.com/mindbloom.th/",
-    icon: (
-      <img src={svgs.facebookIcon} alt="facebook" width={32} height={32} />
-    ),
+    icon: <img src={svgs.facebookIcon} alt="facebook" width={32} height={32} />,
   },
   {
     id: "line",
@@ -42,25 +40,20 @@ function AboutPage() {
         transition={{ duration: 0.5, ease: "easeOut" as const }}
         className="w-full max-w-212.5 flex flex-col items-center"
       >
-        <h1 className="rf-h4 font-normal text-center text-neutral-black">เกี่ยวกับเรา</h1>
+        <h1 className="rf-h4 font-normal text-center text-neutral-black">
+          เกี่ยวกับเรา
+        </h1>
         <p className="rf-body text-neutral-grey text-center mt-8 whitespace-pre-line">
-          {`บริษัท มายด์บอท จำกัด ก่อตั้งขึ้นในปี 2019 โดยแยกตัวออกมาจากมหาวิทยาลัยมหิดล ซึ่งผสานรวมปัญญาประดิษฐ์ (AI)
-วิทยาศาสตร์พฤติกรรม และจิตวิทยาคลินิก เพื่อสร้างสรรค์โซลูชันด้านสุขภาวะที่เป็นนวัตกรรมใหม่
+          {`บริษัท มายด์บอท จำกัด ก่อตั้งขึ้นในปี 2019 โดยแยกตัวออกมาจากมหาวิทยาลัยมหิดล ซึ่งผสานรวมปัญญาประดิษฐ์ (AI) วิทยาศาสตร์พฤติกรรม และจิตวิทยาคลินิก เพื่อสร้างสรรค์โซลูชันด้านสุขภาวะที่เป็นนวัตกรรมใหม่
 
 บนพื้นฐานนี้ มายด์บลูม จึงถูกก่อตั้งขึ้นในฐานะหน่วยงานเฉพาะด้านการให้บริการด้านสุขภาพจิต
-เรามีส่วนร่วมในโครงการที่ไม่แสวงหาผลกำไรอย่างสม่ำเสมอ รวมถึงการบรรยายสาธารณะ แคมเปญที่ใช้ศิลปะเป็นสื่อ 
-และโปรแกรมการศึกษา ที่ออกแบบมาเพื่อส่งเสริมความตระหนักรู้ด้านสุขภาพจิต ลดการตีตรา และสร้างสังคมที่เข้มแข็งยิ่งขึ้น`}
+เรามีส่วนร่วมในโครงการที่ไม่แสวงหาผลกำไรอย่างสม่ำเสมอ รวมถึงการบรรยายสาธารณะ แคมเปญที่ใช้ศิลปะเป็นสื่อ และโปรแกรมการศึกษา ที่ออกแบบมาเพื่อส่งเสริมความตระหนักรู้ด้านสุขภาพจิต ลดการตีตรา และสร้างสังคมที่เข้มแข็งยิ่งขึ้น`}
         </p>
 
         <div className="w-full h-[0.7px] bg-sub-beige mt-3.5" />
 
         <div className="mt-4 flex items-center justify-center gap-2">
-          <img
-            src={svgs.logoMindbot}
-            alt="mind bloom"
-            width={22}
-            height={22}
-          />
+          <img src={svgs.logoMindbot} alt="mind bloom" width={22} height={22} />
           <p className="rf-body text-neutral-grey">
             พัฒนาโดย บริษัท มายด์บอท จำกัด ผู้พัฒนาเทคโนโลยีสุขภาพจิต
           </p>
@@ -77,7 +70,7 @@ function AboutPage() {
         <h2 className="rf-h4 font-normal text-center">ช่องทางการติดต่อ</h2>
 
         <div className="mt-8 w-full grid grid-cols-2 m:grid-cols-4 gap-y-8">
-          {contactItems.map((item) => (
+          {contactItems.map((item) =>
             item.href ? (
               <a
                 key={item.id}
@@ -101,8 +94,8 @@ function AboutPage() {
                   {item.label}
                 </p>
               </div>
-            )
-          ))}
+            ),
+          )}
         </div>
       </motion.section>
     </div>
