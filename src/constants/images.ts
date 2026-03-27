@@ -52,10 +52,19 @@ import vector12 from "../assets/images/background/Vector12.png";
 import vector13 from "../assets/images/background/Vector13.png";
 import vector14 from "../assets/images/background/Vector14.png";
 import vector15 from "../assets/images/background/Vector15.png";
+import vector16 from "../assets/images/background/Vector16.png";
+import vector17 from "../assets/images/background/Vector17.png";
 import vector18 from "../assets/images/background/Vector18.png";
 import vector19 from "../assets/images/background/Vector19.png";
 import vector20 from "../assets/images/background/Vector20.png";
 import vector21 from "../assets/images/background/Vector21.png";
+import vector22 from "../assets/images/background/Vector22.png";
+import vector23 from "../assets/images/background/Vector23.png";
+import vector24 from "../assets/images/background/Vector24.png";
+import vector25 from "../assets/images/background/Vector25.png";
+import vector26 from "../assets/images/background/Vector26.png";
+import vector27 from "../assets/images/background/Vector27.png";
+import vector28 from "../assets/images/background/Vector28.png";
 import gal1 from "../assets/images/gal1.jpg"
 import gal2 from "../assets/images/gal2.jpg"
 import gal3 from "../assets/images/gal3.jpg"
@@ -170,8 +179,17 @@ export const images = {
   vector13,
   vector14,
   vector15,
+  vector16,
+  vector17,
   vector18,
   vector19,
   vector20,
   vector21,
+  vector22,
+  vector23,
+  vector24,
+  vector25,
+  vector26,
+  vector27,
+  vector28,
 };

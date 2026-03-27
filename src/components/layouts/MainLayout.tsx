@@ -9,6 +9,8 @@ function MainLayout() {
   const { pathname } = useLocation();
   const isPsychologistPage = pathname === "/psychologist";
   const isActivityPage = pathname === "/activity";
+  const isServicePage = pathname === "/service";
+  const isWorkshopPage = pathname === "/service/workshop";
   const isActivityDetailPage =
     pathname.startsWith("/activity/") && pathname !== "/activity";
   const isAboutPage = pathname === "/about";
@@ -33,6 +35,8 @@ function MainLayout() {
         showHomeVector={pathname === "/"}
         showActivityVector={isActivityPage}
         showActivityDetailsVector={isActivityDetailPage}
+        showServiceVector={isServicePage}
+        showWorkshopVector={isWorkshopPage}
         variant={
           isPsychologistPage ||
           (pathname.startsWith("/blog/") && pathname !== "/blog")

@@ -229,11 +229,11 @@ body {
   width: min(100vw, 60rem);
   height: min(100vw, 60rem);
   top: -10rem;
-  left: -40rem;
+  left: -45rem;
   background: radial-gradient(
     circle at center,
     #C6D5C4 0%,
-    #c6d5c4a4  10%,
+    #c6d5c4  10%,
     transparent 82%
   );
   z-index: 0;
@@ -243,11 +243,11 @@ body {
   width: min(100vw, 60rem);
   height: min(100vw, 60rem);
   top: -15rem;
-  right: -38rem;
+  right: -45rem;
   background: radial-gradient(
     circle at center,
-    #C6D5C4 10%,
-    #c6d5c47c 30%,
+    #C6D5C4 0%,
+    #c6d5c4 10%,
     transparent 72%
   );
   z-index: 0;
@@ -295,8 +295,6 @@ body {
   /* transform: translateX(-50%); */
   background: radial-gradient(
     circle at center,
-    /* #edcdc8 20%,
-    #fbeee8 15%, */
      #C6D5C4 10%,
     #c6d5c47c 0%,
     transparent 82%

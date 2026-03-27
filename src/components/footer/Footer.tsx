@@ -7,7 +7,7 @@ import footerBottomLeftCurve from "../../assets/images/footer/footer-bottom-left
 const navLinks = [
   { to: "/", label: "หน้าแรก" },
   { to: "/service", label: "บริการของเรา" },
-  { to: "/phycologist", label: "นักจิตวิทยา" },
+  { to: "/psychologist", label: "นักจิตวิทยา" },
   { to: "/activity", label: "กิจกรรม" },
   { to: "/blog", label: "บทความ" },
   { to: "/about", label: "เกี่ยวกับเรา" },
@@ -23,8 +23,7 @@ const Footer = () => {
     <footer
       className="relative w-full overflow-hidden px-6 py-12 text-neutral-black s:px-8 m:px-10 l:px-12"
       style={{
-        background:
-          "linear-gradient(180deg, #E5DACF 89.59%, #C7A491 166.54%)",
+        background: "linear-gradient(180deg, #E5DACF 89.59%, #C7A491 166.54%)",
       }}
     >
       <img
@@ -133,12 +132,7 @@ const Footer = () => {
                   rel="noreferrer"
                   className="flex items-center gap-2.5 transition-opacity hover:opacity-80 s:gap-3 justify-start"
                 >
-                  <img
-                    src={svgs.lineIcon}
-                    alt="line"
-                    width={24}
-                    height={24}
-                  />
+                  <img src={svgs.lineIcon} alt="line" width={24} height={24} />
                   <span className="rf-body">Line</span>
                 </a>
 

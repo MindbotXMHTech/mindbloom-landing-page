@@ -16,6 +16,8 @@ type PageBackgroundProps = {
   showBottomShapes?: boolean;
   hideSideShape?: boolean;
   showHomeVector?: boolean;
+  showServiceVector?: boolean;
+  showWorkshopVector?: boolean;
   variant?: "green" | "pink";
   plain?: boolean;
 };
@@ -35,6 +37,8 @@ function PageBackground({
   showBottomShapes = false,
   hideSideShape = false,
   showHomeVector = false,
+  showServiceVector = false,
+  showWorkshopVector = false,
   variant = "green",
   plain = false,
 }: PageBackgroundProps) {
@@ -180,7 +184,7 @@ function PageBackground({
             src={images.vector12}
             aria-hidden
             alt=""
-            className="absolute left-0 top-1/4 w-45 pointer-events-none select-none block z-10"
+            className="absolute left-0 top-1/3 w-45 pointer-events-none select-none block z-10"
           />
           <img
             src={images.vector13}
@@ -215,28 +219,28 @@ function PageBackground({
         </>
       )}
 
-      {!plain && showActivityVector && (
+      {showActivityVector && (
         <>
           <img
-            src={images.vector15}
+            src={images.vector18}
             aria-hidden
             alt=""
             className="absolute left-0 top-40 w-40 m:w-60 pointer-events-none select-none block z-10"
           />
           <img
-            src={images.vector12}
+            src={images.vector21}
             aria-hidden
             alt=""
             className="absolute right-0 bottom-100 m:bottom-70 w-30 m:w-44 pointer-events-none select-none block z-10"
           />
           <img
-            src={images.vector13}
+            src={images.vector20}
             aria-hidden
             alt=""
             className="absolute left-0 bottom-0 m:bottom-40 w-50 pointer-events-none select-none block z-10"
           />
           <img
-            src={images.vector14}
+            src={images.vector19}
             aria-hidden
             alt=""
             className="absolute right-0 top-65 w-40 m:w-50 pointer-events-none select-none block z-10"
@@ -247,16 +251,98 @@ function PageBackground({
       {plain && showActivityDetailsVector && (
         <>
           <img
-            src={images.vector15}
+            src={images.vector18}
             aria-hidden
             alt=""
             className="absolute left-0 top-50 w-40 pointer-events-none select-none hidden m:block z-10"
           />
           <img
-            src={images.vector14}
+            src={images.vector19}
             aria-hidden
             alt=""
             className="absolute right-0 bottom-50 w-44 pointer-events-none select-none hidden m:block z-10"
+          />
+        </>
+      )}
+
+      {showServiceVector && (
+        <>
+          <img
+            src={images.vector25}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-30 w-50 pointer-events-none select-none block z-10"
+          />
+          <img
+            src={images.vector27}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-1/6 w-65 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector22}
+            aria-hidden
+            alt=""
+            className="absolute left-0 bottom-1/6 w-65 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector24}
+            aria-hidden
+            alt=""
+            className="absolute right-0 top-90 w-45 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector26}
+            aria-hidden
+            alt=""
+            className="absolute right-0 top-1/6 w-30 pointer-events-none select-none hidden m:block z-10"
+          />
+        </>
+      )}
+
+      {showWorkshopVector && (
+        <>
+          <img
+            src={images.vector25}
+            aria-hidden
+            alt=""
+            className="absolute left-0 top-40 w-50 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector27}
+            aria-hidden
+            alt=""
+            className="absolute -left-10 top-1/6 w-60 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector23}
+            aria-hidden
+            alt=""
+            className="absolute สำดะ-0 top-1/2 w-44 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector27}
+            aria-hidden
+            alt=""
+            className="absolute -left-10 bottom-1/7 w-60 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector24}
+            aria-hidden
+            alt=""
+            className="absolute right-0 top-40 w-50 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector28}
+            aria-hidden
+            alt=""
+            className="absolute right-0 top-1/4 w-40 pointer-events-none select-none hidden m:block z-10"
+          />
+          <img
+            src={images.vector24}
+            aria-hidden
+            alt=""
+            className="absolute right-0 bottom-50 w-40 pointer-events-none select-none hidden m:block z-10"
           />
         </>
       )}
