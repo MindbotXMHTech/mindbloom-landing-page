@@ -73,12 +73,13 @@ function ActivityDetailPage() {
               delay: Math.min(index * 0.08, 0.5),
             }}
             className="aspect-square overflow-hidden rounded-2xl h-60.25"
-            whileHover={{ scale: 1.03 }}
           >
-            <img
+            <motion.img
               src={img}
               alt={`${activity.title} ${index + 1}`}
               className="w-full h-full object-cover"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             />
           </motion.div>
         ))}
