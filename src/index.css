@@ -273,8 +273,6 @@ body {
   );
 }
 
-
-
 .mindbloom-bg__shape--middle {
   width: min(120vw, 80rem);
   height: min(80vw, 60rem);
@@ -329,6 +327,20 @@ body {
     circle at center,
     #edcdc8 0%,
     #fbeee8 20%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.mindbloom-bg__shape--bottom-middle {
+  width: min(120vw, 80rem);
+  height: min(120vw, 80rem);
+  bottom: -40rem;
+  left: 15%;
+  background: radial-gradient(
+    circle at center,
+    #e9dfd0 10%,
+    #fbeee8 30%,
     transparent 70%
   );
   z-index: 0;

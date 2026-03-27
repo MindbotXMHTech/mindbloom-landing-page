@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { images } from "../constants/images";
-import bottomGlow from "../assets/images/background/bottom-glow.svg";
 
 type PageBackgroundProps = {
   children: ReactNode;
@@ -70,6 +69,7 @@ function PageBackground({
           className="mindbloom-bg__shape mindbloom-bg__shape--middle"
         />
       )}
+
       {showBottomShapes && (
         <>
           <div
@@ -82,12 +82,10 @@ function PageBackground({
           />
         </>
       )}
-      {showBottomShape && (
-        <img
-          src={bottomGlow}
+      {plain && showBottomShape && (
+        <div
           aria-hidden
-          alt=""
-          className="mindbloom-bg__shape mindbloom-bg__shape--bottom-svg"
+          className="mindbloom-bg__shape mindbloom-bg__shape--bottom-middle"
         />
       )}
       {!plain && <div aria-hidden className="mindbloom-bg__grain" />}
