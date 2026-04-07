@@ -100,7 +100,7 @@ function PhycologistPage() {
   }, [searchText, selectedTopics]);
 
   return (
-    <div className="my-14.75 w-full l:max-w-298 px-4 sm:px-6 md:px-8 flex flex-col items-center">
+    <div className="mb-14.75 md:my-14.75 w-full l:max-w-298 px-4 sm:px-6 md:px-8 flex flex-col items-center">
       <div className="flex flex-col items-center justify-start w-full gap-6 sm:gap-8 md:gap-9.5 max-w-215">
         <h4 className="rf-h4">นักจิตวิทยา</h4>
         <span className="rf-body font-normal text-neutral-grey text-center max-w-272">
@@ -285,7 +285,7 @@ function PhycologistPage() {
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 m:grid-cols-2 gap-4 w-full items-start justify-items-center m:justify-items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full items-start justify-items-center lg:justify-items-stretch">
           {filtered.map((psy, index) => (
             <motion.article
               key={psy.id}
@@ -314,27 +314,27 @@ function PhycologistPage() {
                   display: "block",
                 }}
               />
-              <div className="relative flex flex-col gap-4 z-10">
+              <div className="relative z-10 flex flex-col gap-4">
                 {/* Top: photo + name */}
                 <div className="gap-4 items-end grid grid-cols-2">
                   <img
                     src={psy.photo}
                     alt={psy.name}
-                    className="w-55.5 h-55.5 object-cover object-top rounded-2xl shrink-0"
+                    className="mx-auto h-44 w-44 rounded-2xl object-cover object-top shrink-0 s:mx-0 s:h-55.5 s:w-55.5"
                   />
                   <div className="flex flex-col gap-1 pt-1">
                     <span className="rf-body font-bold text-main-pink">
                       นักจิตวิทยาคลินิก
                     </span>
-                    <p className="text-xl font-normal text-neutral-black leading-tight">
+                    <p className="text-xl font-normal leading-tight break-words text-neutral-black">
                       {psy.name}
                     </p>
                   </div>
                 </div>
 
                 {/* Middle: 2-col info */}
-                <div className="grid grid-cols-2 gap-x-4 gap-y-4">
-                  <div className="flex flex-col gap-2">
+                <div className="grid gap-x-4 gap-y-4 grid-cols-2">
+                  <div className="flex flex-col gap-2 text-left">
                     <div>
                       <p className="rf-body font-bold text-main-pink">
                         นักจิตวิทยาคลินิก
@@ -350,12 +350,12 @@ function PhycologistPage() {
                       <p className="rf-body text-neutral-grey">{psy.license}</p>
                     </div>
                   </div>
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 text-left">
                     <div>
                       <p className="rf-body font-bold text-main-pink">
                         แนวทางการบำบัด
                       </p>
-                      <p className="rf-body text-neutral-grey">
+                      <p className="rf-body break-words text-neutral-grey">
                         {psy.approach}
                       </p>
                     </div>
@@ -363,17 +363,19 @@ function PhycologistPage() {
                       <p className="rf-body font-bold text-main-pink">
                         คุณค่าที่ให้ความสำคัญ
                       </p>
-                      <p className="rf-body text-neutral-grey">{psy.value}</p>
+                      <p className="rf-body break-words text-neutral-grey">
+                        {psy.value}
+                      </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Topics */}
                 <div>
-                  <p className="rf-body font-bold text-main-pink mb-1.5">
+                  <p className="mb-1.5  rf-body font-bold text-main-pink text-left">
                     ปัญหาที่สนใจ
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 justify-start">
                     {psy.topics.map((topic) => (
                       <span
                         key={topic}
@@ -386,7 +388,7 @@ function PhycologistPage() {
                 </div>
 
                 {/* Quote */}
-                <p className="rf-small text-[#4D738F] font-normal text-center leading-snug">
+                <p className="rf-small break-words pb-1 text-center font-normal leading-snug text-[#4D738F]">
                   "{psy.quote}"
                 </p>
               </div>

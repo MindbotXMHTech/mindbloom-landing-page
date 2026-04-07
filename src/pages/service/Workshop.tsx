@@ -34,12 +34,12 @@ const Workshop = () => {
           duration: 0.5,
           ease: "easeOut" as const,
         }}
-        className="flex items-center gap-4 justify-center mb-4"
+        className="flex items-center gap-1 md:gap-4 justify-center mb-4"
       >
         <Link to={"/service"}>
-          <p className="text-body text-neutral-black">บริการของเรา</p>
+          <p className="rf-body text-neutral-black">บริการของเรา</p>
         </Link>
-        <p className="text-body text-neutral-grey">
+        <p className="rf-body text-neutral-grey">
           / Mindbloom Wellbeing Workshop
         </p>
       </motion.div>

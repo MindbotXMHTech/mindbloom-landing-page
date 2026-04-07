@@ -25,14 +25,15 @@ const contactItems = [
   },
   {
     id: "phone",
-    label: "+66 987654321",
+    label: "+66 83 834 6595",
+    href: "tel:+66838346595",
     icon: <LocalPhoneIcon sx={{ fontSize: 32, color: "#D6ACA6" }} />,
   },
 ];
 
 function AboutPage() {
   return (
-    <div className="mt-14.75 w-full max-w-245 px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
+    <div className="lg:mt-14.75 w-full max-w-245 px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
       <motion.section
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +55,7 @@ function AboutPage() {
 
         <div className="mt-4 flex items-center justify-center gap-2">
           <img src={svgs.logoMindbot} alt="mind bloom" width={22} height={22} />
-          <p className="rf-body text-neutral-grey">
+          <p className="rf-body text-neutral-grey text-center">
             พัฒนาโดย บริษัท มายด์บอท จำกัด ผู้พัฒนาเทคโนโลยีสุขภาพจิต
           </p>
         </div>

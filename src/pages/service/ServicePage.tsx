@@ -261,7 +261,7 @@ function ServicePage() {
   };
 
   return (
-    <div className="mt-14.75 w-full max-w-5xl px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
+    <div className="w-full max-w-5xl px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
       <motion.section className="mb-9.5">
         <div className="mt-8 grid w-full max-w-2xl grid-cols-1 gap-4 m:grid-cols-2">
           {ourServiceOptions.map((service, index) => (
@@ -340,16 +340,16 @@ function ServicePage() {
           มายด์บลูม <span className="rf-body font-bold">เปิดให้บริการ</span>
         </p>
         <div className="mt-4 flex flex-col items-center gap-1.5">
-          <div className="flex justify-start gap-2 items-center">
+          <div className="flex w-full max-w-67.5 items-center justify-center gap-2 s:justify-start">
             <img src={svgs.calendarBlack} alt="calendar" className="h-4 w-4" />
-            <p className="rf-body flex items-center gap-2 text-neutral-black w-62.5">
+            <p className="rf-body text-center text-neutral-black s:text-left">
               วันจันทร์-ศุกร์ เวลา 17.00-20.00 น.
             </p>
           </div>
 
-          <div className="flex justify-start gap-2 items-center">
+          <div className="flex w-full max-w-67.5 items-center justify-center gap-2 s:justify-start">
             <img src={svgs.calendarBlack} alt="calendar" className="h-4 w-4" />
-            <p className="rf-body flex items-center gap-2 text-neutral-black w-62.5">
+            <p className="rf-body text-center text-neutral-black s:text-left">
               วันเสาร์-อาทิตย์ เวลา 10.00-20.00 น.
             </p>
           </div>
@@ -475,7 +475,7 @@ function ServicePage() {
                   {card.priceLines.map((line) => (
                     <p
                       key={line}
-                      className="whitespace-nowrap text-[32px] s:text-[28px] leading-none"
+                      className="whitespace-nowrap text-[30px] s:text-[28px] leading-none"
                     >
                       {line}
                     </p>
@@ -511,8 +511,6 @@ function ServicePage() {
       <section className="mt-9.5 w-full" id="organization">
         <p className="rf-title text-center font-bold">
           เราช่วยองค์กรของคุณได้อย่างไร?
-          <br />
-          MindBloom for Corporate
         </p>
         <div className="grid grid-cols-1 s:grid-cols-2 m:grid-cols-3 gap-6 mt-6">
           {companyService.map((com, index) => (

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BlogList } from "../../constants/blogData";
@@ -33,6 +33,7 @@ function BlogPage() {
   const [sortOpen, setSortOpen] = useState(false);
   const [desktopIndex, setDesktopIndex] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
+  const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
 
   const filtered = useMemo(() => {
     const list = BlogList.filter((item) =>
@@ -51,6 +52,7 @@ function BlogPage() {
     setSearchText(value);
     setDesktopIndex(0);
     setMobileIndex(0);
+    mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   const handleSort = (order: "newest" | "oldest") => {
@@ -58,6 +60,35 @@ function BlogPage() {
     setSortOpen(false);
     setDesktopIndex(0);
     setMobileIndex(0);
+    mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
+  };
+
+  const handleMobileScroll = () => {
+    const container = mobileCarouselRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const nextIndex = Math.round(container.scrollLeft / container.clientWidth);
+
+    if (nextIndex !== mobileIndex) {
+      setMobileIndex(nextIndex);
+    }
+  };
+
+  const scrollToMobileCard = (index: number) => {
+    const container = mobileCarouselRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    container.scrollTo({
+      left: container.clientWidth * index,
+      behavior: "smooth",
+    });
+    setMobileIndex(index);
   };
 
   return (
@@ -76,9 +107,9 @@ function BlogPage() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-        className="flex gap-3 w-full max-w-219.75 mt-6"
+        className="flex gap-3 w-full max-w-219.75 mt-6 px-4 md:px-0"
       >
-        <div className="flex items-center w-45 gap-2 border border-[#E5DACF] rounded-full px-4 py-2 bg-white">
+        <div className="flex items-center w-full md:w-45 gap-2 border border-[#E5DACF] rounded-full px-4 py-2 bg-white">
           <svg
             className="w-4 h-4 text-neutral-grey shrink-0"
             viewBox="0 0 24 24"
@@ -152,7 +183,8 @@ function BlogPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-        className="hidden lg:flex w-full mt-9.5 flex-col items-center">
+        className="hidden lg:flex w-full mt-9.5 flex-col items-center"
+      >
         <div className="w-full max-w-219.75 overflow-hidden">
           <div
             className="flex transition-transform duration-500 ease-out"
@@ -196,13 +228,19 @@ function BlogPage() {
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
         className="w-full mt-9.5 lg:hidden flex flex-col items-center"
       >
-        <div className="w-full max-w-[24rem] overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${mobileIndex * 100}%)` }}
-          >
+        {/* <div
+          ref={mobileCarouselRef}
+          onScroll={handleMobileScroll}
+          className="w-full max-w-[24rem] overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        > */}
+        <div
+          ref={mobileCarouselRef}
+          onScroll={handleMobileScroll}
+          className="w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          <div className="flex">
             {filtered.map((item) => (
-              <div key={item.id} className="w-full shrink-0">
+              <div key={item.id} className="w-full shrink-0 snap-center">
                 <BlogCard title={item.title} id={item.id} image={item.image} />
               </div>
             ))}
@@ -215,7 +253,7 @@ function BlogPage() {
               <button
                 key={item.id}
                 type="button"
-                onClick={() => setMobileIndex(index)}
+                onClick={() => scrollToMobileCard(index)}
                 aria-label={`Go to blog ${index + 1}`}
                 className={`h-2.5 rounded-full transition-all ${
                   index === mobileIndex

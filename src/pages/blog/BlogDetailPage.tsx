@@ -150,7 +150,7 @@ function BlogDetailPage() {
   };
 
   return (
-    <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
+    <div className="lg:mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -256,7 +256,7 @@ function BlogDetailPage() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.65 }}
             className="mt-10 flex justify-center"
           >
-            <div className="w-full min-w-50 s:min-w-62.5 m:min-w-124 rounded-xl border border-[#e8e1d8] bg-white p-2 shadow-sm">
+            <div className="w-full min-w-75  m:min-w-124 rounded-xl border border-[#e8e1d8] bg-white p-2 shadow-sm">
               <div
                 className="relative w-full overflow-hidden rounded-lg bg-black"
                 style={{ paddingTop: "56.25%" }}

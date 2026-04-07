@@ -7,7 +7,7 @@ function ActivityPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="my-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 flex flex-col items-center">
+    <div className="mb-14.75 lg:my-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 flex flex-col items-center">
       <motion.h4
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

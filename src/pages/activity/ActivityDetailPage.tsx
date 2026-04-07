@@ -19,7 +19,7 @@ function ActivityDetailPage() {
   }
 
   return (
-    <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
+    <div className="lg:mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ function ActivityDetailPage() {
               ease: "easeOut",
               delay: Math.min(index * 0.08, 0.5),
             }}
-            className="aspect-square overflow-hidden rounded-2xl h-60.25"
+            className="aspect-square overflow-hidden rounded-2xl w-80 md:w-auto h-60.25"
           >
             <motion.img
               src={img}

@@ -128,14 +128,12 @@ const Footer = () => {
 
               <div className="flex flex-col gap-4 pt-2 s:gap-8 m:gap-4">
                 <a
-                  href="https://line.me/R/ti/p/@mindbloom"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="tel:+66838346595"
                   className="flex items-center gap-2.5 transition-opacity hover:opacity-80 s:gap-3 justify-start"
                 >
                   {/* <img src={svgs.lineIcon} alt="line" width={24} height={24} /> */}
                   <LocalPhoneIcon sx={{ fontSize: 24, color: "#D6ACA6" }} />
-                  <span className="rf-body">+66 987654321</span>
+                  <span className="rf-body">+66 83 834 6595</span>
                 </a>
 
                 <a
