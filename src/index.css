@@ -43,7 +43,6 @@ body {
   --color-white: #ffffff;
   --color-main-pink: #e7b8b1;
   --color-sub-beige: #c7a491;
-
 }
 
 /* Reusable responsive font sizes (XS/S/M/L) */
@@ -232,8 +231,8 @@ body {
   left: -45rem;
   background: radial-gradient(
     circle at center,
-    #C6D5C4 0%,
-    #c6d5c4  10%,
+    #c6d5c4 20%,
+    #c6d5c4 0%,
     transparent 82%
   );
   z-index: 0;
@@ -246,8 +245,8 @@ body {
   right: -45rem;
   background: radial-gradient(
     circle at center,
-    #C6D5C4 0%,
     #c6d5c4 10%,
+    #c6d5c4 0%,
     transparent 72%
   );
   z-index: 0;
@@ -291,12 +290,12 @@ body {
   width: min(160vw, 100rem);
   height: min(160vw, 100rem);
   top: -70rem;
-  left: 10rem;
-  /* transform: translateX(-50%); */
+  left: 40%;
+  transform: translateX(-50%);
   background: radial-gradient(
     circle at center,
-     #C6D5C4 10%,
-    #c6d5c47c 0%,
+    #c6d5c4 10%,
+    #c6d5c4 0%,
     transparent 82%
   );
   z-index: 0;
@@ -305,12 +304,12 @@ body {
 .mindbloom-bg__shape--bottom-left {
   width: min(100vw, 50rem);
   height: min(100vw, 50rem);
-  bottom: -10rem;
+  bottom: -20rem;
   left: -30rem;
   background: radial-gradient(
     circle at center,
     #edcdc8 20%,
-    #fbeee8 30%,
+    #fbeee8 10%,
     transparent 70%
   );
   z-index: 0;
@@ -323,8 +322,8 @@ body {
   right: -30rem;
   background: radial-gradient(
     circle at center,
-    #edcdc8 0%,
-    #fbeee8 20%,
+    #edcdc8 20%,
+    #fbeee8 10%,
     transparent 70%
   );
   z-index: 0;
@@ -355,4 +354,126 @@ body {
   /* background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E"); */
   background-image: url(data:image/png;base64,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);
   background-size: 55px 55px;
+}
+
+@media (max-width: 480px) {
+  .mindbloom-bg__shape {
+    filter: blur(36px);
+    opacity: 0.65;
+  }
+
+  .mindbloom-bg__shape--left,
+  .mindbloom-bg__shape--right,
+  .mindbloom-bg__shape--bottom-left,
+  .mindbloom-bg__shape--bottom-right {
+    width: 32rem;
+    height: 32rem;
+  }
+
+  .mindbloom-bg__shape--left {
+    top: -4rem;
+    left: -18rem;
+  }
+
+  .mindbloom-bg__shape--right {
+    top: -6rem;
+    right: -18rem;
+  }
+
+  .mindbloom-bg__shape--middle {
+    width: 32rem;
+    height: 24rem;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mindbloom-bg__shape--top {
+    width: 54rem;
+    height: 54rem;
+    top: -28rem;
+    left: 30%;
+    transform: translateX(-50%);
+  }
+
+  .mindbloom-bg__shape--bottom-left {
+    bottom: -14rem;
+    left: -14rem;
+  }
+
+  .mindbloom-bg__shape--bottom-right {
+    bottom: -14rem;
+    right: -14rem;
+  }
+
+  .mindbloom-bg__shape--bottom-middle {
+    width: 34rem;
+    height: 34rem;
+    bottom: -18rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .mindbloom-bg__shape {
+    filter: blur(44px);
+    opacity: 0.72;
+  }
+
+  .mindbloom-bg__shape--left,
+  .mindbloom-bg__shape--right {
+    width: 34rem;
+    height: 34rem;
+  }
+
+  .mindbloom-bg__shape--left {
+    top: -6rem;
+    left: -21rem;
+  }
+
+  .mindbloom-bg__shape--right {
+    top: -8rem;
+    right: -21rem;
+  }
+
+  .mindbloom-bg__shape--middle {
+    width: 46rem;
+    height: 30rem;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-38%);
+  }
+
+  .mindbloom-bg__shape--top {
+    width: 70rem;
+    height: 70rem;
+    top: -40rem;
+    left: 10%;
+    transform: translateX(-36%);
+  }
+
+  .mindbloom-bg__shape--bottom-left,
+  .mindbloom-bg__shape--bottom-right {
+    width: 32rem;
+    height: 32rem;
+  }
+
+  .mindbloom-bg__shape--bottom-left {
+    bottom: -10rem;
+    left: -14rem;
+  }
+
+  .mindbloom-bg__shape--bottom-right {
+    bottom: -10rem;
+    right: -14rem;
+  }
+
+  .mindbloom-bg__shape--bottom-middle {
+    width: 48rem;
+    height: 48rem;
+    bottom: -26rem;
+    left: 50%;
+    transform: translateX(-44%);
+  }
 }

@@ -3,6 +3,7 @@ import { svgs } from "../../constants/svgs";
 import footerTopRightDecor from "../../assets/images/footer/footer-top-right-decor.svg";
 import footerBottomLeftDecor from "../../assets/images/footer/footer-bottom-left-decor.svg";
 import footerBottomLeftCurve from "../../assets/images/footer/footer-bottom-left-curve.svg";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 
 const navLinks = [
   { to: "/", label: "หน้าแรก" },
@@ -127,6 +128,15 @@ const Footer = () => {
 
               <div className="flex flex-col gap-4 pt-2 s:gap-8 m:gap-4">
                 <a
+                  href="tel:+66838346595"
+                  className="flex items-center gap-2.5 transition-opacity hover:opacity-80 s:gap-3 justify-start"
+                >
+                  {/* <img src={svgs.lineIcon} alt="line" width={24} height={24} /> */}
+                  <LocalPhoneIcon sx={{ fontSize: 24, color: "#D6ACA6" }} />
+                  <span className="rf-body">+66 83 834 6595</span>
+                </a>
+
+                <a
                   href="https://line.me/R/ti/p/@mindbloom"
                   target="_blank"
                   rel="noreferrer"
@@ -151,7 +161,12 @@ const Footer = () => {
                   <span className="rf-body">Facebook</span>
                 </a>
 
-                <div className="flex items-center gap-2.5 s:gap-3 justify-start">
+                <a
+                  href="https://mindbot-tech.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2.5 s:gap-3 justify-start"
+                >
                   <img
                     src={svgs.logoMindbot}
                     alt="mindbot"
@@ -159,7 +174,7 @@ const Footer = () => {
                     height={24}
                   />
                   <span className="rf-body">บริษัทมายด์บอท จำกัด</span>
-                </div>
+                </a>
               </div>
             </div>
           </div>

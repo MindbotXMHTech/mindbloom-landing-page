@@ -39,7 +39,7 @@ export const activityData: ActivityDetail[] = [
     date: "วันที่ 12 มกราคม 2025",
     text: "นิทรรศการผลงานจากผู้ที่มีประสบการณ์ด้านสุขภาพจิต",
   },
-    {
+  {
     id: "2",
     title: "Mindbloom Opening and Exhibition",
     mainImage: images.act1,
@@ -51,15 +51,13 @@ export const activityData: ActivityDetail[] = [
       images.act5,
       images.act6,
     ],
-    content: [
-      "ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน",
-    ],
+    content: ["ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน"],
     date: "วันที่ 26 มกราคม 2025",
     text: "ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน",
   },
-    {
+  {
     id: "3",
-    title: "To the unknown  ในเดือนแห่งความรัก MindBloom ",
+    title: "To the unknown  ในเดือนแห่งความรัก มายด์บลูม",
     mainImage: images.un4,
     image: [
       images.un1,
@@ -76,5 +74,5 @@ export const activityData: ActivityDetail[] = [
     ],
     date: "วันที่ 26 มกราคม 2025",
     text: "พาทุกคนไปทำความรู้จักอีกมุมหนึ่งของชีวิต ณ ทัณฑสถานหญิงกลาง",
-  }
+  },
 ];
