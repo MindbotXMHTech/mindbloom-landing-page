@@ -23,7 +23,7 @@ function HomePage() {
     },
   };
   return (
-    <div className="w-full  flex flex-col items-center mt-14.75 px-4">
+    <div className="w-full flex flex-col items-center mt-14.75 px-4">
       <section className="flex flex-col items-center justify-start gap-4 l:max-w-1/2 lg:h-[80vh]">
         <h1 className="rf-h1 font-normal text-center">
           พื้นที่ปลอดภัยสำหรับดูแลจิตใจ

@@ -30,7 +30,9 @@ function MainLayout() {
       <PageBackground page={getPage(pathname)}>
         <div className="mx-6 s:mx-8 m:mx-16 l:mx-32 w-full flex flex-col items-center">
           <Nav />
-          <Outlet />
+          <div className="w-full flex flex-col items-center pt-20 m:pt-10">
+            <Outlet />
+          </div>
         </div>
       </PageBackground>
       <Footer />

@@ -293,19 +293,6 @@ const Workshop = () => {
               />
             ))}
           </div>
-          <div className="flex justify-center mt-2">
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.2, delay: 0.15, ease: "easeOut" }}
-              href="https://line.me/R/ti/p/@mindbloom"
-              target="_blank"
-              rel="noreferrer"
-              className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
-            >
-              นัดหมาย/สอบถามข้อมูลเพิ่มเติม
-            </motion.a>
-          </div>
         </motion.div>
 
         {/* Mindful flower arrangements & Self exploration */}
@@ -343,6 +330,19 @@ const Workshop = () => {
                 className="w-full aspect-video object-cover rounded-lg h-65.5"
               />
             ))}
+          </div>
+          <div className="flex justify-center mt-2">
+            <motion.a
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2, delay: 0.15, ease: "easeOut" }}
+              href="https://line.me/R/ti/p/@mindbloom"
+              target="_blank"
+              rel="noreferrer"
+              className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
+            >
+              นัดหมาย/สอบถามข้อมูลเพิ่มเติม
+            </motion.a>
           </div>
         </motion.div>
       </section>

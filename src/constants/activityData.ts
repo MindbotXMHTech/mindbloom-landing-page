@@ -57,7 +57,7 @@ export const activityData: ActivityDetail[] = [
   },
   {
     id: "3",
-    title: "To the unknown  ในเดือนแห่งความรัก มายด์บลูม",
+    title: "To the unknown เดือนแห่งความรัก",
     mainImage: images.un4,
     image: [
       images.un1,
@@ -73,6 +73,6 @@ export const activityData: ActivityDetail[] = [
       "พร้อมเปิดรับบริจาคหนังสือและจัดเวิร์กชอปดูแลใจ เพื่อส่งต่อความรักและกำลังใจ",
     ],
     date: "วันที่ 26 มกราคม 2025",
-    text: "พาทุกคนไปทำความรู้จักอีกมุมหนึ่งของชีวิต ณ ทัณฑสถานหญิงกลาง",
+    text: "MindBloom พาทุกคนไปรู้จักอีกมุมของชีวิต ณ ทัณฑสถานหญิงกลาง",
   },
 ];
