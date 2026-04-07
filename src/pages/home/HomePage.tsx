@@ -26,7 +26,9 @@ function HomePage() {
     <div className="w-full  flex flex-col items-center mt-14.75">
       <section className="flex flex-col items-center justify-start gap-4 l:max-w-1/2 h-[80vh] ">
         <h1 className="rf-h1 font-normal">พื้นที่ปลอดภัยสำหรับดูแลจิตใจ</h1>
-        <h1 className="text-xl text-center font-bold">ผ่านวิดีโอคอล</h1>
+        <h1 className="text-xl text-center font-bold">
+          ให้บริการแบบ onsite และ online ผ่านวิดิโอคอล
+        </h1>
 
         <motion.div
           className="w-full mx-auto flex flex-col"
@@ -40,7 +42,7 @@ function HomePage() {
             className="bg-white px-6 py-2 rounded-3xl w-fit shadow-[0px_0px_20px_0px_rgba(255,255,255,1)] my-6 min-w-60.5 self-start translate-x-22.25"
           >
             <p className="text-center text-neutral-grey">
-              <span className="font-semibold">โดย นักจิตวิทยา</span>
+              <span className="font-semibold">โดย นักจิตวิทยาคลินิก</span>
               <br />
               มากประสบการณ์
             </p>
@@ -121,12 +123,14 @@ function HomePage() {
         >
           <p className="rf-title">คุณค่าของเรา</p>
           <p className="text-body text-center text-neutral-grey">
-            มายด์บลูม
-            คือพันธมิตรด้านสุขภาพจิตที่ช่วยสร้างสิ่งแวดล้อมทางใจที่ปลอดภัย
-            เพื่อให้บุคลากรทำงานและใช้ชีวิตได้อย่างยั่งยืน <br />
-            มันคือการเดินทางแห่งการค้นพบตนเอง การยอมรับตนเอง
-            และการบำรุงรักษาความเป็นอยู่ที่ดีในหลายระดับ ทั้งด้านจิตใจ อารมณ์
-            และบางครั้งอาจรวมถึงด้านจิตวิญญาณด้วย
+            <strong>มายด์บลูม</strong>{" "}
+            คือพื้นที่ปลอดภัยที่ให้การดูแลด้านสุขภาพจิต <br />
+            เราให้ความสำคัญกับการสร้างสิ่งแวดล้อมทางใจที่ปลอดภัย
+            เพื่อให้บุคคลก้าวข้ามผ่านบางช่วงเวลาได้อย่างมั่นคง
+            <br />
+            <strong>มายด์บลูม</strong>{" "}
+            เชื่อว่าการดูแลจิตใจคือการเดินทางแห่งการค้นพบตนเอง การยอมรับตนเอง
+            และการดูแลสุขภาวะโดยรวมให้สมดุล
           </p>
           <Link
             to={"/psychologist"}
