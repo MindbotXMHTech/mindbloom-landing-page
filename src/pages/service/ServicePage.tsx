@@ -27,7 +27,7 @@ const consultChannels = [
     icon: svgs.pinBlack,
     title: "เข้ารับบริการที่คลินิก",
     detail:
-      "พบกับนักจิตวิทยาได้ที่ Mindbloom Clinic\nติดอยู่ใกล้ MRT บางขุนนนท์ ทางออก 4\nเดินทางสะดวกในเขตกรุงเทพฯ",
+      "พบนักจิตวิทยาที่มายด์บลูม \n MRT สถานีบางขุนนนท์ ทางออก 4 (มีที่จอดรถบริการ)",
   },
   {
     id: "online",
@@ -44,7 +44,9 @@ const ourServiceOptions = [
     targetId: "personal",
     icon: svgs.personBlack,
     title: "บริการสำหรับบุคคล (Individual / Clinic)",
-    detail: ["พื้นที่ปลอดภัยสำหรับการดูแลจิตใจ ให้บริการโดยนักจิตวิทยาคลินิก"],
+    detail: [
+      "พื้นที่ปลอดภัยสำหรับการดูแลด้านจิตใจ ให้บริการจิตบำบัด ให้คำปรึกษา การทดสอบทางจิตวิทยา",
+    ],
   },
   {
     id: "cooperate",
@@ -52,11 +54,7 @@ const ourServiceOptions = [
     icon: svgs.groupBlack,
     title: "บริการสำหรับองค์กร (Corporate)",
     detail: [
-      "เหมาะสำหรับ",
-      "Corporate HR",
-      "People & Culture Team",
-      "Leadership Development Program",
-      "Well-being Initiatives",
+      "ให้บริการให้คำปรึกษารายบุคคล จัดอบรมและเวิร์คชอปด้านสุขภาพจิต ความเครียดจากการทำงาน ภาวะหมดไฟ การสื่อสาร การปฐมพยาบาลทางใจ การเพิ่ม soft skill ที่สำคัญกับการทำงาน",
     ],
   },
 ];
@@ -65,15 +63,20 @@ const serviceCards = [
   {
     id: "card-1",
     icon: svgs.consult1,
-    titleTh: "การให้คำปรึกษาในรายบุคคล",
-    titleEn: "(Individual Counseling)",
+    titleTh: "จิตบำบัด ให้คำปรึกษารายบุคคล",
+    titleEn: "(Individual Psychotherapy/ Counselling)",
     details: [
-      "เหมาะสำหรับบุคคลทั่วไป",
-      "เป็นพื้นที่ปลอดภัยที่มีความเป็นส่วนตัว",
-      "เคารพตัวตน และเปิดโอกาสให้ทำหน้าที่",
-      "ตัวเองได้อย่างเต็มที่",
-      "เพื่อหาแนวทางและแก้ไขปัญหาร่วมกัน",
+      "การพูดคุยแบบตัวต่อตัวกับนักจิตวิทยา",
+      "เพื่อทำความเข้าใจความคิด อารมณ์ และพฤติกรรมของตนเองอย่างลึกซึ้ง",
+      "พร้อมเรียนรู้วิธีดูแลใจและรับมือกับปัญหาในชีวิตได้อย่างเหมาะสม",
     ],
+    infoHeading: "ให้บริการโดย",
+    infoLines: [
+      "นักจิตวิทยาคลินิก",
+      "ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ",
+      "สาขาจิตวิทยาคลินิก",
+    ],
+    noteLines: ["มีประสบการณ์ในการให้คำปรึกษา", "และบำบัดทางจิตวิทยา"],
     durationLines: ["60 นาที"],
     priceLines: ["2,000"],
     extra: "เพิ่มเวลา 30 นาที/1,000 บาท",
@@ -81,14 +84,21 @@ const serviceCards = [
   {
     id: "card-2",
     icon: svgs.consult2,
-    titleTh: "การให้คำปรึกษาในรายบุคคล",
-    titleEn: "(Individual Counseling)",
+    titleTh: "การบำบัดคู่/ครอบครัว ",
+    titleEn: "(Couple/Family Therapy)",
     details: [
-      "เหมาะสำหรับบุคคลทั่วไป",
-      "เป็นพื้นที่ปลอดภัยที่มีความเป็นส่วนตัว",
-      "เคารพตัวตน และเปิดโอกาสให้ทำหน้าที่",
-      "ตัวเองได้อย่างเต็มที่",
-      "เพื่อหาแนวทางและแก้ไขปัญหาร่วมกัน",
+      "การบำบัด/ให้คำปรึกษาที่ช่วยให้คนในความสัมพันธ์เข้าใจกันมากขึ้น สื่อสารดีขึ้น และจัดการความขัดแย้งอย่างสร้างสรรค์ เพื่อความสัมพันธ์ที่มั่นคงและอบอุ่นขึ้น",
+    ],
+    infoHeading: "ให้บริการโดย",
+    infoLines: [
+      "นักจิตวิทยาคลินิก",
+      "ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ",
+      "สาขาจิตวิทยาคลินิก",
+    ],
+    noteLines: [
+      "มีประสบการณ์ในการให้คำปรึกษา",
+      "แบบคู่ ครอบครัว",
+      "เพื่อทางออกร่วมกันในความสัมพันธ์",
     ],
     durationLines: ["90 นาที"],
     priceLines: ["3,500"],
@@ -97,14 +107,22 @@ const serviceCards = [
   {
     id: "card-3",
     icon: svgs.consult3,
-    titleTh: "การให้คำปรึกษาในรายบุคคล",
-    titleEn: "(Individual Counseling)",
+    titleTh: "การตรวจประเมินทางจิตวิทยา",
+    titleEn: "(Psychological Assessment)",
     details: [
-      "เหมาะสำหรับบุคคลทั่วไป",
-      "เป็นพื้นที่ปลอดภัยที่มีความเป็นส่วนตัว",
-      "เคารพตัวตน และเปิดโอกาสให้ทำหน้าที่",
-      "ตัวเองได้อย่างเต็มที่",
-      "เพื่อหาแนวทางและแก้ไขปัญหาร่วมกัน",
+      "กระบวนการใช้แบบทดสอบและการสัมภาษณ์เพื่อทำความเข้าใจสภาพจิตใจ บุคลิกภาพ และการทำงานของความคิดอย่างเป็นระบบ เพื่อนำไปวางแผนการดูแลหรือพัฒนาต่อไป (ติดต่อมายด์บลูมเพื่อสอบถามค่าบริการ)",
+      "",
+    ],
+    infoHeading: "เงื่อนไข",
+    infoLines: [
+      "ประเมินโดยนักจิตวิทยาคลินิก",
+      "ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ",
+      "สาขาจิตวิทยาคลินิก",
+    ],
+    noteLines: [
+      "โดยต้องได้รับเอกสารส่งตัว/",
+      "ใบแพทย์สั่งประเมินเท่านั้น",
+      "แจ้งผลประเมินแก่ต้นสังกัด/หน่วยงานส่งตัว",
     ],
     durationLines: ["60-120 นาที"],
     priceLines: ["3,250 -", "4,550"],
@@ -116,52 +134,53 @@ const companyService = [
   {
     id: "เพิ่ม Productivity",
     icon: svgs.ideaLightGreen,
-    title: "เพิ่ม Productivity",
+    title: "เพิ่มพลังในการทำงานอย่างยั่งยืน",
     detail:
-      "พนักงานที่มีสุขภาพจิตดีทำงานได้ดีขึ้น มีสมาธิ ตัดสินใจแม่นยำ และสร้างสรรค์มากขึ้น",
+      "เมื่อใจได้รับการดูแลอย่างอ่อนโยน พนักงานจะทำงานได้อย่างมีสมาธิ มีพลัง และเติบโตอย่างเป็นธรรมชาติ",
   },
   {
     id: "รักษา Talent",
     icon: svgs.peopleGreen,
-    title: "รักษา Talent",
+    title: "สร้างความผูกพันที่ดีในองค์กร",
     detail:
-      "องค์กรที่ดูแล Well-being ลดอัตราTurnover และสร้างความผูกพันต่อองค์กรระยะยาว",
+      "การใส่ใจ Well-being ช่วยให้คนรู้สึกมีคุณค่า เชื่อมโยงกันมากขึ้น และอยากอยู่เติบโตไปด้วยกัน",
   },
   {
     id: "เสริม Employer Brand",
     icon: svgs.starGreen,
-    title: "เสริม Employer Brand",
+    title: "เสริมภาพลักษณ์องค์กรที่ใส่ใจผู้คน",
     detail:
-      "วัฒนธรรมองค์กรที่ใส่ใจสุขภาพจิตดึงดูดบุคลากรคุณภาพ และสร้าง Brand ที่แข็งแกร่ง",
+      "องค์กรที่ดูแลใจคน สะท้อนความอบอุ่นและความเข้าใจ สร้างความน่าเชื่อถือและความไว้ใจ",
   },
 ];
 
 const importantDetails = [
   {
     id: 1,
-    title: "76%",
-    description: "ของพนักงานวัยทำงานทั่วโลก มีสัญญาณ Burnout อย่างน้อย 1 อาการ",
+    title: "76% ของพนักงานกำลังเผชิญความเครียด",
+    description:
+      "โอกาสขององค์กรในการสร้างพื้นที่ที่ช่วยให้คนทำงานได้อย่างสมดุลและยั่งยืน",
     source: "Gallup, 2023",
   },
   {
     id: 2,
-    title: "2x",
+    title: "Engagement เพิ่มขึ้นได้ถึง 2 เท่า",
     description:
-      "พนักงานที่มี Burnoutมีแนวโน้มลาออกสูงกว่าคนที่รู้สึก Engaged ถึง 2 เท่า",
+      "เมื่อพนักงานรู้สึกได้รับการดูแลและเข้าใจ พลังในการทำงานก็เติบโตตามไปด้วย",
     source: "Deloitte, 2023",
   },
   {
     id: 3,
-    title: "$1 T",
+    title: "$1 Trillion คือศักยภาพที่รอการฟื้นคืน",
     description:
-      "ต่อปี —มูลค่าที่เศรษฐกิจโลกสูญเสียจาก Productivity ที่ลดลงเพราะปัญหาสุขภาพจิต",
+      "การดูแลสุขภาพใจช่วยเปลี่ยนต้นทุนที่มองไม่เห็น ให้กลายเป็นพลังขององค์กร",
     source: "WHO, 2023",
   },
   {
     id: 4,
-    title: "4:1",
+    title: "ทุก 1 การลงทุน สร้างผลลัพธ์กลับมา 4 เท่า",
     description:
-      "ทุก $1 ที่ลงทุนใน Mental Health ให้ผลตอบแทน $4 กลับมาในรูป Productivity",
+      "Mental Health ไม่ใช่ค่าใช้จ่าย แต่คือการลงทุนเพื่อการเติบโตอย่างยั่งยืน",
     source: "WHO, 2021",
   },
 ];
@@ -188,8 +207,10 @@ const clinicServiceSections: ClinicServiceSection[] = [
     title: "Mental Health Assessment",
     summary: [
       "Mental Health Screening",
-      "สุขภาพจิตมีบทบาทสำคัญอย่างยิ่งต่อประสิทธิภาพการทำงานโดยรวมและการทำงานร่วมกันเป็นทีม การดูแลสุขภาพจิตของพนักงานไม่เพียงแต่ช่วยให้องค์กรสามารถให้การสนับสนุนได้ทันท่วงที แต่ยังช่วยในการกำหนดนโยบายที่ส่งเสริมสภาพแวดล้อมการทำงานที่ดีต่อสุขภาพและมีประสิทธิภาพมากขึ้น",
-      "MindBloom ให้บริการตรวจคัดกรองสุขภาพจิตที่สำคัญเบื้องต้นใน:",
+      // "สุขภาพจิตมีบทบาทสำคัญอย่างยิ่งต่อประสิทธิภาพการทำงานโดยรวมและการทำงานร่วมกันเป็นทีม การดูแลสุขภาพจิตของพนักงานไม่เพียงแต่ช่วยให้องค์กรสามารถให้การสนับสนุนได้ทันท่วงที แต่ยังช่วยในการกำหนดนโยบายที่ส่งเสริมสภาพแวดล้อมการทำงานที่ดีต่อสุขภาพและมีประสิทธิภาพมากขึ้น",
+      // "มายด์บลูม ให้บริการตรวจคัดกรองสุขภาพจิตที่สำคัญเบื้องต้นใน:",
+      "สุขภาพจิตมีบทบาทสำคัญอย่างยิ่งต่อประสิทธิภาพการทำงานโดยรวมและการทำงานร่วมกันเป็นทีม การดูแลสุขภาพจิตของพนักงานไม่เพียงแต่ช่วยให้องค์กรสามารถให้การช่วยเหลือและสนับสนุนได้ทันท่วงที แต่ยังช่วยในการกำหนดนโยบายที่ส่งเสริมสภาพแวดล้อมการทำงานที่ดีต่อสุขภาพและมีประสิทธิภาพมากขึ้น",
+      "มายด์บลูมให้บริการตรวจคัดกรองสุขภาพจิตที่สำคัญเบื้องต้นในประเด็นดังนี้",
     ],
     tags: [
       "Mental Health Indicator",
@@ -202,8 +223,8 @@ const clinicServiceSections: ClinicServiceSection[] = [
       {
         heading: "Psychological Assessment",
         paragraphs: [
-          "การประเมินทางจิตวิทยาเป็นกระบวนการที่ใช้เพื่อทำความเข้าใจสุขภาพจิต ความสามารถทางปัญญา บุคลิกภาพ และการทำงานในอารมณ์ของแต่ละบุคคล",
-          "ผ่านเครื่องมือและเทคนิคที่หลากหลาย MindBloom ให้บริการประเมินทางจิตวิทยาเบื้องต้นที่สำคัญต่อสถานที่ทำงาน:",
+          "การประเมินทางจิตวิทยาเป็นกระบวนการที่ใช้เครื่องมือเฉพาะทางจิตวิทยา เพื่อทำความเข้าใจสุขภาพจิต ความสามารถทางปัญญา บุคลิกภาพ ภาวะอารมณ์ของแต่ละบุคคล",
+          "มายด์บลูมให้บริการตรวจประเมินทางจิตวิทยาที่สำคัญต่อการทำงานในประเด็นดังนี้",
         ],
         tags: [
           "Resilience Quotient",
@@ -219,8 +240,8 @@ const clinicServiceSections: ClinicServiceSection[] = [
     title: "Mental Health Counselling",
     summary: [
       "",
-      "การให้คำปรึกษาด้านสุขภาพจิตเป็นบริการที่เป็นความลับและให้การสนับสนุน ซึ่งช่วยให้พนักงานจัดการกับความเครียด ปัญหาทางอารมณ์ และความกดดันทางจิตใจที่เกี่ยวข้องกับการทำงานและชีวิตประจำวัน",
-      "MindBloom ให้บริการให้คำปรึกษาโดยอิงหลักฐานทางวิทยาศาสตร์ ในพื้นที่ที่ปลอดภัยและปราศจากอคติ โดยมุ่งเน้นไปที่ประเด็นต่างๆ เช่น",
+      "การให้คำปรึกษาด้านสุขภาพจิตช่วยให้พนักงานจัดการกับความเครียด ปัญหาทางอารมณ์ และความกดดันทางจิตใจที่เกี่ยวข้องกับการทำงานและชีวิตประจำวัน ให้บริการโดยนักจิตวิทยาคลินิกที่ยึดถือมาตรฐานทางวิชาชีพรวมถึงเรื่องการรักษาความลับและความเป็นส่วนตัว",
+      "ประเด็นในการพูดคุย เช่น ",
     ],
     tags: [
       "Burnout",
@@ -232,9 +253,7 @@ const clinicServiceSections: ClinicServiceSection[] = [
     extraBlocks: [
       {
         paragraphs: [
-          "บริการนี้ออกแบบมาเพื่อสนับสนุนบุคลากรที่มีศักยภาพสูงในการรักษาสมดุลการทำงาน ความยืดหยุ่น",
-          "และประสิทธิภาพในการทำงานที่ยั่งยืน",
-          "พร้อมทั้งส่งเสริมวัฒนธรรมการทำงานที่เอื้อต่อสุขภาวะและให้การสนับสนุนมากยิ่งขึ้น",
+          "เมื่อความตึงเครียดและความกดดันในใจคลี่คลายลง บุคคลจะมีสมดุลการทำงาน ยืดหยุ่นในการปรับตัวแก้ปัญหา และนำไปสู่การทำงานอย่างมีประสิทธิภาพอย่างยั่งยืน",
         ],
       },
     ],
@@ -244,8 +263,7 @@ const clinicServiceSections: ClinicServiceSection[] = [
     title: "MindBloom Wellbeing Workshop",
     summary: [
       "",
-      "บริการด้านสุขภาพจิตและสุขภาวะสำหรับองค์กร ออกแบบมาให้เหมาะสมกับความต้องการของคุณ โดยบูรณาการวิธีการบำบัดหลายรูปแบบ ดำเนินการโดยนักจิตวิทยาคลินิกที่ได้รับใบอนุญาตจาก MindBloom เวิร์คช็อปด้านสุขภาพจิตและสุขภาวะโดย MindBloom",
-      "เวิร์คช็อปของเราแบ่งออกเป็นสามหมวดหมู่หลัก แต่ละหมวดออกแบบมาเพื่อสนับสนุนด้านต่างๆ ของสุขภาพจิต",
+      "เวิร์กชอปโดยนักจิตวิทยาคลินิกที่บูรณาการหลักจิตวิทยา จิตวิทยาเชิงบวกและศิลปะ ออกแบบให้เหมาะสมกับความต้องการของแต่ละองค์กร แบ่งออกเป็นสามหมวดหมู่หลัก แต่ละหมวดออกแบบมาเพื่อสนับสนุนด้านต่างๆ ของสุขภาวะทางจิต การทำงานร่วมกันอย่างมีความสุข และสมดุลชีวิตที่ลงตัว",
     ],
     tags: [
       "Team & Leadership",
@@ -272,7 +290,7 @@ function ServicePage() {
   };
 
   return (
-    <div className="mt-14.75 w-full max-w-5xl px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
+    <div className="w-full max-w-5xl px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
       <motion.section className="mb-9.5">
         <div className="mt-8 grid w-full max-w-2xl grid-cols-1 gap-4 m:grid-cols-2">
           {ourServiceOptions.map((service, index) => (
@@ -348,20 +366,19 @@ function ServicePage() {
           รูปแบบการบริการ
         </h2>
         <p className="mt-4 rf-body font-normal text-center text-neutral-black">
-          คลินิกมายด์บลูม
-          <span className="rf-body font-bold">เปิดให้บริการ</span>
+          มายด์บลูม <span className="rf-body font-bold">เปิดให้บริการ</span>
         </p>
         <div className="mt-4 flex flex-col items-center gap-1.5">
-          <div className="flex justify-start gap-2 items-center">
+          <div className="flex w-full max-w-67.5 items-center justify-center gap-2 s:justify-start">
             <img src={svgs.calendarBlack} alt="calendar" className="h-4 w-4" />
-            <p className="rf-body flex items-center gap-2 text-neutral-black w-62.5">
+            <p className="rf-body text-center text-neutral-black s:text-left">
               วันจันทร์-ศุกร์ เวลา 17.00-20.00 น.
             </p>
           </div>
 
-          <div className="flex justify-start gap-2 items-center">
+          <div className="flex w-full max-w-67.5 items-center justify-center gap-2 s:justify-start">
             <img src={svgs.calendarBlack} alt="calendar" className="h-4 w-4" />
-            <p className="rf-body flex items-center gap-2 text-neutral-black w-62.5">
+            <p className="rf-body text-center text-neutral-black s:text-left">
               วันเสาร์-อาทิตย์ เวลา 10.00-20.00 น.
             </p>
           </div>
@@ -407,7 +424,7 @@ function ServicePage() {
 
       <section className="mt-9.5 w-full flex flex-col items-center">
         <h2 className="text-xl font-bold text-neutral-black text-center">
-          บริการของมายด์บลูมคลินิก
+          บริการของมายด์บลูม
         </h2>
         <p className="mt-6 rf-small text-center text-neutral-grey">
           คลินิกมายด์บลูมให้บริการ{" "}
@@ -432,42 +449,43 @@ function ServicePage() {
                 ease: "easeOut" as const,
               }}
               key={card.id}
-              className="flex h-full flex-col rounded-3xl border border-[#ebdfd5] bg-white p-6 min-w-69.25 w-full max-w-[350px]"
+              className="flex h-full flex-col rounded-3xl border border-[#ebdfd5] bg-white p-6 min-w-69.25 w-full max-w-87.5"
             >
               <div className="flex justify-center">
                 <img src={card.icon} alt="" className="h-32 w-auto" />
               </div>
 
-              <h3 className="mt-6 text-center text-[20px] font-semibold leading-tight text-[#55748f]">
+              <h3 className="mt-6 min-h-18 text-center text-[20px] font-semibold leading-tight text-[#55748f] l:min-h-20">
                 {card.titleTh}
                 <br />
-                {card.titleEn}
+                <span className="text-center text-[16px] font-semibold leading-tight text-[#55748f]">
+                  {card.titleEn}
+                </span>
               </h3>
 
               <p className="mt-6 text-center text-[16px] font-bold text-neutral-grey">
                 รายละเอียด
               </p>
-              <div className="mt-4 text-center rf-body text-neutral-grey">
+              <div className="mt-4 min-h-20 text-center rf-body text-neutral-grey l:min-h-44">
                 {card.details.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
               </div>
 
               <p className="mt-6 text-center text-[16px] font-bold text-neutral-grey">
-                ให้บริการโดย
+                {card.infoHeading}
               </p>
-              <div className="mt-4 text-center rf-body text-neutral-grey">
-                <p>นักจิตวิทยาคลินิก</p>
-                <p>ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ</p>
-                <p>สาขาจิตวิทยาคลินิก</p>
+              <div className="mt-4 min-h-23 text-center rf-body text-neutral-grey">
+                {card.infoLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
               </div>
 
-              <p className="mt-6 text-center rf-body text-neutral-grey">
-                มีประสบการณ์ในการให้คำปรึกษา
-              </p>
-              <p className="text-center rf-body text-neutral-grey">
-                และบำบัดทางจิตวิทยา
-              </p>
+              <div className="mt-6 min-h-16 text-center rf-body text-neutral-grey">
+                {card.noteLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
 
               <div className="relative mt-6 h-28 w-full text-[#e5aba4]">
                 <div className="absolute top-0 left-6 max-w-32.5 s:max-w-41.25">
@@ -485,7 +503,7 @@ function ServicePage() {
                   {card.priceLines.map((line) => (
                     <p
                       key={line}
-                      className="whitespace-nowrap text-[32px] s:text-[28px] leading-none"
+                      className="whitespace-nowrap text-[30px] s:text-[28px] leading-none"
                     >
                       {line}
                     </p>
@@ -519,7 +537,9 @@ function ServicePage() {
       <div className="bg-[#C7A491] w-full h-px my-9.5" />
 
       <section className="mt-9.5 w-full" id="organization">
-        <p className="rf-title text-center">เราช่วยองค์กรของคุณได้อย่างไร?</p>
+        <p className="rf-title text-center font-bold">
+          เราช่วยองค์กรของคุณได้อย่างไร?
+        </p>
         <div className="grid grid-cols-1 s:grid-cols-2 m:grid-cols-3 gap-6 mt-6">
           {companyService.map((com, index) => (
             <motion.article
@@ -548,7 +568,7 @@ function ServicePage() {
 
       <section className="mt-9.5 w-full flex flex-col items-center gap-6">
         <p className="rf-title text-center">
-          ทำไม Mental Health ถึงสำคัญกับธุรกิจ?
+          ทำไม Mental Wellbeing ถึงสำคัญกับธุรกิจ
         </p>
         <div className="grid grid-cols-1 m:grid-cols-2 items-center gap-6 max-w-225">
           {importantDetails.map((item, index) => (
@@ -577,15 +597,16 @@ function ServicePage() {
           ))}
         </div>
         <p className="font-light rf-body text-neutral-black text-center">
-          ส่วนประชากรวัยทำงานของโลกกำลังเข้าสู่สภาวะ Burn out <br />
-          ซึ่งส่งผลต่อ Productivity, Retention, Turndown
+          <strong>
+            เมื่อคนในองค์กรรู้สึกดี องค์กรก็เติบโตได้ดีตามไปด้วย 🌱
+          </strong>{" "}
+          <br />
+          ทั้งในด้าน Productivity ความผูกพัน และบรรยากาศการทำงานที่เอื้อต่อกัน
         </p>
       </section>
 
       <section className="mt-9.5 w-full flex flex-col items-center gap-6">
-        <p className="rf-title text-center font-bold">
-          บริการของมายด์บลูมคลินิก
-        </p>
+        <p className="rf-title text-center font-bold">บริการสำหรับองค์กร</p>
         <div className="w-full max-w-225 rounded-3xl px-4 py-6 s:px-6 m:px-10 m:py-8">
           {clinicServiceSections.map((section, index) => {
             const isOpen = openClinicSections.includes(section.id);

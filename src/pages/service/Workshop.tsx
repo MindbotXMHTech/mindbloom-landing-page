@@ -34,12 +34,12 @@ const Workshop = () => {
           duration: 0.5,
           ease: "easeOut" as const,
         }}
-        className="flex items-center gap-4 justify-center mb-4"
+        className="flex items-center gap-1 md:gap-4 justify-center mb-4"
       >
         <Link to={"/service"}>
-          <p className="text-body text-neutral-black">บริการของเรา</p>
+          <p className="rf-body text-neutral-black">บริการของเรา</p>
         </Link>
-        <p className="text-body text-neutral-grey">
+        <p className="rf-body text-neutral-grey">
           / Mindbloom Wellbeing Workshop
         </p>
       </motion.div>
@@ -167,7 +167,7 @@ const Workshop = () => {
         <div className="w-full flex flex-col gap-4">
           <p className="text-base font-bold">Communication skill</p>
           <p className="rf-body text-neutral-grey font-normal">
-            วิร์กช็อปเพื่อพัฒนาทักษะการสื่อสารอย่างมีประสิทธิภาพ
+            เวิร์กช็อปเพื่อพัฒนาทักษะการสื่อสารอย่างมีประสิทธิภาพ
           </p>
           <p className="rf-body text-neutral-grey font-normal">
             ผู้เข้าร่วมจะได้ฝึกทักษะการฟังและการสื่อสารอย่างชัดเจน
@@ -202,13 +202,12 @@ const Workshop = () => {
         >
           <p className="text-base font-bold">Stress Management</p>
           <p className="rf-body text-neutral-grey font-normal">
-            กระบวนการพัฒนาที่ตั้งอยู่บนหลักจิตวิทยา
-            โดยมีนักจิตวิทยาคลินิกเป็นคนดำเนินกิจกรรม
+            เรียนรู้และฝึกทักษะการจัดการความเครียดและอารมณ์แง่ลบที่รบกวนศักยภาพในการทำงานและการใช้ชีวิต
+            โดยออกแบบและดำเนินกิจกรรมโดยนักจิตวิทยาคลินิก
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            โปรแกรมนี้มุ่งเสริมสร้าง ความยืดหยุ่นทางจิตใจ (Resilience) และ
-            สุขภาวะที่ยั่งยืน
-            ผ่านทักษะการจัดการความเครียดที่อ้างอิงจากหลักฐานทางวิชาการ
+            เวิร์กชอปนี้มุ่งเสริมสร้างความยืดหยุ่นทางจิตใจ (Resilience)
+            และสุขภาวะที่ยั่งยืน ผ่านทักษะการจัดการความเครียดตามหลักจิตวิทยา
             ไม่เพียงช่วยบรรเทาความเครียดในระยะสั้น
             แต่ยังช่วยเสริมสร้างศักยภาพภายใน
             เพื่อให้ผู้เข้าร่วมสามารถรับมือกับแรงกดดันและความท้าทายได้อย่างมีประสิทธิภาพ
@@ -259,44 +258,6 @@ const Workshop = () => {
           </p>
         </motion.div>
 
-        {/* Mindful flower arrangements & Self exploration */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-          className="w-full flex flex-col gap-4 mt-8"
-        >
-          <p className="text-base font-bold">
-            Mindful flower arrangements & Self exploration
-          </p>
-          <p className="rf-body text-neutral-grey font-normal">
-            ค้นพบตนเองผ่านการจัดดอกไม้ภายใต้กระบวนการทางจิตวิทยา
-          </p>
-          <p className="rf-body text-neutral-grey font-normal">
-            ดอกไม้ไม่ได้เป็นเพียงความงดงาม
-            แต่ยังเป็นสื่อกลางที่เชื่อมโยงสู่โลกภายใน
-            ชวนให้ผู้เข้าร่วมได้สำรวจและทำความเข้าใจตนเองอย่างอ่อนโยน
-            ผ่านกระบวนการจัดดอกไม้ที่ผสานทั้งความตั้งใจและความเป็นธรรมชาติ
-            ซึ่งกิจกรรมนี้จะช่วยส่งเสริมความสมดุลทางอารมณ์ ลดความตึงเครียด
-            และเปิดพื้นที่ให้เกิดการเรียนรู้และสะท้อนความเข้าใจตนเองอย่างลึกซึ้ง
-          </p>
-          <div className="grid grid-cols-1 m:grid-cols-3 gap-2">
-            {[ws16, ws17, ws18].map((src, i) => (
-              <motion.img
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
-                key={i}
-                src={src}
-                alt=""
-                className="w-full aspect-video object-cover rounded-lg h-65.5"
-              />
-            ))}
-          </div>
-        </motion.div>
-
         {/* Art of me : self-awareness discovery */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
@@ -344,6 +305,44 @@ const Workshop = () => {
             >
               นัดหมาย/สอบถามข้อมูลเพิ่มเติม
             </motion.a>
+          </div>
+        </motion.div>
+
+        {/* Mindful flower arrangements & Self exploration */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+          className="w-full flex flex-col gap-4 mt-8"
+        >
+          <p className="text-base font-bold">
+            Mindful flower arrangements & Self exploration
+          </p>
+          <p className="rf-body text-neutral-grey font-normal">
+            ค้นพบตนเองผ่านการจัดดอกไม้ภายใต้กระบวนการทางจิตวิทยา
+          </p>
+          <p className="rf-body text-neutral-grey font-normal">
+            ดอกไม้ไม่ได้เป็นเพียงความงดงาม
+            แต่ยังเป็นสื่อกลางที่เชื่อมโยงสู่โลกภายใน
+            ชวนให้ผู้เข้าร่วมได้สำรวจและทำความเข้าใจตนเองอย่างอ่อนโยน
+            ผ่านกระบวนการจัดดอกไม้ที่ผสานทั้งความตั้งใจและความเป็นธรรมชาติ
+            ซึ่งกิจกรรมนี้จะช่วยส่งเสริมความสมดุลทางอารมณ์ ลดความตึงเครียด
+            และเปิดพื้นที่ให้เกิดการเรียนรู้และสะท้อนความเข้าใจตนเองอย่างลึกซึ้ง
+          </p>
+          <div className="grid grid-cols-1 m:grid-cols-3 gap-2">
+            {[ws16, ws17, ws18].map((src, i) => (
+              <motion.img
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
+                key={i}
+                src={src}
+                alt=""
+                className="w-full aspect-video object-cover rounded-lg h-65.5"
+              />
+            ))}
           </div>
         </motion.div>
       </section>
