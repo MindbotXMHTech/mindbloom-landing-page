@@ -70,6 +70,13 @@ const serviceCards = [
       "เพื่อทำความเข้าใจความคิด อารมณ์ และพฤติกรรมของตนเองอย่างลึกซึ้ง",
       "พร้อมเรียนรู้วิธีดูแลใจและรับมือกับปัญหาในชีวิตได้อย่างเหมาะสม",
     ],
+    infoHeading: "ให้บริการโดย",
+    infoLines: [
+      "นักจิตวิทยาคลินิก",
+      "ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ",
+      "สาขาจิตวิทยาคลินิก",
+    ],
+    noteLines: ["มีประสบการณ์ในการให้คำปรึกษา", "และบำบัดทางจิตวิทยา"],
     durationLines: ["60 นาที"],
     priceLines: ["2,000"],
     extra: "เพิ่มเวลา 30 นาที/1,000 บาท",
@@ -81,6 +88,17 @@ const serviceCards = [
     titleEn: "(Couple/Family Therapy)",
     details: [
       "การบำบัด/ให้คำปรึกษาที่ช่วยให้คนในความสัมพันธ์เข้าใจกันมากขึ้น สื่อสารดีขึ้น และจัดการความขัดแย้งอย่างสร้างสรรค์ เพื่อความสัมพันธ์ที่มั่นคงและอบอุ่นขึ้น",
+    ],
+    infoHeading: "ให้บริการโดย",
+    infoLines: [
+      "นักจิตวิทยาคลินิก",
+      "ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ",
+      "สาขาจิตวิทยาคลินิก",
+    ],
+    noteLines: [
+      "มีประสบการณ์ในการให้คำปรึกษา",
+      "แบบคู่ ครอบครัว",
+      "เพื่อทางออกร่วมกันในความสัมพันธ์",
     ],
     durationLines: ["90 นาที"],
     priceLines: ["3,500"],
@@ -94,6 +112,17 @@ const serviceCards = [
     details: [
       "กระบวนการใช้แบบทดสอบและการสัมภาษณ์เพื่อทำความเข้าใจสภาพจิตใจ บุคลิกภาพ และการทำงานของความคิดอย่างเป็นระบบ เพื่อนำไปวางแผนการดูแลหรือพัฒนาต่อไป (ติดต่อมายด์บลูมเพื่อสอบถามค่าบริการ)",
       "",
+    ],
+    infoHeading: "เงื่อนไข",
+    infoLines: [
+      "ประเมินโดยนักจิตวิทยาคลินิก",
+      "ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ",
+      "สาขาจิตวิทยาคลินิก",
+    ],
+    noteLines: [
+      "โดยต้องได้รับเอกสารส่งตัว/",
+      "ใบแพทย์สั่งประเมินเท่านั้น",
+      "แจ้งผลประเมินแก่ต้นสังกัด/หน่วยงานส่งตัว",
     ],
     durationLines: ["60-120 นาที"],
     priceLines: ["3,250 -", "4,550"],
@@ -426,7 +455,7 @@ function ServicePage() {
                 <img src={card.icon} alt="" className="h-32 w-auto" />
               </div>
 
-              <h3 className="mt-6 text-center text-[20px] font-semibold leading-tight text-[#55748f]">
+              <h3 className="mt-6 min-h-18 text-center text-[20px] font-semibold leading-tight text-[#55748f] l:min-h-20">
                 {card.titleTh}
                 <br />
                 <span className="text-center text-[16px] font-semibold leading-tight text-[#55748f]">
@@ -437,27 +466,26 @@ function ServicePage() {
               <p className="mt-6 text-center text-[16px] font-bold text-neutral-grey">
                 รายละเอียด
               </p>
-              <div className="mt-4 text-center rf-body text-neutral-grey">
+              <div className="mt-4 min-h-20 text-center rf-body text-neutral-grey l:min-h-44">
                 {card.details.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
               </div>
 
               <p className="mt-6 text-center text-[16px] font-bold text-neutral-grey">
-                ให้บริการโดย
+                {card.infoHeading}
               </p>
-              <div className="mt-4 text-center rf-body text-neutral-grey">
-                <p>นักจิตวิทยาคลินิก</p>
-                <p>ผู้ได้รับการรับรองเป็นผู้ประกอบโรคศิลปะ</p>
-                <p>สาขาจิตวิทยาคลินิก</p>
+              <div className="mt-4 min-h-23 text-center rf-body text-neutral-grey">
+                {card.infoLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
               </div>
 
-              <p className="mt-6 text-center rf-body text-neutral-grey">
-                มีประสบการณ์ในการให้คำปรึกษา
-              </p>
-              <p className="text-center rf-body text-neutral-grey">
-                และบำบัดทางจิตวิทยา
-              </p>
+              <div className="mt-6 min-h-16 text-center rf-body text-neutral-grey">
+                {card.noteLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
 
               <div className="relative mt-6 h-28 w-full text-[#e5aba4]">
                 <div className="absolute top-0 left-6 max-w-32.5 s:max-w-41.25">
