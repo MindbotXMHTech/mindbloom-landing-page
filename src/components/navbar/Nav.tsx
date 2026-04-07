@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { svgs } from "../../constants/svgs";
+import { useLanguage } from "../../i18n/LanguageProvider";
 
 const linkClassName = ({ isActive }: { isActive: boolean }) =>
   [
@@ -19,16 +20,21 @@ const mobileLinkClassName = ({ isActive }: { isActive: boolean }) =>
   ].join(" ");
 
 const navItems = [
-  { to: "/", label: "หน้าหลัก", end: true },
-  { to: "/service", label: "บริการของเรา", end: false },
-  { to: "/psychologist", label: "นักจิตวิทยา", end: false },
-  { to: "/activity", label: "กิจกรรม", end: false },
-  { to: "/blog", label: "บทความ", end: false },
-  { to: "/about", label: "เกี่ยวกับเรา", end: false },
+  { to: "/", label: { th: "หน้าหลัก", en: "Home" }, end: true },
+  { to: "/service", label: { th: "บริการของเรา", en: "Services" }, end: false },
+  {
+    to: "/psychologist",
+    label: { th: "นักจิตวิทยา", en: "Psychologists" },
+    end: false,
+  },
+  { to: "/activity", label: { th: "กิจกรรม", en: "Activities" }, end: false },
+  { to: "/blog", label: { th: "บทความ", en: "Blog" }, end: false },
+  { to: "/about", label: { th: "เกี่ยวกับเรา", en: "About Us" }, end: false },
 ] as const;
 
 const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, toggleLanguage, t } = useLanguage();
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -83,14 +89,33 @@ const Nav = () => {
             end={item.end}
             className={linkClassName}
           >
-            {item.label}
+            {t(item.label)}
           </NavLink>
         ))}
       </div>
 
+      <div className="hidden m:flex items-center gap-3">
+        <button
+          type="button"
+          onClick={toggleLanguage}
+          aria-label={
+            language === "th"
+              ? "Switch website language to English"
+              : "เปลี่ยนภาษาเว็บไซต์เป็นภาษาไทย"
+          }
+          className="inline-flex items-center rounded-full border border-[#E5DACF] bg-white px-3 py-2 text-sm font-semibold text-neutral-black shadow-sm transition-colors hover:bg-[#F9F5F1]"
+        >
+          {language === "th" ? "EN" : "TH"}
+        </button>
+      </div>
+
       <button
         type="button"
-        aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+        aria-label={
+          isMobileMenuOpen
+            ? t({ th: "ปิดเมนู", en: "Close menu" })
+            : t({ th: "เปิดเมนู", en: "Open menu" })
+        }
         aria-expanded={isMobileMenuOpen}
         onClick={() => setIsMobileMenuOpen((open) => !open)}
         className="m:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5DACF] bg-white text-neutral-black shadow-sm transition-colors hover:bg-[#F9F5F1]"
@@ -139,7 +164,7 @@ const Nav = () => {
               />
               <button
                 type="button"
-                aria-label="Close menu"
+                aria-label={t({ th: "ปิดเมนู", en: "Close menu" })}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5DACF] bg-white text-neutral-black transition-colors hover:bg-[#F9F5F1]"
               >
@@ -168,10 +193,21 @@ const Nav = () => {
                   className={mobileLinkClassName}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {item.label}
+                  {t(item.label)}
                 </NavLink>
               ))}
             </div>
+
+            <button
+              type="button"
+              onClick={toggleLanguage}
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-[#E5DACF] px-5 py-3 text-base font-semibold text-neutral-black transition-colors hover:bg-[#F9F5F1]"
+            >
+              {t({
+                th: `ภาษา: ${language === "th" ? "ไทย" : "English"}`,
+                en: `Language: ${language === "th" ? "Thai" : "English"}`,
+              })}
+            </button>
 
             {/* <p className="mt-6 px-5 text-sm text-neutral-grey">
               {pathname === "/"

@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "../../components/button/CustomButton";
 import { motion } from "framer-motion";
 import { activityData } from "../../constants/activityData";
+import { useLanguage } from "../../i18n/LanguageProvider";
+import { getLocalizedText } from "../../i18n/utils";
 
 function ActivityPage() {
   const navigate = useNavigate();
+  const { language, t } = useLanguage();
 
   return (
     <div className="mb-14.75 lg:my-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 flex flex-col items-center">
@@ -14,7 +17,7 @@ function ActivityPage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="rf-h4"
       >
-        กิจกรรม
+        {t({ th: "กิจกรรม", en: "Activities" })}
       </motion.h4>
 
       {activityData.map((activity, index) => (
@@ -32,20 +35,20 @@ function ActivityPage() {
           <div className="h-60 m:w-125 m:h-83.5 overflow-hidden rounded-3xl">
             <motion.img
               src={activity.mainImage}
-              alt={activity.title}
+              alt={getLocalizedText(activity.title, language)}
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             />
           </div>
           <p className="text-base m:text-2xl text-neutral-grey font-normal text-center">
-            {activity.title}
+            {getLocalizedText(activity.title, language)}
           </p>
           <p className="text-base m:text-2xl text-neutral-grey font-normal text-center">
-            {activity.text}
+            {activity.text ? getLocalizedText(activity.text, language) : ""}
           </p>
           <CustomButton
-            title="ดูกิจกรรม"
+            title={t({ th: "ดูกิจกรรม", en: "View activity" })}
             onClick={() => navigate(`/activity/${activity.id}`)}
           />
         </motion.div>

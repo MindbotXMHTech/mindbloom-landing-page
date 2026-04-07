@@ -2,6 +2,8 @@ import { useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BlogList } from "../../constants/blogData";
+import { useLanguage } from "../../i18n/LanguageProvider";
+import { getLocalizedText } from "../../i18n/utils";
 
 type BlogCardProps = {
   id: string;
@@ -28,6 +30,7 @@ const BlogCard = ({ title, image, id }: BlogCardProps) => {
 };
 
 function BlogPage() {
+  const { language, t } = useLanguage();
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [sortOpen, setSortOpen] = useState(false);
@@ -37,10 +40,12 @@ function BlogPage() {
 
   const filtered = useMemo(() => {
     const list = BlogList.filter((item) =>
-      item.title.toLowerCase().includes(searchText.toLowerCase()),
+      getLocalizedText(item.title, language)
+        .toLowerCase()
+        .includes(searchText.toLowerCase()),
     );
     return sortOrder === "newest" ? [...list].reverse() : list;
-  }, [searchText, sortOrder]);
+  }, [language, searchText, sortOrder]);
 
   const total = filtered.length;
   const desktopVisibleCount = 3;
@@ -99,7 +104,7 @@ function BlogPage() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="rf-h4"
       >
-        บทความ
+        {t({ th: "บทความ", en: "Blog" })}
       </motion.h4>
 
       {/* Search & Sort */}
@@ -133,7 +138,7 @@ function BlogPage() {
             type="text"
             value={searchText}
             onChange={(e) => handleSearch(e.target.value)}
-            placeholder="ค้นหาบทความ"
+            placeholder={t({ th: "ค้นหาบทความ", en: "Search articles" })}
             className="outline-none bg-transparent rf-small text-neutral-grey w-full"
           />
         </div>
@@ -164,7 +169,7 @@ function BlogPage() {
                 onClick={() => handleSort("newest")}
                 className={`w-full text-left px-4 py-3 rf-small hover:bg-[#F5EDE6] transition-colors ${sortOrder === "newest" ? "text-[#CACFC3] font-semibold" : "text-neutral-grey"}`}
               >
-                ใหม่สุด - เก่าสุด
+                {t({ th: "ใหม่สุด - เก่าสุด", en: "Newest - Oldest" })}
               </button>
               <div className="h-px bg-[#E5DACF]" />
               <button
@@ -172,7 +177,7 @@ function BlogPage() {
                 onClick={() => handleSort("oldest")}
                 className={`w-full text-left px-4 py-3 rf-small hover:bg-[#F5EDE6] transition-colors ${sortOrder === "oldest" ? "text-[#CACFC3] font-semibold" : "text-neutral-grey"}`}
               >
-                เก่าสุด - ใหม่สุด
+                {t({ th: "เก่าสุด - ใหม่สุด", en: "Oldest - Newest" })}
               </button>
             </div>
           )}
@@ -197,7 +202,11 @@ function BlogPage() {
                 {index < filtered.length - 1 && (
                   <div className="pointer-events-none absolute right-0 top-4 bottom-4 w-px bg-[#e4d8cd]" />
                 )}
-                <BlogCard title={item.title} id={item.id} image={item.image} />
+                <BlogCard
+                  title={getLocalizedText(item.title, language)}
+                  id={item.id}
+                  image={item.image}
+                />
               </div>
             ))}
           </div>
@@ -210,7 +219,10 @@ function BlogPage() {
                 key={index}
                 type="button"
                 onClick={() => setDesktopIndex(index)}
-                aria-label={`Go to desktop slide ${index + 1}`}
+                aria-label={t({
+                  th: `ไปยังสไลด์เดสก์ท็อป ${index + 1}`,
+                  en: `Go to desktop slide ${index + 1}`,
+                })}
                 className={`h-2.5 rounded-full transition-all ${
                   index === desktopIndex
                     ? "w-6 bg-[#bcc0aa]"
@@ -241,7 +253,11 @@ function BlogPage() {
           <div className="flex">
             {filtered.map((item) => (
               <div key={item.id} className="w-full shrink-0 snap-center">
-                <BlogCard title={item.title} id={item.id} image={item.image} />
+                <BlogCard
+                  title={getLocalizedText(item.title, language)}
+                  id={item.id}
+                  image={item.image}
+                />
               </div>
             ))}
           </div>
@@ -254,7 +270,10 @@ function BlogPage() {
                 key={item.id}
                 type="button"
                 onClick={() => scrollToMobileCard(index)}
-                aria-label={`Go to blog ${index + 1}`}
+                aria-label={t({
+                  th: `ไปยังบทความ ${index + 1}`,
+                  en: `Go to blog ${index + 1}`,
+                })}
                 className={`h-2.5 rounded-full transition-all ${
                   index === mobileIndex
                     ? "w-6 bg-[#bcc0aa]"

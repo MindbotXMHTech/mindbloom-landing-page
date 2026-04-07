@@ -22,8 +22,16 @@ import ws19 from "../../assets/images/ws19.png";
 import ws20 from "../../assets/images/ws20.png";
 import ws21 from "../../assets/images/ws21.png";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageProvider";
+
+const ctaLabel = {
+  th: "นัดหมาย/สอบถามข้อมูลเพิ่มเติม",
+  en: "Book / Contact for details",
+} as const;
 
 const Workshop = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <motion.div
@@ -37,7 +45,9 @@ const Workshop = () => {
         className="flex items-center gap-1 md:gap-4 justify-center mb-4"
       >
         <Link to={"/service"}>
-          <p className="rf-body text-neutral-black">บริการของเรา</p>
+          <p className="rf-body text-neutral-black">
+            {t({ th: "บริการของเรา", en: "Services" })}
+          </p>
         </Link>
         <p className="rf-body text-neutral-grey">
           / Mindbloom Wellbeing Workshop
@@ -47,7 +57,10 @@ const Workshop = () => {
       <section className="flex flex-col items-center w-full">
         <p className="rf-title my-4">Mindbloom Wellbeing Workshop</p>
         <p className="rf-body text-neutral-grey font-normal">
-          พื้นที่เล็ก ๆ ที่ให้คุณกลับมาโอบกอดตัวเอง
+          {t({
+            th: "พื้นที่เล็ก ๆ ที่ให้คุณกลับมาโอบกอดตัวเอง",
+            en: "A gentle space for reconnecting with yourself",
+          })}
         </p>
 
         {/* Team & Leadership */}
@@ -63,7 +76,10 @@ const Workshop = () => {
         >
           <p className="text-xl font-bold">Team & Leadership</p>
           <p className="rf-body font-normal text-neutral-grey">
-            เสริมพลังทีม และพัฒนาภาวะผู้นำที่ใส่ใจ
+            {t({
+              th: "เสริมพลังทีม และพัฒนาภาวะผู้นำที่ใส่ใจ",
+              en: "Strengthen teams and nurture caring leadership",
+            })}
           </p>
         </motion.div>
 
@@ -71,14 +87,16 @@ const Workshop = () => {
         <div className="w-full flex flex-col gap-4">
           <p className="text-base font-bold">Psychological First Aid (PFA)</p>
           <p className="rf-body text-neutral-grey font-normal">
-            เรียนรู้หลักการให้ความช่วยเหลือเบื้องต้นทางจิตใจในภาวะวิกฤติ
-            เพื่อเสริมทักษะการดูแลใจตนเองและผู้อื่นในช่วงวิกฤตทางใจ
+            {t({
+              th: "เรียนรู้หลักการให้ความช่วยเหลือเบื้องต้นทางจิตใจในภาวะวิกฤติ เพื่อเสริมทักษะการดูแลใจตนเองและผู้อื่นในช่วงวิกฤตทางใจ",
+              en: "Learn the principles of psychological first aid in times of crisis, with practical ways to care for yourself and others during emotionally difficult moments.",
+            })}
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            เรียนรู้หลักการ PFA ที่นำไปใช้ได้จริง ช่วยป้องกันปัญหาสุขภาพจิต
-            รักษาศักยภาพบุคลากร และสร้างบรรยากาศปลอดภัยทางใจในองค์กร
-            พร้อมทักษะรับมือความเครียดอย่างเหมาะสม
-            โดยนักจิตวิทยาคลินิกผู้เชี่ยวชาญด้านสุขภาพจิต
+            {t({
+              th: "เรียนรู้หลักการ PFA ที่นำไปใช้ได้จริง ช่วยป้องกันปัญหาสุขภาพจิต รักษาศักยภาพบุคลากร และสร้างบรรยากาศปลอดภัยทางใจในองค์กร พร้อมทักษะรับมือความเครียดอย่างเหมาะสม โดยนักจิตวิทยาคลินิกผู้เชี่ยวชาญด้านสุขภาพจิต",
+              en: "This workshop offers practical PFA skills that help prevent mental health difficulties, sustain team capacity, and build psychologically safe workplaces, guided by clinical psychologists with mental health expertise.",
+            })}
           </p>
           <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
             {[ws1, ws2, ws3, ws4, ws5, ws6].map((src, i) => (
@@ -108,15 +126,16 @@ const Workshop = () => {
             Creative work for team communication
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            มุ่งเน้นการทำความเข้าใจ ทั้งความเหมือนและความแตกต่างของแต่ละบุคคล
-            เพื่อส่งเสริมการสื่อสารที่ตั้งอยู่บนความเข้าใจและความเห็นอกเห็นใจกัน
+            {t({
+              th: "มุ่งเน้นการทำความเข้าใจ ทั้งความเหมือนและความแตกต่างของแต่ละบุคคล เพื่อส่งเสริมการสื่อสารที่ตั้งอยู่บนความเข้าใจและความเห็นอกเห็นใจกัน",
+              en: "Focused on understanding both similarities and differences between people in order to encourage communication grounded in empathy and mutual understanding.",
+            })}
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            กระบวนการที่ออกแบบอย่างสร้างสรรค์นี้ช่วยพัฒนาการสื่อสารเชิงบวกในทีม
-            โดยกระตุ้นทั้งมิติของความคิดและอารมณ์
-            ภายใต้การดูแลของนักจิตวิทยาคลินิก
-            เพื่อเสริมสร้างความเข้าใจระหว่างกัน ลดความขัดแย้ง
-            และสร้างพลังบวกในการทำงานร่วมกันอย่างมีประสิทธิภาพและกลมกลืน
+            {t({
+              th: "กระบวนการที่ออกแบบอย่างสร้างสรรค์นี้ช่วยพัฒนาการสื่อสารเชิงบวกในทีม โดยกระตุ้นทั้งมิติของความคิดและอารมณ์ ภายใต้การดูแลของนักจิตวิทยาคลินิก เพื่อเสริมสร้างความเข้าใจระหว่างกัน ลดความขัดแย้ง และสร้างพลังบวกในการทำงานร่วมกันอย่างมีประสิทธิภาพและกลมกลืน",
+              en: "This creatively designed process supports more positive team communication by engaging both thinking and emotional awareness, under the guidance of clinical psychologists, to reduce conflict and strengthen collaborative energy.",
+            })}
           </p>
           <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
             {[ws7, ws8, ws9].map((src, i) => (
@@ -142,7 +161,7 @@ const Workshop = () => {
               rel="noreferrer"
               className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
             >
-              นัดหมาย/สอบถามข้อมูลเพิ่มเติม
+              {t(ctaLabel)}
             </motion.a>
           </div>
         </motion.div>
@@ -159,7 +178,10 @@ const Workshop = () => {
         >
           <p className="text-xl font-bold">Preventive & Awareness</p>
           <p className="rf-body font-normal text-neutral-grey">
-            สร้างความตระหนักรู้ และป้องกันก่อนจะสาย
+            {t({
+              th: "สร้างความตระหนักรู้ และป้องกันก่อนจะสาย",
+              en: "Build awareness and support prevention early",
+            })}
           </p>
         </motion.div>
 
@@ -167,14 +189,16 @@ const Workshop = () => {
         <div className="w-full flex flex-col gap-4">
           <p className="text-base font-bold">Communication skill</p>
           <p className="rf-body text-neutral-grey font-normal">
-            เวิร์กช็อปเพื่อพัฒนาทักษะการสื่อสารอย่างมีประสิทธิภาพ
+            {t({
+              th: "เวิร์กช็อปเพื่อพัฒนาทักษะการสื่อสารอย่างมีประสิทธิภาพ",
+              en: "A workshop for building effective communication skills",
+            })}
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            ผู้เข้าร่วมจะได้ฝึกทักษะการฟังและการสื่อสารอย่างชัดเจน
-            พร้อมทั้งเรียนรู้การสื่อสารด้วยความเข้าใจ เห็นอกเห็นใจ
-            และความคิดสร้างสรรค์ เวิร์กช็อปนี้ช่วยป้องกันความขัดแย้ง
-            เสริมสร้างการทำงานร่วมกัน และสนับสนุนการทำงานเป็นทีมอย่างราบรื่น
-            ภายใต้บรรยากาศที่ปลอดภัยทางจิตใจ (Psychological Safety) ในองค์กร
+            {t({
+              th: "ผู้เข้าร่วมจะได้ฝึกทักษะการฟังและการสื่อสารอย่างชัดเจน พร้อมทั้งเรียนรู้การสื่อสารด้วยความเข้าใจ เห็นอกเห็นใจ และความคิดสร้างสรรค์ เวิร์กช็อปนี้ช่วยป้องกันความขัดแย้ง เสริมสร้างการทำงานร่วมกัน และสนับสนุนการทำงานเป็นทีมอย่างราบรื่น ภายใต้บรรยากาศที่ปลอดภัยทางจิตใจ (Psychological Safety) ในองค์กร",
+              en: "Participants practice listening and communicating clearly while learning to communicate with empathy, understanding, and creativity. The workshop helps prevent conflict, strengthen collaboration, and support smoother teamwork within a psychologically safe environment.",
+            })}
           </p>
           <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
             {[ws10, ws11, ws12].map((src, i) => (
@@ -202,16 +226,16 @@ const Workshop = () => {
         >
           <p className="text-base font-bold">Stress Management</p>
           <p className="rf-body text-neutral-grey font-normal">
-            เรียนรู้และฝึกทักษะการจัดการความเครียดและอารมณ์แง่ลบที่รบกวนศักยภาพในการทำงานและการใช้ชีวิต
-            โดยออกแบบและดำเนินกิจกรรมโดยนักจิตวิทยาคลินิก
+            {t({
+              th: "เรียนรู้และฝึกทักษะการจัดการความเครียดและอารมณ์แง่ลบที่รบกวนศักยภาพในการทำงานและการใช้ชีวิต โดยออกแบบและดำเนินกิจกรรมโดยนักจิตวิทยาคลินิก",
+              en: "Learn and practice skills for managing stress and difficult emotions that affect work performance and daily life, through activities designed and facilitated by clinical psychologists.",
+            })}
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            เวิร์กชอปนี้มุ่งเสริมสร้างความยืดหยุ่นทางจิตใจ (Resilience)
-            และสุขภาวะที่ยั่งยืน ผ่านทักษะการจัดการความเครียดตามหลักจิตวิทยา
-            ไม่เพียงช่วยบรรเทาความเครียดในระยะสั้น
-            แต่ยังช่วยเสริมสร้างศักยภาพภายใน
-            เพื่อให้ผู้เข้าร่วมสามารถรับมือกับแรงกดดันและความท้าทายได้อย่างมีประสิทธิภาพ
-            ทั้งในบริบทของการทำงานและชีวิตประจำวัน
+            {t({
+              th: "เวิร์กชอปนี้มุ่งเสริมสร้างความยืดหยุ่นทางจิตใจ (Resilience) และสุขภาวะที่ยั่งยืน ผ่านทักษะการจัดการความเครียดตามหลักจิตวิทยา ไม่เพียงช่วยบรรเทาความเครียดในระยะสั้น แต่ยังช่วยเสริมสร้างศักยภาพภายใน เพื่อให้ผู้เข้าร่วมสามารถรับมือกับแรงกดดันและความท้าทายได้อย่างมีประสิทธิภาพ ทั้งในบริบทของการทำงานและชีวิตประจำวัน",
+              en: "This workshop strengthens resilience and sustainable wellbeing through evidence-based stress management skills. It supports not only short-term relief, but also long-term inner capacity for handling pressure and challenges effectively at work and in life.",
+            })}
           </p>
           <div className="grid grid-cols-1 m:grid-cols-3 gap-2">
             {[ws13, ws14, ws15].map((src, i) => (
@@ -237,7 +261,7 @@ const Workshop = () => {
               rel="noreferrer"
               className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
             >
-              นัดหมาย/สอบถามข้อมูลเพิ่มเติม
+              {t(ctaLabel)}
             </motion.a>
           </div>
         </motion.div>
@@ -254,7 +278,10 @@ const Workshop = () => {
         >
           <p className="text-xl font-bold">Self-Awareness & Personal Growth</p>
           <p className="rf-body font-normal text-neutral-grey">
-            ค้นพบตัวเอง พร้อมเติบโตจากข้างใน
+            {t({
+              th: "ค้นพบตัวเอง พร้อมเติบโตจากข้างใน",
+              en: "Discover yourself and grow from within",
+            })}
           </p>
         </motion.div>
 
@@ -270,14 +297,16 @@ const Workshop = () => {
             Art of me : self-awareness discovery
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            กระบวนการที่ผสานจิตวิทยาและศิลปะ โดยมีนักจิตวิทยาคลินิกเป็นผู้นำทาง
+            {t({
+              th: "กระบวนการที่ผสานจิตวิทยาและศิลปะ โดยมีนักจิตวิทยาคลินิกเป็นผู้นำทาง",
+              en: "A process that blends psychology and art, guided by clinical psychologists.",
+            })}
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            เป็นเวิร์กช็อปที่จะชวนผู้เข้าร่วมให้ได้สำรวจโลกภายในของตนเอง
-            พัฒนาความตระหนักรู้ทางอารมณ์ และค้นพบมิติที่ลึกซึ้งของการยอมรับตนเอง
-            และกระบวนการที่อ่อนโยนนี้จะช่วย
-            ส่งเสริมสุขภาวะทางอารมณ์และการเติบโตจากภายใน
-            ทำให้บุคคลสามารถใช้ชีวิตและเชื่อมโยงกับผู้อื่นได้อย่างสมดุลและเป็นธรรมชาติยิ่งขึ้น
+            {t({
+              th: "เป็นเวิร์กช็อปที่จะชวนผู้เข้าร่วมให้ได้สำรวจโลกภายในของตนเอง พัฒนาความตระหนักรู้ทางอารมณ์ และค้นพบมิติที่ลึกซึ้งของการยอมรับตนเอง และกระบวนการที่อ่อนโยนนี้จะช่วยส่งเสริมสุขภาวะทางอารมณ์และการเติบโตจากภายใน ทำให้บุคคลสามารถใช้ชีวิตและเชื่อมโยงกับผู้อื่นได้อย่างสมดุลและเป็นธรรมชาติยิ่งขึ้น",
+              en: "This workshop invites participants to explore their inner world, deepen emotional awareness, and discover more profound dimensions of self-acceptance. The gentle process supports emotional wellbeing and inner growth, helping people live and connect with others in a more balanced and natural way.",
+            })}
           </p>
           <div className="grid grid-cols-1 m:grid-cols-3  gap-2">
             {[ws19, ws20, ws21].map((src, i) => (
@@ -307,15 +336,16 @@ const Workshop = () => {
             Mindful flower arrangements & Self exploration
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            ค้นพบตนเองผ่านการจัดดอกไม้ภายใต้กระบวนการทางจิตวิทยา
+            {t({
+              th: "ค้นพบตนเองผ่านการจัดดอกไม้ภายใต้กระบวนการทางจิตวิทยา",
+              en: "Discover yourself through flower arrangement within a psychological process",
+            })}
           </p>
           <p className="rf-body text-neutral-grey font-normal">
-            ดอกไม้ไม่ได้เป็นเพียงความงดงาม
-            แต่ยังเป็นสื่อกลางที่เชื่อมโยงสู่โลกภายใน
-            ชวนให้ผู้เข้าร่วมได้สำรวจและทำความเข้าใจตนเองอย่างอ่อนโยน
-            ผ่านกระบวนการจัดดอกไม้ที่ผสานทั้งความตั้งใจและความเป็นธรรมชาติ
-            ซึ่งกิจกรรมนี้จะช่วยส่งเสริมความสมดุลทางอารมณ์ ลดความตึงเครียด
-            และเปิดพื้นที่ให้เกิดการเรียนรู้และสะท้อนความเข้าใจตนเองอย่างลึกซึ้ง
+            {t({
+              th: "ดอกไม้ไม่ได้เป็นเพียงความงดงาม แต่ยังเป็นสื่อกลางที่เชื่อมโยงสู่โลกภายใน ชวนให้ผู้เข้าร่วมได้สำรวจและทำความเข้าใจตนเองอย่างอ่อนโยน ผ่านกระบวนการจัดดอกไม้ที่ผสานทั้งความตั้งใจและความเป็นธรรมชาติ ซึ่งกิจกรรมนี้จะช่วยส่งเสริมความสมดุลทางอารมณ์ ลดความตึงเครียด และเปิดพื้นที่ให้เกิดการเรียนรู้และสะท้อนความเข้าใจตนเองอย่างลึกซึ้ง",
+              en: "Flowers are not only beautiful. They can also become a bridge to the inner world, inviting participants to explore and understand themselves gently through a process that combines intention and natural flow. This activity supports emotional balance, reduces tension, and creates room for deep reflection and learning.",
+            })}
           </p>
           <div className="grid grid-cols-1 m:grid-cols-3 gap-2">
             {[ws16, ws17, ws18].map((src, i) => (
@@ -341,7 +371,7 @@ const Workshop = () => {
               rel="noreferrer"
               className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
             >
-              นัดหมาย/สอบถามข้อมูลเพิ่มเติม
+              {t(ctaLabel)}
             </motion.a>
           </div>
         </motion.div>

@@ -1,20 +1,21 @@
 import { images } from "./images";
+import type { LocalizedText } from "../i18n/types";
 
 type ActivityDetail = {
   id: string;
-  title: string;
+  title: LocalizedText;
   image: string[];
-  content: string[];
+  content: LocalizedText[];
   youtubeId?: string;
-  date?: string;
-  text?: string;
+  date?: LocalizedText;
+  text?: LocalizedText;
   mainImage: string;
 };
 
 export const activityData: ActivityDetail[] = [
   {
     id: "1",
-    title: "MindBloom Gallery",
+    title: { th: "MindBloom Gallery", en: "MindBloom Gallery" },
     mainImage: images.gal5,
     image: [
       images.gal1,
@@ -34,14 +35,23 @@ export const activityData: ActivityDetail[] = [
       images.gal15,
     ],
     content: [
-      "นิทรรศการผลงานจากผู้ที่มีประสบการณ์ด้านสุขภาพจิต ที่ชวนให้สังคมมองโรคทางใจด้วยความเข้าใจ พร้อมกิจกรรมเวิร์กชอปและการสนับสนุนผลงานตลอด 3 สัปดาห์",
+      {
+        th: "นิทรรศการผลงานจากผู้ที่มีประสบการณ์ด้านสุขภาพจิต ที่ชวนให้สังคมมองโรคทางใจด้วยความเข้าใจ พร้อมกิจกรรมเวิร์กชอปและการสนับสนุนผลงานตลอด 3 สัปดาห์",
+        en: "An exhibition of work by people with lived mental health experiences, inviting society to see emotional struggles with greater understanding, alongside workshops and ongoing support for the artworks over three weeks.",
+      },
     ],
-    date: "วันที่ 12 มกราคม 2025",
-    text: "นิทรรศการผลงานจากผู้ที่มีประสบการณ์ด้านสุขภาพจิต",
+    date: { th: "วันที่ 12 มกราคม 2025", en: "January 12, 2025" },
+    text: {
+      th: "นิทรรศการผลงานจากผู้ที่มีประสบการณ์ด้านสุขภาพจิต",
+      en: "An exhibition featuring works by people with lived mental health experience",
+    },
   },
   {
     id: "2",
-    title: "Mindbloom Opening and Exhibition",
+    title: {
+      th: "Mindbloom Opening and Exhibition",
+      en: "Mindbloom Opening and Exhibition",
+    },
     mainImage: images.act1,
     image: [
       images.act1,
@@ -51,13 +61,24 @@ export const activityData: ActivityDetail[] = [
       images.act5,
       images.act6,
     ],
-    content: ["ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน"],
-    date: "วันที่ 26 มกราคม 2025",
-    text: "ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน",
+    content: [
+      {
+        th: "ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน",
+        en: "Thank you for helping fill this flower garden with warmth together.",
+      },
+    ],
+    date: { th: "วันที่ 26 มกราคม 2025", en: "January 26, 2025" },
+    text: {
+      th: "ขอบคุณที่มาสร้างความอบอุ่นให้สวนดอกไม้แห่งนี้ด้วยกัน",
+      en: "Thank you for helping create warmth in this flower garden together.",
+    },
   },
   {
     id: "3",
-    title: "To the unknown เดือนแห่งความรัก",
+    title: {
+      th: "To the unknown เดือนแห่งความรัก",
+      en: "To the Unknown: Month of Love",
+    },
     mainImage: images.un4,
     image: [
       images.un1,
@@ -70,9 +91,15 @@ export const activityData: ActivityDetail[] = [
       images.un8,
     ],
     content: [
-      "พร้อมเปิดรับบริจาคหนังสือและจัดเวิร์กชอปดูแลใจ เพื่อส่งต่อความรักและกำลังใจ",
+      {
+        th: "พร้อมเปิดรับบริจาคหนังสือและจัดเวิร์กชอปดูแลใจ เพื่อส่งต่อความรักและกำลังใจ",
+        en: "Featuring a book donation drive and mental wellbeing workshops to pass on love and encouragement.",
+      },
     ],
-    date: "วันที่ 26 มกราคม 2025",
-    text: "MindBloom พาทุกคนไปรู้จักอีกมุมของชีวิต ณ ทัณฑสถานหญิงกลาง",
+    date: { th: "วันที่ 26 มกราคม 2025", en: "January 26, 2025" },
+    text: {
+      th: "MindBloom พาทุกคนไปรู้จักอีกมุมของชีวิต ณ ทัณฑสถานหญิงกลาง",
+      en: "MindBloom invited everyone to witness another side of life at the Central Women's Correctional Institution.",
+    },
   },
 ];

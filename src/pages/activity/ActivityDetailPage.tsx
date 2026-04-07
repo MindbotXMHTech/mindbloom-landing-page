@@ -2,9 +2,12 @@ import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { activityData } from "../../constants/activityData";
 import { motion } from "framer-motion";
+import { useLanguage } from "../../i18n/LanguageProvider";
+import { getLocalizedText } from "../../i18n/utils";
 
 function ActivityDetailPage() {
   const { id } = useParams();
+  const { language, t } = useLanguage();
   const activity = useMemo(
     () => activityData.find((item) => item.id === id),
     [id],
@@ -13,7 +16,7 @@ function ActivityDetailPage() {
   if (!activity) {
     return (
       <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
-        <h1 className="rf-h4 text-center">no data</h1>
+        <h1 className="rf-h4 text-center">{t({ th: "ไม่พบข้อมูล", en: "No data" })}</h1>
       </div>
     );
   }
@@ -27,9 +30,14 @@ function ActivityDetailPage() {
         className="flex items-center gap-4 justify-center mb-4"
       >
         <Link to={"/activity"}>
-          <p className="text-body text-neutral-black">กิจกรรม</p>
+          <p className="text-body text-neutral-black">
+            {t({ th: "กิจกรรม", en: "Activities" })}
+          </p>
         </Link>
-        <p className="text-body text-neutral-grey"> / {activity.title}</p>
+        <p className="text-body text-neutral-grey">
+          {" / "}
+          {getLocalizedText(activity.title, language)}
+        </p>
       </motion.div>
 
       <motion.div
@@ -39,22 +47,24 @@ function ActivityDetailPage() {
         className="flex flex-col items-center text-center gap-4"
       >
         <div>
-          <h1 className="rf-title">{activity.title}</h1>
+          <h1 className="rf-title">{getLocalizedText(activity.title, language)}</h1>
           <p className="text-base m:text-2xl text-neutral-black font-normal">
-            {activity.text}
+            {activity.text ? getLocalizedText(activity.text, language) : ""}
           </p>
         </div>
 
         <div>
           {activity.date && (
-            <p className="rf-body text-neutral-grey">{activity.date}</p>
+            <p className="rf-body text-neutral-grey">
+              {getLocalizedText(activity.date, language)}
+            </p>
           )}
           {activity.content.map((paragraph, index) => (
             <p
               key={index}
               className="rf-body text-neutral-grey whitespace-pre-line"
             >
-              {paragraph}
+              {getLocalizedText(paragraph, language)}
             </p>
           ))}
         </div>
@@ -76,7 +86,7 @@ function ActivityDetailPage() {
           >
             <motion.img
               src={img}
-              alt={`${activity.title} ${index + 1}`}
+              alt={`${getLocalizedText(activity.title, language)} ${index + 1}`}
               className="w-full h-full object-cover"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3, ease: "easeOut" }}

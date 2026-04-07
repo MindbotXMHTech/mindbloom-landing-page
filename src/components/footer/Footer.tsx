@@ -4,22 +4,25 @@ import footerTopRightDecor from "../../assets/images/footer/footer-top-right-dec
 import footerBottomLeftDecor from "../../assets/images/footer/footer-bottom-left-decor.svg";
 import footerBottomLeftCurve from "../../assets/images/footer/footer-bottom-left-curve.svg";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { useLanguage } from "../../i18n/LanguageProvider";
 
 const navLinks = [
-  { to: "/", label: "หน้าแรก" },
-  { to: "/service", label: "บริการของเรา" },
-  { to: "/psychologist", label: "นักจิตวิทยา" },
-  { to: "/activity", label: "กิจกรรม" },
-  { to: "/blog", label: "บทความ" },
-  { to: "/about", label: "เกี่ยวกับเรา" },
+  { to: "/", label: { th: "หน้าแรก", en: "Home" } },
+  { to: "/service", label: { th: "บริการของเรา", en: "Services" } },
+  { to: "/psychologist", label: { th: "นักจิตวิทยา", en: "Psychologists" } },
+  { to: "/activity", label: { th: "กิจกรรม", en: "Activities" } },
+  { to: "/blog", label: { th: "บทความ", en: "Blog" } },
+  { to: "/about", label: { th: "เกี่ยวกับเรา", en: "About Us" } },
 ] as const;
 
 const legalLinks = [
-  { to: "/term-condition", label: "ข้อกำหนดและเงื่อนไข" },
-  { to: "/policy", label: "นโยบายความเป็นส่วนตัว" },
+  { to: "/term-condition", label: { th: "ข้อกำหนดและเงื่อนไข", en: "Terms and Conditions" } },
+  { to: "/policy", label: { th: "นโยบายความเป็นส่วนตัว", en: "Privacy Policy" } },
 ] as const;
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer
       className="relative w-full overflow-hidden px-6 py-12 text-neutral-black s:px-8 m:px-10 l:px-12"
@@ -58,44 +61,83 @@ const Footer = () => {
         <div className="flex flex-col gap-10 s:gap-12 m:grid m:grid-cols-[minmax(0,1.45fr)_minmax(0,0.8fr)_minmax(0,0.95fr)] m:items-start m:gap-12">
           <div className="flex flex-col gap-6 text-center s:max-w-176 s:items-center s:text-center m:max-w-110 m:items-start m:text-left">
             <p className="rf-title font-bold">
-              บริษัท มายด์บอท จำกัด (สำนักงานใหญ่)
+              {t({
+                th: "บริษัท มายด์บอท จำกัด (สำนักงานใหญ่)",
+                en: "Mindbot Co., Ltd. (Head Office)",
+              })}
             </p>
 
             <div className="flex flex-col gap-5 text-neutral-black s:items-center m:items-start">
               <p className="rf-body leading-7 block s:hidden text-center m:text-left">
-                มายด์บลูม คลินิกการประกอบ โรคศิลปะสาขาจิตวิทยาคลินิก
+                {t({
+                  th: "มายด์บลูม คลินิกการประกอบ โรคศิลปะสาขาจิตวิทยาคลินิก",
+                  en: "MindBloom Clinic for the Practice of the Art of Healing in Clinical Psychology",
+                })}
                 <br />
-                ใบอนุญาตเลขที่ 10109003467
+                {t({
+                  th: "ใบอนุญาตเลขที่ 10109003467",
+                  en: "License No. 10109003467",
+                })}
               </p>
 
               <p className="rf-body leading-7 hidden s:block m:hidden text-center whitespace-nowrap">
-                มายด์บลูม คลินิกการประกอบ โรคศิลปะสาขาจิตวิทยาคลินิก
+                {t({
+                  th: "มายด์บลูม คลินิกการประกอบ โรคศิลปะสาขาจิตวิทยาคลินิก",
+                  en: "MindBloom Clinic for the Practice of the Art of Healing in Clinical Psychology",
+                })}
                 <br />
-                ใบอนุญาตเลขที่ 10109003467
+                {t({
+                  th: "ใบอนุญาตเลขที่ 10109003467",
+                  en: "License No. 10109003467",
+                })}
               </p>
 
               <p className="rf-body leading-7 hidden m:block text-left">
-                มายด์บลูม คลินิกการประกอบ
+                {t({
+                  th: "มายด์บลูม คลินิกการประกอบ",
+                  en: "MindBloom Clinic for the Practice",
+                })}
                 <br />
-                โรคศิลปะสาขาจิตวิทยาคลินิก
+                {t({
+                  th: "โรคศิลปะสาขาจิตวิทยาคลินิก",
+                  en: "of the Art of Healing in Clinical Psychology",
+                })}
                 <br />
-                ใบอนุญาตเลขที่ 10109003467
+                {t({
+                  th: "ใบอนุญาตเลขที่ 10109003467",
+                  en: "License No. 10109003467",
+                })}
               </p>
 
               <p className="rf-body leading-7 block s:hidden text-center m:text-left">
-                292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช
+                {t({
+                  th: "292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช",
+                  en: "292/5 Charan Sanitwong Rd., Siriraj",
+                })}
                 <br />
-                เขตบางกอกน้อย กรุงเทพฯ 10700
+                {t({
+                  th: "เขตบางกอกน้อย กรุงเทพฯ 10700",
+                  en: "Bangkok Noi, Bangkok 10700",
+                })}
               </p>
 
               <p className="rf-body leading-7 hidden s:block m:hidden text-center whitespace-nowrap">
-                292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช เขตบางกอกน้อย กรุงเทพฯ 10700
+                {t({
+                  th: "292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช เขตบางกอกน้อย กรุงเทพฯ 10700",
+                  en: "292/5 Charan Sanitwong Rd., Siriraj, Bangkok Noi, Bangkok 10700",
+                })}
               </p>
 
               <p className="rf-body leading-7 hidden m:block text-left">
-                292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช
+                {t({
+                  th: "292/5 ถ.จรัญสนิทวงศ์ แขวงศิริราช",
+                  en: "292/5 Charan Sanitwong Rd., Siriraj",
+                })}
                 <br />
-                เขตบางกอกน้อย กรุงเทพฯ 10700
+                {t({
+                  th: "เขตบางกอกน้อย กรุงเทพฯ 10700",
+                  en: "Bangkok Noi, Bangkok 10700",
+                })}
               </p>
             </div>
           </div>
@@ -108,7 +150,7 @@ const Footer = () => {
                   to={item.to}
                   className="rf-body transition-colors hover:text-neutral-black text-left"
                 >
-                  {item.label}
+                  {t(item.label)}
                 </Link>
               ))}
             </div>
@@ -121,7 +163,7 @@ const Footer = () => {
                     to={item.to}
                     className="rf-body transition-colors hover:text-neutral-black text-left"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </Link>
                 ))}
               </div>
@@ -173,7 +215,12 @@ const Footer = () => {
                     width={24}
                     height={24}
                   />
-                  <span className="rf-body">บริษัทมายด์บอท จำกัด</span>
+                  <span className="rf-body">
+                    {t({
+                      th: "บริษัทมายด์บอท จำกัด",
+                      en: "Mindbot Co., Ltd.",
+                    })}
+                  </span>
                 </a>
               </div>
             </div>

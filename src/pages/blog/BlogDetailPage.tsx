@@ -6,6 +6,8 @@ import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRou
 import Snackbar from "@mui/material/Snackbar";
 import { BlogList } from "../../constants/blogData";
 import { svgs } from "../../constants/svgs";
+import { useLanguage } from "../../i18n/LanguageProvider";
+import { getLocalizedText } from "../../i18n/utils";
 
 const PUBLIC_SITE_URL = (
   import.meta.env.VITE_PUBLIC_SITE_URL || "https://www.mindbloom-wellness.com"
@@ -49,6 +51,7 @@ function getYouTubeVideoId(input?: string) {
 
 function BlogDetailPage() {
   const { id } = useParams();
+  const { language, t } = useLanguage();
   const blog = useMemo(() => BlogList.find((item) => item.id === id), [id]);
   const [isPlaying, setIsPlaying] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -57,7 +60,7 @@ function BlogDetailPage() {
   if (!blog) {
     return (
       <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
-        <h1 className="rf-h4 text-center">no data</h1>
+        <h1 className="rf-h4 text-center">{t({ th: "ไม่พบข้อมูล", en: "No data" })}</h1>
       </div>
     );
   }
@@ -81,8 +84,8 @@ function BlogDetailPage() {
               : window.location.origin,
           ).toString()
         : `${PUBLIC_SITE_URL}${articlePath}`;
-    const title = blog.title;
-    const text = `${blog.title} | MindBloom`;
+    const title = getLocalizedText(blog.title, language);
+    const text = `${getLocalizedText(blog.title, language)} | MindBloom`;
     return { url, title, text };
   };
 
@@ -130,7 +133,11 @@ function BlogDetailPage() {
 
   const handleCopyLink = async () => {
     const ok = await copyLink();
-    openSnackbar(ok ? "Link copied" : "Copy failed");
+    openSnackbar(
+      ok
+        ? t({ th: "คัดลอกลิงก์แล้ว", en: "Link copied" })
+        : t({ th: "คัดลอกลิงก์ไม่สำเร็จ", en: "Copy failed" }),
+    );
   };
 
   const handleShare = async () => {
@@ -146,7 +153,11 @@ function BlogDetailPage() {
     }
 
     const ok = await copyLink();
-    openSnackbar(ok ? "Link copied" : "Copy failed");
+    openSnackbar(
+      ok
+        ? t({ th: "คัดลอกลิงก์แล้ว", en: "Link copied" })
+        : t({ th: "คัดลอกลิงก์ไม่สำเร็จ", en: "Copy failed" }),
+    );
   };
 
   return (
@@ -158,9 +169,13 @@ function BlogDetailPage() {
         className="flex items-center gap-4 justify-center mb-4"
       >
         <Link to={"/blog"}>
-          <p className="text-body text-neutral-black">บทความ</p>
+          <p className="text-body text-neutral-black">
+            {t({ th: "บทความ", en: "Blog" })}
+          </p>
         </Link>
-        <p className="text-body text-neutral-grey">/ {blog.title}</p>
+        <p className="text-body text-neutral-grey">
+          / {getLocalizedText(blog.title, language)}
+        </p>
       </motion.div>
 
       <article className="w-full flex flex-col items-center mx-auto">
@@ -169,7 +184,7 @@ function BlogDetailPage() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
           src={blog.image}
-          alt={blog.title}
+          alt={getLocalizedText(blog.title, language)}
           className="w-full rounded-3xl object-cover max-w-81.5"
         />
 
@@ -179,8 +194,10 @@ function BlogDetailPage() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.25 }}
           className="mt-4 flex justify-center items-center gap-2"
         >
-          <p className="rf-small">{blog.date}</p>
-          <p className="rf-small">โดย</p>
+          <p className="rf-small">
+            {blog.date ? getLocalizedText(blog.date, language) : ""}
+          </p>
+          <p className="rf-small">{t({ th: "โดย", en: "By" })}</p>
           <p className="rf-small text-main-pink">Mind Bloom</p>
         </motion.div>
 
@@ -190,12 +207,15 @@ function BlogDetailPage() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
           className="flex justify-center items-center gap-2 mt-4"
         >
-          <p className="rf-small">แชร์บน</p>
+          <p className="rf-small">{t({ th: "แชร์บน", en: "Share on" })}</p>
 
           <button
             type="button"
             onClick={handleFacebookShare}
-            aria-label="Share on Facebook"
+            aria-label={t({
+              th: "แชร์บน Facebook",
+              en: "Share on Facebook",
+            })}
             className="inline-flex h-6 w-6 items-center justify-center"
           >
             <img
@@ -208,7 +228,7 @@ function BlogDetailPage() {
           <button
             type="button"
             onClick={handleShare}
-            aria-label="Share"
+            aria-label={t({ th: "แชร์", en: "Share" })}
             className="inline-flex h-6 w-6 items-center justify-center"
           >
             <IosShareRoundedIcon sx={{ fontSize: 16 }} />
@@ -217,7 +237,10 @@ function BlogDetailPage() {
           <button
             type="button"
             onClick={handleCopyLink}
-            aria-label="Copy blog link"
+            aria-label={t({
+              th: "คัดลอกลิงก์บทความ",
+              en: "Copy blog link",
+            })}
             className="inline-flex h-6 w-6 items-center justify-center"
           >
             <img src={svgs.linkIcon} alt="share link" className="w-4 h-4" />
@@ -230,7 +253,7 @@ function BlogDetailPage() {
           transition={{ duration: 0.5, ease: "easeOut", delay: 0.45 }}
           className="rf-body font-bold mt-4"
         >
-          {blog.title}
+          {getLocalizedText(blog.title, language)}
         </motion.h1>
 
         <motion.div
@@ -244,7 +267,7 @@ function BlogDetailPage() {
               key={index}
               className="rf-body text-neutral-grey whitespace-pre-line"
             >
-              {paragraph}
+              {getLocalizedText(paragraph, language)}
             </p>
           ))}
         </motion.div>
@@ -265,7 +288,10 @@ function BlogDetailPage() {
                   <iframe
                     className="absolute top-0 left-0 h-full w-full"
                     src={youtubeEmbedUrl}
-                    title="MindBloom YouTube"
+                    title={t({
+                      th: "วิดีโอ YouTube ของ MindBloom",
+                      en: "MindBloom YouTube video",
+                    })}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen
@@ -275,11 +301,17 @@ function BlogDetailPage() {
                     type="button"
                     onClick={() => setIsPlaying(true)}
                     className="absolute inset-0 block h-full w-full"
-                    aria-label="Play YouTube video"
+                    aria-label={t({
+                      th: "เล่นวิดีโอ YouTube",
+                      en: "Play YouTube video",
+                    })}
                   >
                     <img
                       src={youtubeThumbnailUrl}
-                      alt={`${blog.title} video thumbnail`}
+                      alt={`${getLocalizedText(blog.title, language)} ${t({
+                        th: "ภาพตัวอย่างวิดีโอ",
+                        en: "video thumbnail",
+                      })}`}
                       className="h-full w-full object-cover opacity-90"
                     />
                     <span className="absolute inset-0 grid place-items-center">
@@ -293,7 +325,7 @@ function BlogDetailPage() {
 
               <div className="px-1 pt-2 pb-1">
                 <p className="text-[13px] text-neutral-black truncate">
-                  {blog.title}
+                  {getLocalizedText(blog.title, language)}
                 </p>
                 <div className="mt-1 flex items-center justify-between text-[11px] text-[#8a8a8a]">
                   <div className="flex items-center gap-1.5">
