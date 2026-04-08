@@ -12,6 +12,10 @@ const navLinks = [
   { to: "/psychologist", label: { th: "นักจิตวิทยา", en: "Psychologists" } },
   { to: "/activity", label: { th: "กิจกรรม", en: "Activities" } },
   { to: "/blog", label: { th: "บทความ", en: "Blog" } },
+  {
+    href: "https://psycho-scope.com",
+    label: { th: "Psycho-scope", en: "Psycho-scope" },
+  },
   { to: "/about", label: { th: "เกี่ยวกับเรา", en: "About Us" } },
 ] as const;
 
@@ -151,13 +155,25 @@ const Footer = () => {
           <div className="flex flex-col gap-6 text-neutral-black s:grid s:grid-cols-2 s:justify-items-center s:gap-x-16 s:gap-y-0 m:contents">
             <div className="flex flex-col gap-4 s:gap-8 m:gap-4">
               {navLinks.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  className="rf-body transition-colors hover:text-neutral-black text-left"
-                >
-                  {t(item.label)}
-                </Link>
+                "to" in item ? (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    className="rf-body transition-colors hover:text-neutral-black text-left"
+                  >
+                    {t(item.label)}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rf-body transition-colors hover:text-neutral-black text-left"
+                  >
+                    {t(item.label)}
+                  </a>
+                )
               ))}
             </div>
 

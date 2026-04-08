@@ -29,6 +29,10 @@ const navItems = [
   },
   { to: "/activity", label: { th: "กิจกรรม", en: "Activities" }, end: false },
   { to: "/blog", label: { th: "บทความ", en: "Blog" }, end: false },
+  {
+    href: "https://psycho-scope.com",
+    label: { th: "Psycho-scope", en: "Psycho-scope" },
+  },
   { to: "/about", label: { th: "เกี่ยวกับเรา", en: "About Us" }, end: false },
 ] as const;
 
@@ -97,14 +101,26 @@ const Nav = () => {
 
       <div className="hidden m:flex flex-1 items-center justify-center gap-5 text-base">
         {navItems.map((item) => (
-          <NavLink
-            key={item.to}
-            to={item.to}
-            end={item.end}
-            className={linkClassName}
-          >
-            {t(item.label)}
-          </NavLink>
+          "to" in item ? (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.end}
+              className={linkClassName}
+            >
+              {t(item.label)}
+            </NavLink>
+          ) : (
+            <a
+              key={item.href}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors duration-200 px-4 py-2 text-neutral-grey font-normal hover:text-neutral-black"
+            >
+              {t(item.label)}
+            </a>
+          )
         ))}
       </div>
 
@@ -200,15 +216,28 @@ const Nav = () => {
 
             <div className="mt-8 flex flex-1 flex-col gap-2">
               {navItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.end}
-                  className={mobileLinkClassName}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t(item.label)}
-                </NavLink>
+                "to" in item ? (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    end={item.end}
+                    className={mobileLinkClassName}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {t(item.label)}
+                  </NavLink>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="w-full rounded-2xl px-5 py-4 text-left text-lg transition-colors duration-200 text-neutral-grey font-normal hover:bg-[#F9F5F1] hover:text-neutral-black"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {t(item.label)}
+                  </a>
+                )
               ))}
             </div>
 
