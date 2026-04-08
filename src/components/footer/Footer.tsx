@@ -16,8 +16,14 @@ const navLinks = [
 ] as const;
 
 const legalLinks = [
-  { to: "/term-condition", label: { th: "ข้อกำหนดและเงื่อนไข", en: "Terms and Conditions" } },
-  { to: "/policy", label: { th: "นโยบายความเป็นส่วนตัว", en: "Privacy Policy" } },
+  {
+    to: "/term-condition",
+    label: { th: "ข้อกำหนดและเงื่อนไข", en: "Terms and Conditions" },
+  },
+  {
+    to: "/policy",
+    label: { th: "นโยบายความเป็นส่วนตัว", en: "Privacy Policy" },
+  },
 ] as const;
 
 const Footer = () => {
@@ -25,7 +31,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="relative w-full overflow-hidden px-6 py-12 text-neutral-black s:px-8 m:px-10 l:px-12"
+      className="relative w-full overflow-hidden px-6 py-12 text-neutral-black s:px-8 m:px-10 l:px-12 z-0"
       style={{
         background: "linear-gradient(180deg, #E5DACF 89.59%, #C7A491 166.54%)",
       }}
