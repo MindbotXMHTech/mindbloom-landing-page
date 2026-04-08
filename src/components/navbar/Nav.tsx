@@ -29,6 +29,7 @@ const navItems = [
 
 const Nav = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -61,11 +62,24 @@ const Nav = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 12);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div
-      className={`fixed top-0 left-0 w-full px-6 py-5 flex items-center justify-between ${
-        isMobileMenuOpen ? "z-9998" : "z-50"
-      }`}
+      className={`fixed top-0 left-0 w-full px-6 py-5 flex items-center justify-between transition-colors duration-300 ${
+        isScrolled && !isMobileMenuOpen ? " backdrop-blur-md" : ""
+      } ${isMobileMenuOpen ? "z-9998" : "z-50"}`}
     >
       <img
         src={svgs.logoMindbloom}
