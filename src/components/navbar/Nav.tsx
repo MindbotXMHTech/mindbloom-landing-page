@@ -85,7 +85,7 @@ const Nav = () => {
     <div
       className={`fixed top-0 left-0 w-full px-6 py-5 flex items-center justify-between transition-colors duration-300 ${
         isScrolled && !isMobileMenuOpen ? " backdrop-blur-md" : ""
-      } ${isMobileMenuOpen ? "z-9998" : "z-50"}`}
+      } ${isMobileMenuOpen ? "z-[9998]" : "z-50"}`}
     >
       <img
         src={svgs.logoMindbloom}
@@ -166,7 +166,7 @@ const Nav = () => {
       </button>
 
       {isMobileMenuOpen && (
-        <div className="m:hidden fixed inset-0 z-9999 bg-[rgba(34,27,20,0.24)] backdrop-blur-sm px-6 py-6">
+        <div className="m:hidden fixed inset-0 z-[9999] bg-[rgba(34,27,20,0.24)] backdrop-blur-sm px-6 py-6">
           <div className="ml-auto flex h-full w-full max-w-90 flex-col rounded-4xl bg-white p-6 shadow-[0_20px_60px_rgba(0,0,0,0.18)]">
             <div className="flex items-center justify-between">
               <img
