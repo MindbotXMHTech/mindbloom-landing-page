@@ -139,47 +139,62 @@ const Nav = () => {
         </button>
       </div>
 
-      <button
-        type="button"
-        aria-label={
-          isMobileMenuOpen
-            ? t({ th: "ปิดเมนู", en: "Close menu" })
-            : t({ th: "เปิดเมนู", en: "Open menu" })
-        }
-        aria-expanded={isMobileMenuOpen}
-        onClick={() => setIsMobileMenuOpen((open) => !open)}
-        className="m:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5DACF] bg-white text-neutral-black shadow-sm transition-colors hover:bg-[#F9F5F1]"
-      >
-        {isMobileMenuOpen ? (
-          <svg
-            viewBox="0 0 24 24"
-            className="h-5 w-5"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M6 6L18 18M18 6L6 18"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-          </svg>
-        ) : (
-          <svg
-            viewBox="0 0 24 24"
-            className="h-5 w-5"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M4 7H20M4 12H20M4 17H20"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-            />
-          </svg>
-        )}
-      </button>
+      <div className="m:hidden flex items-center gap-3">
+        <button
+          type="button"
+          onClick={toggleLanguage}
+          aria-label={
+            language === "th"
+              ? "Switch website language to English"
+              : "เปลี่ยนภาษาเว็บไซต์เป็นภาษาไทย"
+          }
+          className="inline-flex items-center rounded-full border border-[#E5DACF] bg-white px-3 py-2 text-sm font-semibold text-neutral-black shadow-sm transition-colors hover:bg-[#F9F5F1]"
+        >
+          {language === "th" ? "EN" : "TH"}
+        </button>
+
+        <button
+          type="button"
+          aria-label={
+            isMobileMenuOpen
+              ? t({ th: "ปิดเมนู", en: "Close menu" })
+              : t({ th: "เปิดเมนู", en: "Open menu" })
+          }
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#E5DACF] bg-white text-neutral-black shadow-sm transition-colors hover:bg-[#F9F5F1]"
+        >
+          {isMobileMenuOpen ? (
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 6L18 18M18 6L6 18"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 7H20M4 12H20M4 17H20"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+              />
+            </svg>
+          )}
+        </button>
+      </div>
 
       {isMobileMenuOpen && (
         <div className="m:hidden fixed inset-0 z-[9999] bg-[rgba(34,27,20,0.24)] backdrop-blur-sm px-6 py-6">
@@ -240,17 +255,6 @@ const Nav = () => {
                 )
               ))}
             </div>
-
-            <button
-              type="button"
-              onClick={toggleLanguage}
-              className="mt-6 inline-flex items-center justify-center rounded-full border border-[#E5DACF] px-5 py-3 text-base font-semibold text-neutral-black transition-colors hover:bg-[#F9F5F1]"
-            >
-              {t({
-                th: `ภาษา: ${language === "th" ? "ไทย" : "English"}`,
-                en: `Language: ${language === "th" ? "Thai" : "English"}`,
-              })}
-            </button>
 
             {/* <p className="mt-6 px-5 text-sm text-neutral-grey">
               {pathname === "/"
