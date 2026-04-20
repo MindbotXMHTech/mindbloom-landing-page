@@ -1,13 +1,13 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
 import Snackbar from "@mui/material/Snackbar";
-import { BlogList } from "../../constants/blogData";
 import { svgs } from "../../constants/svgs";
 import { useLanguage } from "../../i18n/LanguageProvider";
 import { getLocalizedText } from "../../i18n/utils";
+import { loadPublicBlogPost, type PublicBlogPost } from "../../lib/blogContent";
 
 const PUBLIC_SITE_URL = (
   import.meta.env.VITE_PUBLIC_SITE_URL || "https://www.mindbloom-wellness.com"
@@ -52,10 +52,39 @@ function getYouTubeVideoId(input?: string) {
 function BlogDetailPage() {
   const { id } = useParams();
   const { language, t } = useLanguage();
-  const blog = useMemo(() => BlogList.find((item) => item.id === id), [id]);
+  const [blog, setBlog] = useState<PublicBlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  useEffect(() => {
+    let active = true;
+
+    const loadBlog = async () => {
+      setLoading(true);
+      const nextBlog = await loadPublicBlogPost(id ?? "");
+
+      if (active) {
+        setBlog(nextBlog);
+        setLoading(false);
+      }
+    };
+
+    void loadBlog();
+
+    return () => {
+      active = false;
+    };
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
+        <h1 className="rf-h4 text-center">Loading...</h1>
+      </div>
+    );
+  }
 
   if (!blog) {
     return (

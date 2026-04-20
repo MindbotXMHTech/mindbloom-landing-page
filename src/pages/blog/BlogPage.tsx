@@ -1,9 +1,9 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BlogList } from "../../constants/blogData";
 import { useLanguage } from "../../i18n/LanguageProvider";
 import { getLocalizedText } from "../../i18n/utils";
+import { loadPublicBlogPosts, type PublicBlogPost } from "../../lib/blogContent";
 
 type BlogCardProps = {
   id: string;
@@ -31,6 +31,8 @@ const BlogCard = ({ title, image, id }: BlogCardProps) => {
 
 function BlogPage() {
   const { language, t } = useLanguage();
+  const [posts, setPosts] = useState<PublicBlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [sortOpen, setSortOpen] = useState(false);
@@ -38,14 +40,34 @@ function BlogPage() {
   const [mobileIndex, setMobileIndex] = useState(0);
   const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    let active = true;
+
+    const loadPosts = async () => {
+      setLoading(true);
+      const nextPosts = await loadPublicBlogPosts();
+
+      if (active) {
+        setPosts(nextPosts);
+        setLoading(false);
+      }
+    };
+
+    void loadPosts();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const filtered = useMemo(() => {
-    const list = BlogList.filter((item) =>
+    const list = posts.filter((item) =>
       getLocalizedText(item.title, language)
         .toLowerCase()
         .includes(searchText.toLowerCase()),
     );
     return sortOrder === "newest" ? [...list].reverse() : list;
-  }, [language, searchText, sortOrder]);
+  }, [language, posts, searchText, sortOrder]);
 
   const total = filtered.length;
   const desktopVisibleCount = 3;
@@ -212,7 +234,7 @@ function BlogPage() {
           </div>
         </div>
 
-        {total > desktopVisibleCount && (
+        {!loading && total > desktopVisibleCount && (
           <div className="mt-4 flex items-center gap-2">
             {Array.from({ length: desktopPageCount }).map((_, index) => (
               <button
