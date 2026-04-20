@@ -50,7 +50,7 @@ function getYouTubeVideoId(input?: string) {
 }
 
 function BlogDetailPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { language, t } = useLanguage();
   const [blog, setBlog] = useState<PublicBlogPost | null>(null);
   const [loading, setLoading] = useState(true);
@@ -63,7 +63,7 @@ function BlogDetailPage() {
 
     const loadBlog = async () => {
       setLoading(true);
-      const nextBlog = await loadPublicBlogPost(id ?? "");
+      const nextBlog = await loadPublicBlogPost(slug ?? "");
 
       if (active) {
         setBlog(nextBlog);
@@ -76,7 +76,7 @@ function BlogDetailPage() {
     return () => {
       active = false;
     };
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (
@@ -103,7 +103,7 @@ function BlogDetailPage() {
     : "";
 
   const getSharePayload = () => {
-    const articlePath = `/blog/${blog.id}`;
+    const articlePath = `/blog/${blog.slug}`;
     const url =
       typeof window !== "undefined"
         ? new URL(

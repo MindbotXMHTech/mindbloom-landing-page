@@ -6,15 +6,15 @@ import { getLocalizedText } from "../../i18n/utils";
 import { loadPublicBlogPosts, type PublicBlogPost } from "../../lib/blogContent";
 
 type BlogCardProps = {
-  id: string;
+  slug: string;
   title: string;
   image: string;
 };
 
-const BlogCard = ({ title, image, id }: BlogCardProps) => {
+const BlogCard = ({ title, image, slug }: BlogCardProps) => {
   return (
     <Link
-      to={`/blog/${id}`}
+      to={`/blog/${slug}`}
       className="group flex w-full h-full flex-col gap-4 p-4 rounded-2xl items-center"
     >
       <div className="w-full aspect-square overflow-hidden rounded-xl">
@@ -226,7 +226,7 @@ function BlogPage() {
                 )}
                 <BlogCard
                   title={getLocalizedText(item.title, language)}
-                  id={item.id}
+                  slug={item.slug}
                   image={item.image}
                 />
               </div>
@@ -277,7 +277,7 @@ function BlogPage() {
               <div key={item.id} className="w-full shrink-0 snap-center">
                 <BlogCard
                   title={getLocalizedText(item.title, language)}
-                  id={item.id}
+                  slug={item.slug}
                   image={item.image}
                 />
               </div>

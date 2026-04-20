@@ -22,7 +22,7 @@ function AppRoutes() {
           <Route path="activity" element={<ActivityPage />} />
           <Route path="activity/:id" element={<ActivityDetailPage />} />
           <Route path="blog" element={<BlogPage />} />
-          <Route path="blog/:id" element={<BlogDetailPage />} />
+          <Route path="blog/:slug" element={<BlogDetailPage />} />
           <Route path="service" element={<ServicePage />} />
           <Route path="service/workshop" element={<Workshop />} />
           <Route path="psychologist" element={<PhycologistPage />} />
