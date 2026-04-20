@@ -1,4 +1,3 @@
-import { BlogList as StaticBlogList } from "../constants/blogData";
 import type { LocalizedText } from "../i18n/types";
 
 export type PublicBlogPost = {
@@ -114,17 +113,10 @@ async function fetchPublishedBlogRows() {
 export async function loadPublicBlogPosts() {
   try {
     const rows = await fetchPublishedBlogRows();
-    if (rows.length > 0) {
-      return rows.map(toPublicBlogPost);
-    }
+    return rows.map(toPublicBlogPost);
   } catch {
-    // Fall back to the hard-coded content below.
+    return [];
   }
-
-  return StaticBlogList.map((item) => ({
-    ...item,
-    slug: item.id,
-  }));
 }
 
 export async function loadPublicBlogPost(id: string) {
@@ -135,16 +127,7 @@ export async function loadPublicBlogPost(id: string) {
       return toPublicBlogPost(found);
     }
   } catch {
-    // Fall back to the hard-coded content below.
-  }
-
-  const staticPost = StaticBlogList.find((item) => item.id === id);
-  if (!staticPost) {
     return null;
   }
-
-  return {
-    ...staticPost,
-    slug: staticPost.id,
-  };
+  return null;
 }
