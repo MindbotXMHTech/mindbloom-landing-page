@@ -89,7 +89,20 @@ function BlogDetailPage() {
   if (!blog) {
     return (
       <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
-        <h1 className="rf-h4 text-center">{t({ th: "ไม่พบข้อมูล", en: "No data" })}</h1>
+        <div className="panel p-8 text-center">
+          <h1 className="rf-h4">
+            {t({ th: "ยังไม่มีบทความ", en: "No article yet" })}
+          </h1>
+          <p className="rf-small text-neutral-grey mt-2">
+            {t({
+              th: "ตอนนี้ยังไม่มีบทความจาก Supabase หรือบทความที่เปิดอยู่นี้อาจยังไม่ถูกเผยแพร่",
+              en: "There is no published article from Supabase for this page yet.",
+            })}
+          </p>
+          <Link to="/blog" className="button secondary mt-4">
+            {t({ th: "กลับไปหน้าบทความ", en: "Back to blog" })}
+          </Link>
+        </div>
       </div>
     );
   }
