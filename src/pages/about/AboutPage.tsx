@@ -36,7 +36,7 @@ function AboutPage() {
   const { t } = useLanguage();
 
   return (
-    <div className="lg:mt-14.75 w-full max-w-245 px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
+    <div className="mt-14.75 w-full max-w-245 px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
       <motion.section
         initial={{ opacity: 0, y: 14 }}
         whileInView={{ opacity: 1, y: 0 }}
