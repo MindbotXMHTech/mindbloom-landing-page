@@ -1,20 +1,20 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { BlogList } from "../../constants/blogData";
 import { useLanguage } from "../../i18n/LanguageProvider";
 import { getLocalizedText } from "../../i18n/utils";
+import { loadPublicBlogPosts, type PublicBlogPost } from "../../lib/blogContent";
 
 type BlogCardProps = {
-  id: string;
+  slug: string;
   title: string;
   image: string;
 };
 
-const BlogCard = ({ title, image, id }: BlogCardProps) => {
+const BlogCard = ({ title, image, slug }: BlogCardProps) => {
   return (
     <Link
-      to={`/blog/${id}`}
+      to={`/blog/${slug}`}
       className="group flex w-full h-full flex-col gap-4 p-4 rounded-2xl items-center"
     >
       <div className="w-full aspect-square overflow-hidden rounded-xl">
@@ -31,6 +31,8 @@ const BlogCard = ({ title, image, id }: BlogCardProps) => {
 
 function BlogPage() {
   const { language, t } = useLanguage();
+  const [posts, setPosts] = useState<PublicBlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [sortOpen, setSortOpen] = useState(false);
@@ -38,20 +40,41 @@ function BlogPage() {
   const [mobileIndex, setMobileIndex] = useState(0);
   const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
 
+  useEffect(() => {
+    let active = true;
+
+    const loadPosts = async () => {
+      setLoading(true);
+      const nextPosts = await loadPublicBlogPosts();
+
+      if (active) {
+        setPosts(nextPosts);
+        setLoading(false);
+      }
+    };
+
+    void loadPosts();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const filtered = useMemo(() => {
-    const list = BlogList.filter((item) =>
+    const list = posts.filter((item) =>
       getLocalizedText(item.title, language)
         .toLowerCase()
         .includes(searchText.toLowerCase()),
     );
     return sortOrder === "newest" ? [...list].reverse() : list;
-  }, [language, searchText, sortOrder]);
+  }, [language, posts, searchText, sortOrder]);
 
   const total = filtered.length;
   const desktopVisibleCount = 3;
   const desktopCardWidth = 293;
   const desktopMaxIndex = Math.max(total - desktopVisibleCount, 0);
   const desktopPageCount = desktopMaxIndex + 1;
+  const hasSearch = searchText.trim().length > 0;
 
   const handleSearch = (value: string) => {
     setSearchText(value);
@@ -190,29 +213,59 @@ function BlogPage() {
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
         className="hidden lg:flex w-full mt-9.5 flex-col items-center"
       >
-        <div className="w-full max-w-219.75 overflow-hidden">
-          <div
-            className="flex transition-transform duration-500 ease-out"
-            style={{
-              transform: `translateX(-${desktopIndex * desktopCardWidth}px)`,
-            }}
-          >
-            {filtered.map((item, index) => (
-              <div key={item.id} className="relative w-73.25 shrink-0">
-                {index < filtered.length - 1 && (
-                  <div className="pointer-events-none absolute right-0 top-4 bottom-4 w-px bg-[#e4d8cd]" />
-                )}
-                <BlogCard
-                  title={getLocalizedText(item.title, language)}
-                  id={item.id}
-                  image={item.image}
-                />
-              </div>
-            ))}
+        {!loading && total === 0 ? (
+          <div className="panel w-full max-w-219.75 p-8 text-center">
+            <h3 className="rf-h5">
+              {hasSearch
+                ? t({ th: "ไม่พบบทความที่ค้นหา", en: "No matching articles" })
+                : t({ th: "ยังไม่มีบทความ", en: "No articles yet" })}
+            </h3>
+            <p className="rf-small text-neutral-grey mt-2">
+              {hasSearch
+                ? t({
+                    th: "ลองล้างคำค้นหาหรือกลับมาตรวจอีกครั้งภายหลัง",
+                    en: "Try clearing the search or check again later.",
+                  })
+                : t({
+                    th: "ระบบกำลังรอข้อมูลบทความจาก Supabase",
+                    en: "The blog is waiting for content from Supabase.",
+                  })}
+            </p>
+            {hasSearch ? (
+              <button
+                type="button"
+                className="button secondary mt-4"
+                onClick={() => handleSearch("")}
+              >
+                {t({ th: "ล้างคำค้นหา", en: "Clear search" })}
+              </button>
+            ) : null}
           </div>
-        </div>
+        ) : (
+          <div className="w-full max-w-219.75 overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                transform: `translateX(-${desktopIndex * desktopCardWidth}px)`,
+              }}
+            >
+              {filtered.map((item, index) => (
+                <div key={item.id} className="relative w-73.25 shrink-0">
+                  {index < filtered.length - 1 && (
+                    <div className="pointer-events-none absolute right-0 top-4 bottom-4 w-px bg-[#e4d8cd]" />
+                  )}
+                  <BlogCard
+                    title={getLocalizedText(item.title, language)}
+                    slug={item.slug}
+                    image={item.image}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
-        {total > desktopVisibleCount && (
+        {!loading && total > desktopVisibleCount ? (
           <div className="mt-4 flex items-center gap-2">
             {Array.from({ length: desktopPageCount }).map((_, index) => (
               <button
@@ -231,7 +284,7 @@ function BlogPage() {
               />
             ))}
           </div>
-        )}
+        ) : null}
       </motion.div>
 
       <motion.div
@@ -250,20 +303,50 @@ function BlogPage() {
           onScroll={handleMobileScroll}
           className="w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          <div className="flex">
-            {filtered.map((item) => (
-              <div key={item.id} className="w-full shrink-0 snap-center">
-                <BlogCard
-                  title={getLocalizedText(item.title, language)}
-                  id={item.id}
-                  image={item.image}
-                />
-              </div>
-            ))}
-          </div>
+          {!loading && total === 0 ? (
+            <div className="panel w-full max-w-219.75 p-8 text-center">
+              <h3 className="rf-h5">
+                {hasSearch
+                  ? t({ th: "ไม่พบบทความที่ค้นหา", en: "No matching articles" })
+                  : t({ th: "ยังไม่มีบทความ", en: "No articles yet" })}
+              </h3>
+              <p className="rf-small text-neutral-grey mt-2">
+                {hasSearch
+                  ? t({
+                      th: "ลองล้างคำค้นหาหรือกลับมาตรวจอีกครั้งภายหลัง",
+                      en: "Try clearing the search or check again later.",
+                    })
+                  : t({
+                      th: "ระบบกำลังรอข้อมูลบทความจาก Supabase",
+                      en: "The blog is waiting for content from Supabase.",
+                    })}
+              </p>
+              {hasSearch ? (
+                <button
+                  type="button"
+                  className="button secondary mt-4"
+                  onClick={() => handleSearch("")}
+                >
+                  {t({ th: "ล้างคำค้นหา", en: "Clear search" })}
+                </button>
+              ) : null}
+            </div>
+          ) : (
+            <div className="flex">
+              {filtered.map((item) => (
+                <div key={item.id} className="w-full shrink-0 snap-center">
+                  <BlogCard
+                    title={getLocalizedText(item.title, language)}
+                    slug={item.slug}
+                    image={item.image}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {total > 1 && (
+        {total > 1 ? (
           <div className="mt-3 flex items-center gap-2">
             {filtered.map((item, index) => (
               <button
@@ -282,7 +365,7 @@ function BlogPage() {
               />
             ))}
           </div>
-        )}
+        ) : null}
       </motion.div>
     </div>
   );

@@ -473,7 +473,7 @@ function ServicePage() {
   };
 
   return (
-    <div className="lg:mt-14.75 w-full max-w-5xl px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
+    <div className="mt-14.75 w-full max-w-245 px-4 s:px-6 m:px-8 pb-24 flex flex-col items-center">
       <motion.section className="mb-9.5">
         <div className="mt-8 grid w-full max-w-2xl grid-cols-1 gap-4 m:grid-cols-2">
           {ourServiceOptions.map((service, index) => (

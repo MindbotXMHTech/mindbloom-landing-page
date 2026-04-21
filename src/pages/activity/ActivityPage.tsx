@@ -10,7 +10,7 @@ function ActivityPage() {
   const { language, t } = useLanguage();
 
   return (
-    <div className="mb-14.75 lg:my-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 flex flex-col items-center">
+    <div className="mt-14.75 mb-24 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 flex flex-col items-center">
       <motion.h4
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}

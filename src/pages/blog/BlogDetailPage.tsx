@@ -1,13 +1,13 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
 import PlayCircleFilledRoundedIcon from "@mui/icons-material/PlayCircleFilledRounded";
 import Snackbar from "@mui/material/Snackbar";
-import { BlogList } from "../../constants/blogData";
 import { svgs } from "../../constants/svgs";
 import { useLanguage } from "../../i18n/LanguageProvider";
 import { getLocalizedText } from "../../i18n/utils";
+import { loadPublicBlogPost, type PublicBlogPost } from "../../lib/blogContent";
 
 const PUBLIC_SITE_URL = (
   import.meta.env.VITE_PUBLIC_SITE_URL || "https://www.mindbloom-wellness.com"
@@ -50,17 +50,59 @@ function getYouTubeVideoId(input?: string) {
 }
 
 function BlogDetailPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { language, t } = useLanguage();
-  const blog = useMemo(() => BlogList.find((item) => item.id === id), [id]);
+  const [blog, setBlog] = useState<PublicBlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  useEffect(() => {
+    let active = true;
+
+    const loadBlog = async () => {
+      setLoading(true);
+      const nextBlog = await loadPublicBlogPost(slug ?? "");
+
+      if (active) {
+        setBlog(nextBlog);
+        setLoading(false);
+      }
+    };
+
+    void loadBlog();
+
+    return () => {
+      active = false;
+    };
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
+        <h1 className="rf-h4 text-center">Loading...</h1>
+      </div>
+    );
+  }
+
   if (!blog) {
     return (
       <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
-        <h1 className="rf-h4 text-center">{t({ th: "ไม่พบข้อมูล", en: "No data" })}</h1>
+        <div className="panel p-8 text-center">
+          <h1 className="rf-h4">
+            {t({ th: "ยังไม่มีบทความ", en: "No article yet" })}
+          </h1>
+          <p className="rf-small text-neutral-grey mt-2">
+            {t({
+              th: "ตอนนี้ยังไม่มีบทความจาก Supabase หรือบทความที่เปิดอยู่นี้อาจยังไม่ถูกเผยแพร่",
+              en: "There is no published article from Supabase for this page yet.",
+            })}
+          </p>
+          <Link to="/blog" className="button secondary mt-4">
+            {t({ th: "กลับไปหน้าบทความ", en: "Back to blog" })}
+          </Link>
+        </div>
       </div>
     );
   }
@@ -74,7 +116,7 @@ function BlogDetailPage() {
     : "";
 
   const getSharePayload = () => {
-    const articlePath = `/blog/${blog.id}`;
+    const articlePath = `/blog/${blog.slug}`;
     const url =
       typeof window !== "undefined"
         ? new URL(
@@ -161,7 +203,7 @@ function BlogDetailPage() {
   };
 
   return (
-    <div className="lg:mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
+    <div className="mt-14.75 w-full max-w-216 px-4 sm:px-6 md:px-8 mx-auto mb-20 flex flex-col items-center">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
