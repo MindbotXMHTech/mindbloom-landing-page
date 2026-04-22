@@ -250,7 +250,7 @@ function PhycologistPage() {
                 delay: index * 0.1,
                 ease: "easeOut",
               }}
-              className="relative flex flex-col overflow-hidden rounded-3xl gap-3 max-w-124.75 h-134.75 p-4 border border-[#C6D5C4] bg-white"
+              className="relative flex h-auto min-h-[34.75rem] flex-col gap-3 overflow-hidden rounded-3xl border border-[#C6D5C4] bg-white p-4 max-w-124.75"
             >
               <img
                 src={images.psychoBg}
@@ -338,7 +338,7 @@ function PhycologistPage() {
                   </div>
                 </div>
 
-                <p className="rf-small break-words pb-1 text-center font-normal leading-snug text-[#4D738F]">
+                <p className="rf-small break-words pb-2 text-center font-normal leading-snug text-[#4D738F]">
                   "{getLocalizedText(psychologist.quote, language)}"
                 </p>
               </div>

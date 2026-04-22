@@ -154,7 +154,9 @@ function resolvePhotoUrl(row: PsychologistRow) {
     return row.photo_url;
   }
 
-  const fallback = fallbackPsychologists.find((psychologist) => psychologist.id === row.id);
+  const fallback = fallbackPsychologists.find(
+    (psychologist) => psychologist.sortOrder === row.sort_order,
+  );
   if (fallback) {
     return fallback.photo;
   }
