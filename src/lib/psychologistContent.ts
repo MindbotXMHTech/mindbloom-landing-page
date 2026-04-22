@@ -128,6 +128,13 @@ export const fallbackPsychologists: PublicPsychologist[] = [
   },
 ];
 
+const fallbackPsychologistPhotos: Record<string, string> = {
+  "panida-yomabut": images.psycho1,
+  "anuttra-ranee": images.psycho2,
+  "suchitraphak-srisupanrat": images.psycho3,
+  "jitti-kunkamthonwong": images.psycho4,
+};
+
 function hasSupabaseConfig() {
   return SUPABASE_URL.length > 0 && SUPABASE_ANON_KEY.length > 0;
 }
@@ -154,11 +161,9 @@ function resolvePhotoUrl(row: PsychologistRow) {
     return row.photo_url;
   }
 
-  const fallback = fallbackPsychologists.find(
-    (psychologist) => psychologist.sortOrder === row.sort_order,
-  );
-  if (fallback) {
-    return fallback.photo;
+  const fallbackPhoto = fallbackPsychologistPhotos[row.slug];
+  if (fallbackPhoto) {
+    return fallbackPhoto;
   }
 
   return row.photo_url;
