@@ -1,103 +1,47 @@
-import { useMemo, useState } from "react";
-import { images } from "../../constants/images";
+import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "../../i18n/LanguageProvider";
-import type { LocalizedText } from "../../i18n/types";
+import { images } from "../../constants/images";
 import { getLocalizedText } from "../../i18n/utils";
-
-type TopicKey =
-  | "relationships"
-  | "adjustment"
-  | "emotions"
-  | "behavior"
-  | "thinking"
-  | "personality"
-  | "stress"
-  | "depression"
-  | "work";
-
-const topicLabels: Record<TopicKey, LocalizedText> = {
-  relationships: { th: "ความสัมพันธ์", en: "Relationships" },
-  adjustment: { th: "การปรับตัว", en: "Adjustment" },
-  emotions: { th: "อารมณ์", en: "Emotions" },
-  behavior: { th: "พฤติกรรม", en: "Behavior" },
-  thinking: { th: "ปัญหาความคิด", en: "Thought patterns" },
-  personality: { th: "บุคลิกภาพ", en: "Personality" },
-  stress: { th: "ความเครียด", en: "Stress" },
-  depression: { th: "ซึมเศร้า", en: "Depression" },
-  work: { th: "การงาน", en: "Work" },
-};
-
-const psychologists = [
-  {
-    id: 1,
-    photo: images.psycho1,
-    name: { th: "พณิดา โยมะบุตร", en: "Panida Yomabut" },
-    nickname: { th: "ดาว", en: "Dao" },
-    license: "จค. 462",
-    approach: { th: "จิตวิทยาแบบผสมผสาน", en: "Integrative Therapy" },
-    value: { th: "ความสงบภายในใจ", en: "Peace of Mind" },
-    topics: ["relationships", "adjustment", "emotions", "behavior", "thinking", "personality"] as TopicKey[],
-    quote: {
-      th: "เราทุกคนมีศักยภาพในการก้าวข้าม ผ่านช่วงเวลายากลำบากได้มากกว่าที่เราคิด",
-      en: "We all have more potential to move through difficult times than we often realize.",
-    },
-  },
-  {
-    id: 2,
-    photo: images.psycho2,
-    name: { th: "อนุตตรา รานี", en: "Anuttra Ranee" },
-    nickname: { th: "ชีเกนส์", en: "Chigains" },
-    license: "จค. 1385",
-    approach: { th: "Satir Model และ CBT", en: "Satir Model & CBT" },
-    value: { th: "พื้นที่ปลอดภัยทางอารมณ์", en: "Emotional Safe Space" },
-    topics: ["relationships", "adjustment", "emotions", "stress", "depression", "work"] as TopicKey[],
-    quote: {
-      th: "เราทุกคนมีศักยภาพในการก้าวข้าม ผ่านช่วงเวลายากลำบากได้มากกว่าที่เราคิด",
-      en: "We all have more potential to move through difficult times than we often realize.",
-    },
-  },
-  {
-    id: 3,
-    photo: images.psycho3,
-    name: { th: "สุจิตรภัค ศรีสุพรรณราช", en: "Suchitraphak Srisupanrat" },
-    nickname: { th: "กานพลู", en: "Karnplu" },
-    license: "จค. 1400",
-    approach: { th: "การบำบัดแบบประคับประคอง", en: "Supportive Psychotherapy" },
-    value: { th: "คุณค่าและอัตลักษณ์ของผู้รับบริการ", en: "Case's Value and Identity" },
-    topics: ["relationships", "adjustment", "emotions", "stress", "work"] as TopicKey[],
-    quote: {
-      th: "ดอกไม้ทุกดอกมีความสวยงาม เพียงแค่รอเวลาและสิ่งแวดล้อมที่เหมาะสมในการผลิบาน",
-      en: "Every flower has its own beauty, waiting for the right time and environment to bloom.",
-    },
-  },
-  {
-    id: 4,
-    photo: images.psycho4,
-    name: { th: "จิตติ กันกำธรวงศ์", en: "Jitti Kunkamthonwong" },
-    nickname: { th: "ฉิ่น", en: "Chin" },
-    license: "จค. 1562",
-    approach: { th: "แนวทางมนุษยนิยม", en: "Humanistic Approach" },
-    value: { th: "ความมุ่งมั่น", en: "Determination" },
-    topics: ["relationships", "adjustment", "emotions", "stress", "depression", "work"] as TopicKey[],
-    quote: {
-      th: "ขอแค่เราไม่ยอมแพ้ เราก็ยังลุกขึ้นมาลองใหม่ได้เสมอ",
-      en: "As long as we do not give up, we can always stand up and try again.",
-    },
-  },
-] as const;
-
-const allTopics = Array.from(
-  new Set(psychologists.flatMap((psychologist) => psychologist.topics)),
-);
+import {
+  fallbackPsychologists,
+  loadPublicPsychologists,
+  psychologistTopicLabels,
+  type PublicPsychologist,
+  type PsychologistTopicKey,
+} from "../../lib/psychologistContent";
 
 function PhycologistPage() {
   const { language, t } = useLanguage();
   const [searchText, setSearchText] = useState("");
-  const [selectedTopics, setSelectedTopics] = useState<TopicKey[]>([]);
+  const [selectedTopics, setSelectedTopics] = useState<PsychologistTopicKey[]>([]);
   const [filterOpen, setFilterOpen] = useState(false);
+  const [psychologists, setPsychologists] = useState<PublicPsychologist[]>(fallbackPsychologists);
 
-  const toggleTopic = (topic: TopicKey) => {
+  useEffect(() => {
+    let active = true;
+
+    const loadPsychologists = async () => {
+      const nextPsychologists = await loadPublicPsychologists();
+
+      if (active) {
+        setPsychologists(nextPsychologists);
+      }
+    };
+
+    void loadPsychologists();
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const allTopics = useMemo(
+    () => Array.from(new Set(psychologists.flatMap((psychologist) => psychologist.topics))),
+    [psychologists],
+  );
+
+  const toggleTopic = (topic: PsychologistTopicKey) => {
     setSelectedTopics((prev) =>
       prev.includes(topic) ? prev.filter((item) => item !== topic) : [...prev, topic],
     );
@@ -115,7 +59,7 @@ function PhycologistPage() {
 
       return matchesSearch && matchesTopics;
     });
-  }, [language, searchText, selectedTopics]);
+  }, [language, psychologists, searchText, selectedTopics]);
 
   return (
     <div className="mb-14.75 md:my-14.75 w-full l:max-w-298 px-4 sm:px-6 md:px-8 flex flex-col items-center">
@@ -135,7 +79,7 @@ function PhycologistPage() {
           transition={{ duration: 0.5, ease: "easeOut" as const }}
           className="bg-main-pink px-6 py-4 flex justify-center items-center rounded-2xl w-full max-w-103.25 shadow-lg self-start"
         >
-          <span className="rf-body text-white text-center">
+          <span className="rf-body text-white text-center whitespace-pre-line">
             {t({
               th: "พร้อมจะรับฟังคุณด้วยความเข้าใจ \nและอยู่เคียงข้างคุณในทุกการเปลี่ยนแปลง",
               en: "Ready to listen with understanding\nand stay beside you through every change",
@@ -202,13 +146,7 @@ function PhycologistPage() {
                 viewBox="0 0 24 24"
                 fill="none"
               >
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="7"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                />
+                <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.8" />
                 <path
                   d="M20 20L16.5 16.5"
                   stroke="currentColor"
@@ -263,11 +201,7 @@ function PhycologistPage() {
                 className="border border-[#E5DACF] rounded-2xl bg-white p-4 flex flex-col gap-3"
               >
                 <p className="rf-small font-semibold text-neutral-grey flex items-center gap-2">
-                  <svg
-                    className="w-3 h-3"
-                    viewBox="0 0 10 6"
-                    fill="currentColor"
-                  >
+                  <svg className="w-3 h-3" viewBox="0 0 10 6" fill="currentColor">
                     <path d="M0 6L5 0L10 6H0Z" />
                   </svg>
                   {t({ th: "หัวข้อปรึกษา", en: "Topics" })}
@@ -295,7 +229,7 @@ function PhycologistPage() {
                           : "border border-[#E5DACF] text-neutral-grey"
                       }`}
                     >
-                      {getLocalizedText(topicLabels[topic], language)}
+                      {getLocalizedText(psychologistTopicLabels[topic], language)}
                     </button>
                   ))}
                 </div>
@@ -316,7 +250,7 @@ function PhycologistPage() {
                 delay: index * 0.1,
                 ease: "easeOut",
               }}
-              className="relative flex flex-col overflow-hidden rounded-3xl gap-3 max-w-124.75 h-134.75 p-4 border border-[#C6D5C4] bg-white"
+              className="relative flex h-auto min-h-[34.75rem] flex-col gap-3 overflow-hidden rounded-3xl border border-[#C6D5C4] bg-white p-4 max-w-124.75"
             >
               <img
                 src={images.psychoBg}
@@ -363,7 +297,9 @@ function PhycologistPage() {
                       <p className="rf-body font-bold text-main-pink">
                         {t({ th: "ใบประกอบโรคศิลปะ", en: "Professional License" })}
                       </p>
-                      <p className="rf-body text-neutral-grey">{psychologist.license}</p>
+                      <p className="rf-body text-neutral-grey">
+                        {getLocalizedText(psychologist.license, language)}
+                      </p>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 text-left">
@@ -396,13 +332,13 @@ function PhycologistPage() {
                         key={topic}
                         className="rounded-full bg-[#C6D5C4] px-3 py-1 text-[14px] text-white"
                       >
-                        {getLocalizedText(topicLabels[topic], language)}
+                        {getLocalizedText(psychologistTopicLabels[topic], language)}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <p className="rf-small break-words pb-1 text-center font-normal leading-snug text-[#4D738F]">
+                <p className="rf-small break-words pb-2 text-center font-normal leading-snug text-[#4D738F]">
                   "{getLocalizedText(psychologist.quote, language)}"
                 </p>
               </div>
