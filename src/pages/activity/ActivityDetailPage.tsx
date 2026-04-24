@@ -1,22 +1,64 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { activityData } from "../../constants/activityData";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../i18n/LanguageProvider";
 import { getLocalizedText } from "../../i18n/utils";
+import {
+  loadPublicActivity,
+  type PublicActivity,
+} from "../../lib/activityContent";
 
 function ActivityDetailPage() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { language, t } = useLanguage();
-  const activity = useMemo(
-    () => activityData.find((item) => item.id === id),
-    [id],
-  );
+  const [activity, setActivity] = useState<PublicActivity | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+
+    const loadActivity = async () => {
+      setLoading(true);
+      const nextActivity = await loadPublicActivity(slug ?? "");
+
+      if (active) {
+        setActivity(nextActivity);
+        setLoading(false);
+      }
+    };
+
+    void loadActivity();
+
+    return () => {
+      active = false;
+    };
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
+        <h1 className="rf-h4 text-center">Loading...</h1>
+      </div>
+    );
+  }
 
   if (!activity) {
     return (
       <div className="mt-14.75 w-full l:max-w-212.5 px-4 sm:px-6 md:px-8 mx-auto">
-        <h1 className="rf-h4 text-center">{t({ th: "ไม่พบข้อมูล", en: "No data" })}</h1>
+        <div className="panel p-8 text-center">
+          <h1 className="rf-h4">
+            {t({ th: "ยังไม่มีกิจกรรม", en: "No activity yet" })}
+          </h1>
+          <p className="rf-small text-neutral-grey mt-2">
+            {t({
+              th: "ตอนนี้ยังไม่มีกิจกรรมที่เผยแพร่สำหรับหน้านี้",
+              en: "There is no published activity for this page yet.",
+            })}
+          </p>
+          <Link to="/activity" className="button secondary mt-4">
+            {t({ th: "กลับไปหน้ากิจกรรม", en: "Back to activities" })}
+          </Link>
+        </div>
       </div>
     );
   }
@@ -48,12 +90,14 @@ function ActivityDetailPage() {
       >
         <div>
           <h1 className="rf-title">{getLocalizedText(activity.title, language)}</h1>
-          <p className="text-base m:text-2xl text-neutral-black font-normal">
-            {activity.text ? getLocalizedText(activity.text, language) : ""}
-          </p>
+          {activity.text ? (
+            <p className="text-base m:text-2xl text-neutral-black font-normal">
+              {getLocalizedText(activity.text, language)}
+            </p>
+          ) : null}
         </div>
 
-        <div>
+        <div className="space-y-2">
           {activity.date && (
             <p className="rf-body text-neutral-grey">
               {getLocalizedText(activity.date, language)}
