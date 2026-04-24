@@ -63,22 +63,19 @@ const Workshop = () => {
           })}
         </p>
 
-        {/* Team & Leadership */}
+        {/* Preventive & Awareness */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{
-            duration: 0.5,
-            ease: "easeOut" as const,
-          }}
+          transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
           className="flex flex-col gap-4 items-center my-8 w-full"
         >
-          <p className="text-xl font-bold">Team & Leadership</p>
+          <p className="text-xl font-bold">Preventive & Awareness</p>
           <p className="rf-body font-normal text-neutral-grey">
             {t({
-              th: "เสริมพลังทีม และพัฒนาภาวะผู้นำที่ใส่ใจ",
-              en: "Strengthen teams and nurture caring leadership",
+              th: "สร้างความตระหนักรู้ และป้องกันก่อนจะสาย",
+              en: "Build awareness and support prevention early",
             })}
           </p>
         </motion.div>
@@ -109,108 +106,6 @@ const Workshop = () => {
                 src={src}
                 alt=""
                 className="w-full aspect-square object-cover rounded-lg"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Creative work for team communication */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-          className="w-full flex flex-col gap-4 mt-8"
-        >
-          <p className="text-base font-bold">
-            Creative work for team communication
-          </p>
-          <p className="rf-body text-neutral-grey font-normal">
-            {t({
-              th: "มุ่งเน้นการทำความเข้าใจ ทั้งความเหมือนและความแตกต่างของแต่ละบุคคล เพื่อส่งเสริมการสื่อสารที่ตั้งอยู่บนความเข้าใจและความเห็นอกเห็นใจกัน",
-              en: "Focused on understanding both similarities and differences between people in order to encourage communication grounded in empathy and mutual understanding.",
-            })}
-          </p>
-          <p className="rf-body text-neutral-grey font-normal">
-            {t({
-              th: "กระบวนการที่ออกแบบอย่างสร้างสรรค์นี้ช่วยพัฒนาการสื่อสารเชิงบวกในทีม โดยกระตุ้นทั้งมิติของความคิดและอารมณ์ ภายใต้การดูแลของนักจิตวิทยาคลินิก เพื่อเสริมสร้างความเข้าใจระหว่างกัน ลดความขัดแย้ง และสร้างพลังบวกในการทำงานร่วมกันอย่างมีประสิทธิภาพและกลมกลืน",
-              en: "This creatively designed process supports more positive team communication by engaging both thinking and emotional awareness, under the guidance of clinical psychologists, to reduce conflict and strengthen collaborative energy.",
-            })}
-          </p>
-          <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
-            {[ws7, ws8, ws9].map((src, i) => (
-              <motion.img
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
-                key={i}
-                src={src}
-                alt=""
-                className="w-full aspect-video object-cover rounded-lg h-60.5"
-              />
-            ))}
-          </div>
-          <div className="flex justify-center mt-2">
-            <motion.a
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ duration: 0.2, delay: 0.15, ease: "easeOut" }}
-              href="https://line.me/R/ti/p/@mindbloom"
-              target="_blank"
-              rel="noreferrer"
-              className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
-            >
-              {t(ctaLabel)}
-            </motion.a>
-          </div>
-        </motion.div>
-
-        <div className="w-full h-px bg-[#C7A491] my-8" />
-
-        {/* Preventive & Awareness */}
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
-          className="flex flex-col gap-4 items-center my-8 w-full"
-        >
-          <p className="text-xl font-bold">Preventive & Awareness</p>
-          <p className="rf-body font-normal text-neutral-grey">
-            {t({
-              th: "สร้างความตระหนักรู้ และป้องกันก่อนจะสาย",
-              en: "Build awareness and support prevention early",
-            })}
-          </p>
-        </motion.div>
-
-        {/* Communication skill */}
-        <div className="w-full flex flex-col gap-4">
-          <p className="text-base font-bold">Communication skill</p>
-          <p className="rf-body text-neutral-grey font-normal">
-            {t({
-              th: "เวิร์กช็อปเพื่อพัฒนาทักษะการสื่อสารอย่างมีประสิทธิภาพ",
-              en: "A workshop for building effective communication skills",
-            })}
-          </p>
-          <p className="rf-body text-neutral-grey font-normal">
-            {t({
-              th: "ผู้เข้าร่วมจะได้ฝึกทักษะการฟังและการสื่อสารอย่างชัดเจน พร้อมทั้งเรียนรู้การสื่อสารด้วยความเข้าใจ เห็นอกเห็นใจ และความคิดสร้างสรรค์ เวิร์กช็อปนี้ช่วยป้องกันความขัดแย้ง เสริมสร้างการทำงานร่วมกัน และสนับสนุนการทำงานเป็นทีมอย่างราบรื่น ภายใต้บรรยากาศที่ปลอดภัยทางจิตใจ (Psychological Safety) ในองค์กร",
-              en: "Participants practice listening and communicating clearly while learning to communicate with empathy, understanding, and creativity. The workshop helps prevent conflict, strengthen collaboration, and support smoother teamwork within a psychologically safe environment.",
-            })}
-          </p>
-          <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
-            {[ws10, ws11, ws12].map((src, i) => (
-              <motion.img
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
-                key={i}
-                src={src}
-                alt=""
-                className="w-full aspect-video object-cover rounded-lg h-65.5"
               />
             ))}
           </div>
@@ -265,6 +160,111 @@ const Workshop = () => {
             </motion.a>
           </div>
         </motion.div>
+
+        <div className="w-full h-px bg-[#C7A491] my-8" />
+
+        {/* Team & Leadership */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut" as const,
+          }}
+          className="flex flex-col gap-4 items-center my-8 w-full"
+        >
+          <p className="text-xl font-bold">Team & Leadership</p>
+          <p className="rf-body font-normal text-neutral-grey">
+            {t({
+              th: "เสริมพลังทีม และพัฒนาภาวะผู้นำที่ใส่ใจ",
+              en: "Strengthen teams and nurture caring leadership",
+            })}
+          </p>
+        </motion.div>
+
+        {/* Creative work for team communication */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.5, delay: 0.15, ease: "easeOut" }}
+          className="w-full flex flex-col gap-4 mt-8"
+        >
+          <p className="text-base font-bold">
+            Creative work for team communication
+          </p>
+          <p className="rf-body text-neutral-grey font-normal">
+            {t({
+              th: "มุ่งเน้นการทำความเข้าใจ ทั้งความเหมือนและความแตกต่างของแต่ละบุคคล เพื่อส่งเสริมการสื่อสารที่ตั้งอยู่บนความเข้าใจและความเห็นอกเห็นใจกัน",
+              en: "Focused on understanding both similarities and differences between people in order to encourage communication grounded in empathy and mutual understanding.",
+            })}
+          </p>
+          <p className="rf-body text-neutral-grey font-normal">
+            {t({
+              th: "กระบวนการที่ออกแบบอย่างสร้างสรรค์นี้ช่วยพัฒนาการสื่อสารเชิงบวกในทีม โดยกระตุ้นทั้งมิติของความคิดและอารมณ์ ภายใต้การดูแลของนักจิตวิทยาคลินิก เพื่อเสริมสร้างความเข้าใจระหว่างกัน ลดความขัดแย้ง และสร้างพลังบวกในการทำงานร่วมกันอย่างมีประสิทธิภาพและกลมกลืน",
+              en: "This creatively designed process supports more positive team communication by engaging both thinking and emotional awareness, under the guidance of clinical psychologists, to reduce conflict and strengthen collaborative energy.",
+            })}
+          </p>
+          <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
+            {[ws7, ws8, ws9].map((src, i) => (
+              <motion.img
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
+                key={i}
+                src={src}
+                alt=""
+                className="w-full aspect-video object-cover rounded-lg h-60.5"
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Communication skill */}
+        <div className="w-full flex flex-col gap-4 mt-8">
+          <p className="text-base font-bold">Communication skill</p>
+          <p className="rf-body text-neutral-grey font-normal">
+            {t({
+              th: "เวิร์กช็อปเพื่อพัฒนาทักษะการสื่อสารอย่างมีประสิทธิภาพ",
+              en: "A workshop for building effective communication skills",
+            })}
+          </p>
+          <p className="rf-body text-neutral-grey font-normal">
+            {t({
+              th: "ผู้เข้าร่วมจะได้ฝึกทักษะการฟังและการสื่อสารอย่างชัดเจน พร้อมทั้งเรียนรู้การสื่อสารด้วยความเข้าใจ เห็นอกเห็นใจ และความคิดสร้างสรรค์ เวิร์กช็อปนี้ช่วยป้องกันความขัดแย้ง เสริมสร้างการทำงานร่วมกัน และสนับสนุนการทำงานเป็นทีมอย่างราบรื่น ภายใต้บรรยากาศที่ปลอดภัยทางจิตใจ (Psychological Safety) ในองค์กร",
+              en: "Participants practice listening and communicating clearly while learning to communicate with empathy, understanding, and creativity. The workshop helps prevent conflict, strengthen collaboration, and support smoother teamwork within a psychologically safe environment.",
+            })}
+          </p>
+          <div className="grid grid-cols-1 m:grid-cols-3 gap-6">
+            {[ws10, ws11, ws12].map((src, i) => (
+              <motion.img
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
+                key={i}
+                src={src}
+                alt=""
+                className="w-full aspect-video object-cover rounded-lg h-65.5"
+              />
+            ))}
+          </div>
+          <div className="flex justify-center mt-2">
+            <motion.a
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ duration: 0.2, delay: 0.15, ease: "easeOut" }}
+              href="https://line.me/R/ti/p/@mindbloom"
+              target="_blank"
+              rel="noreferrer"
+              className="rf-body rounded-full bg-white border border-[#4D738F] px-6 py-2 font-bold text-[#4D738F]"
+            >
+              {t(ctaLabel)}
+            </motion.a>
+          </div>
+        </div>
 
         <div className="w-full h-px bg-[#C7A491] my-8" />
 
