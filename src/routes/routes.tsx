@@ -20,7 +20,7 @@ function AppRoutes() {
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="activity" element={<ActivityPage />} />
-          <Route path="activity/:id" element={<ActivityDetailPage />} />
+          <Route path="activity/:slug" element={<ActivityDetailPage />} />
           <Route path="blog" element={<BlogPage />} />
           <Route path="blog/:slug" element={<BlogDetailPage />} />
           <Route path="service" element={<ServicePage />} />

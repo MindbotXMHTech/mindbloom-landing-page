@@ -1,8 +1,9 @@
 import { images } from "./images";
 import type { LocalizedText } from "../i18n/types";
 
-type ActivityDetail = {
+export type ActivityDetail = {
   id: string;
+  slug: string;
   title: LocalizedText;
   image: string[];
   content: LocalizedText[];
@@ -15,6 +16,7 @@ type ActivityDetail = {
 export const activityData: ActivityDetail[] = [
   {
     id: "1",
+    slug: "mindbloom-gallery",
     title: { th: "MindBloom Gallery", en: "MindBloom Gallery" },
     mainImage: images.gal5,
     image: [
@@ -48,6 +50,7 @@ export const activityData: ActivityDetail[] = [
   },
   {
     id: "2",
+    slug: "mindbloom-opening-and-exhibition",
     title: {
       th: "Mindbloom Opening and Exhibition",
       en: "Mindbloom Opening and Exhibition",
@@ -75,6 +78,7 @@ export const activityData: ActivityDetail[] = [
   },
   {
     id: "3",
+    slug: "to-the-unknown-month-of-love",
     title: {
       th: "To the unknown เดือนแห่งความรัก",
       en: "To the Unknown: Month of Love",
