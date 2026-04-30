@@ -36,7 +36,6 @@ function BlogPage() {
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [sortOpen, setSortOpen] = useState(false);
-  const [desktopIndex, setDesktopIndex] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
   const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
 
@@ -70,15 +69,10 @@ function BlogPage() {
   }, [language, posts, searchText, sortOrder]);
 
   const total = filtered.length;
-  const desktopVisibleCount = 3;
-  const desktopCardWidth = 293;
-  const desktopMaxIndex = Math.max(total - desktopVisibleCount, 0);
-  const desktopPageCount = desktopMaxIndex + 1;
   const hasSearch = searchText.trim().length > 0;
 
   const handleSearch = (value: string) => {
     setSearchText(value);
-    setDesktopIndex(0);
     setMobileIndex(0);
     mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
@@ -86,7 +80,6 @@ function BlogPage() {
   const handleSort = (order: "newest" | "oldest") => {
     setSortOrder(order);
     setSortOpen(false);
-    setDesktopIndex(0);
     setMobileIndex(0);
     mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
@@ -242,18 +235,10 @@ function BlogPage() {
             ) : null}
           </div>
         ) : (
-          <div className="w-full max-w-219.75 overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{
-                transform: `translateX(-${desktopIndex * desktopCardWidth}px)`,
-              }}
-            >
-              {filtered.map((item, index) => (
-                <div key={item.id} className="relative w-73.25 shrink-0">
-                  {index < filtered.length - 1 && (
-                    <div className="pointer-events-none absolute right-0 top-4 bottom-4 w-px bg-[#e4d8cd]" />
-                  )}
+          <div className="w-full max-w-219.75">
+            <div className="grid grid-cols-3 gap-x-2 gap-y-0 xl:gap-x-3 xl:gap-y-1">
+              {filtered.map((item) => (
+                <div key={item.id} className="min-w-0">
                   <BlogCard
                     title={getLocalizedText(item.title, language)}
                     slug={item.slug}
@@ -264,27 +249,6 @@ function BlogPage() {
             </div>
           </div>
         )}
-
-        {!loading && total > desktopVisibleCount ? (
-          <div className="mt-4 flex items-center gap-2">
-            {Array.from({ length: desktopPageCount }).map((_, index) => (
-              <button
-                key={index}
-                type="button"
-                onClick={() => setDesktopIndex(index)}
-                aria-label={t({
-                  th: `ไปยังสไลด์เดสก์ท็อป ${index + 1}`,
-                  en: `Go to desktop slide ${index + 1}`,
-                })}
-                className={`h-2.5 rounded-full transition-all ${
-                  index === desktopIndex
-                    ? "w-6 bg-[#bcc0aa]"
-                    : "w-2.5 bg-[#d9d9d9]"
-                }`}
-              />
-            ))}
-          </div>
-        ) : null}
       </motion.div>
 
       <motion.div
