@@ -240,7 +240,7 @@ function BlogDetailPage() {
             {blog.date ? getLocalizedText(blog.date, language) : ""}
           </p>
           <p className="rf-small">{t({ th: "โดย", en: "By" })}</p>
-          <p className="rf-small text-main-pink">Mind Bloom</p>
+          <p className="rf-small text-main-pink">MindBloom</p>
         </motion.div>
 
         <motion.div

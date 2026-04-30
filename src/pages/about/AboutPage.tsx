@@ -6,19 +6,19 @@ import { useLanguage } from "../../i18n/LanguageProvider";
 const contactItems = [
   {
     id: "facebook",
-    label: "Mind Bloom",
+    label: "MindBloom",
     href: "https://www.facebook.com/mindbloom.th/",
     icon: <img src={svgs.facebookIcon} alt="facebook" width={32} height={32} />,
   },
   {
     id: "line",
-    label: "Mind Bloom",
+    label: "MindBloom",
     href: "https://line.me/R/ti/p/@mindbloom",
     icon: <img src={svgs.lineIcon} alt="line" width={32} height={32} />,
   },
   {
     id: "instagram",
-    label: "Mind Bloom",
+    label: "MindBloom",
     href: "https://www.instagram.com/mindbloom.th",
     icon: (
       <img src={svgs.instagramIcon} alt="instagram" width={32} height={32} />
