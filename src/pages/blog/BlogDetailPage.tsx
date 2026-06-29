@@ -154,6 +154,20 @@ function renderRichTextNode(node: ChildNode, key: string): ReactNode {
   }
 }
 
+function renderRichTextBlock(node: ChildNode, key: string): ReactNode {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const text = node.textContent ?? "";
+
+    return text.trim().length > 0 ? (
+      <p key={key} className="rf-body text-neutral-grey whitespace-pre-line">
+        {text}
+      </p>
+    ) : null;
+  }
+
+  return renderRichTextNode(node, key);
+}
+
 function BlogRichText({ value }: { value: string }) {
   if (!hasHtmlTags(value) || typeof DOMParser === "undefined") {
     return (
@@ -163,7 +177,7 @@ function BlogRichText({ value }: { value: string }) {
 
   const document = new DOMParser().parseFromString(value, "text/html");
   const nodes = Array.from(document.body.childNodes)
-    .map((node, index) => renderRichTextNode(node, `html-${index}`))
+    .map((node, index) => renderRichTextBlock(node, `html-${index}`))
     .filter(Boolean);
 
   return nodes.length > 0 ? nodes : null;
