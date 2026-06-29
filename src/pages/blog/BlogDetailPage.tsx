@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, type ReactNode, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
@@ -47,6 +47,126 @@ function getYouTubeVideoId(input?: string) {
   }
 
   return "";
+}
+
+function hasHtmlTags(value: string) {
+  return /<\/?[a-z][\s\S]*>/i.test(value);
+}
+
+function getSafeHref(value: string | null) {
+  if (!value) {
+    return undefined;
+  }
+
+  try {
+    const url = new URL(value, window.location.origin);
+    return ["http:", "https:", "mailto:", "tel:"].includes(url.protocol)
+      ? url.toString()
+      : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function renderRichTextNode(node: ChildNode, key: string): ReactNode {
+  if (node.nodeType === Node.TEXT_NODE) {
+    return node.textContent;
+  }
+
+  if (node.nodeType !== Node.ELEMENT_NODE) {
+    return null;
+  }
+
+  const element = node as HTMLElement;
+  const children = Array.from(element.childNodes).map((child, index) =>
+    renderRichTextNode(child, `${key}-${index}`),
+  );
+
+  switch (element.tagName.toLowerCase()) {
+    case "br":
+      return <br key={key} />;
+    case "p":
+      return (
+        <p key={key} className="rf-body text-neutral-grey whitespace-pre-line">
+          {children}
+        </p>
+      );
+    case "h2":
+      return (
+        <h2 key={key} className="rf-body font-bold text-neutral-black pt-3">
+          {children}
+        </h2>
+      );
+    case "h3":
+      return (
+        <h3 key={key} className="rf-body font-bold text-neutral-black pt-2">
+          {children}
+        </h3>
+      );
+    case "ul":
+      return (
+        <ul key={key} className="list-disc space-y-2 pl-6">
+          {children}
+        </ul>
+      );
+    case "ol":
+      return (
+        <ol key={key} className="list-decimal space-y-2 pl-6">
+          {children}
+        </ol>
+      );
+    case "li":
+      return (
+        <li key={key} className="rf-body text-neutral-grey">
+          {children}
+        </li>
+      );
+    case "strong":
+    case "b":
+      return <strong key={key}>{children}</strong>;
+    case "em":
+    case "i":
+      return <em key={key}>{children}</em>;
+    case "a": {
+      const href = getSafeHref(element.getAttribute("href"));
+      return href ? (
+        <a
+          key={key}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="text-accent-pink underline underline-offset-4"
+        >
+          {children}
+        </a>
+      ) : (
+        <Fragment key={key}>{children}</Fragment>
+      );
+    }
+    case "script":
+    case "style":
+    case "iframe":
+    case "object":
+    case "embed":
+      return null;
+    default:
+      return <Fragment key={key}>{children}</Fragment>;
+  }
+}
+
+function BlogRichText({ value }: { value: string }) {
+  if (!hasHtmlTags(value) || typeof DOMParser === "undefined") {
+    return (
+      <p className="rf-body text-neutral-grey whitespace-pre-line">{value}</p>
+    );
+  }
+
+  const document = new DOMParser().parseFromString(value, "text/html");
+  const nodes = Array.from(document.body.childNodes)
+    .map((node, index) => renderRichTextNode(node, `html-${index}`))
+    .filter(Boolean);
+
+  return nodes.length > 0 ? nodes : null;
 }
 
 function BlogDetailPage() {
@@ -305,12 +425,10 @@ function BlogDetailPage() {
           className="mt-6 space-y-4"
         >
           {blog.content.map((paragraph, index) => (
-            <p
+            <BlogRichText
               key={index}
-              className="rf-body text-neutral-grey whitespace-pre-line"
-            >
-              {getLocalizedText(paragraph, language)}
-            </p>
+              value={getLocalizedText(paragraph, language)}
+            />
           ))}
         </motion.div>
 
