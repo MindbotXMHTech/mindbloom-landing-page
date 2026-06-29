@@ -121,12 +121,23 @@ function renderRichTextNode(node: ChildNode, key: string): ReactNode {
           {children}
         </li>
       );
+    case "blockquote":
+      return (
+        <blockquote
+          key={key}
+          className="border-l-4 border-accent-pink/40 pl-4 italic text-neutral-grey"
+        >
+          {children}
+        </blockquote>
+      );
     case "strong":
     case "b":
       return <strong key={key}>{children}</strong>;
     case "em":
     case "i":
       return <em key={key}>{children}</em>;
+    case "u":
+      return <u key={key}>{children}</u>;
     case "a": {
       const href = getSafeHref(element.getAttribute("href"));
       return href ? (
