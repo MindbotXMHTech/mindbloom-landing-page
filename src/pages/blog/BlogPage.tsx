@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../i18n/LanguageProvider";
@@ -39,7 +39,6 @@ function BlogPage() {
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [sortOpen, setSortOpen] = useState(false);
-  const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -75,13 +74,11 @@ function BlogPage() {
 
   const handleSearch = (value: string) => {
     setSearchText(value);
-    mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   const handleSort = (order: "newest" | "oldest") => {
     setSortOrder(order);
     setSortOpen(false);
-    mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   return (
