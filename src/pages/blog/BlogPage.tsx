@@ -1,9 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../i18n/LanguageProvider";
 import { getLocalizedText } from "../../i18n/utils";
-import { loadPublicBlogPosts, type PublicBlogPost } from "../../lib/blogContent";
+import {
+  loadPublicBlogPosts,
+  type PublicBlogPost,
+} from "../../lib/blogContent";
 
 type BlogCardProps = {
   slug: string;
@@ -36,8 +39,6 @@ function BlogPage() {
   const [searchText, setSearchText] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [sortOpen, setSortOpen] = useState(false);
-  const [mobileIndex, setMobileIndex] = useState(0);
-  const mobileCarouselRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -73,43 +74,11 @@ function BlogPage() {
 
   const handleSearch = (value: string) => {
     setSearchText(value);
-    setMobileIndex(0);
-    mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
   };
 
   const handleSort = (order: "newest" | "oldest") => {
     setSortOrder(order);
     setSortOpen(false);
-    setMobileIndex(0);
-    mobileCarouselRef.current?.scrollTo({ left: 0, behavior: "smooth" });
-  };
-
-  const handleMobileScroll = () => {
-    const container = mobileCarouselRef.current;
-
-    if (!container) {
-      return;
-    }
-
-    const nextIndex = Math.round(container.scrollLeft / container.clientWidth);
-
-    if (nextIndex !== mobileIndex) {
-      setMobileIndex(nextIndex);
-    }
-  };
-
-  const scrollToMobileCard = (index: number) => {
-    const container = mobileCarouselRef.current;
-
-    if (!container) {
-      return;
-    }
-
-    container.scrollTo({
-      left: container.clientWidth * index,
-      behavior: "smooth",
-    });
-    setMobileIndex(index);
   };
 
   return (
@@ -204,7 +173,7 @@ function BlogPage() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-        className="hidden lg:flex w-full mt-9.5 flex-col items-center"
+        className="flex w-full mt-9.5 flex-col items-center"
       >
         {!loading && total === 0 ? (
           <div className="panel w-full max-w-219.75 p-8 text-center">
@@ -236,7 +205,7 @@ function BlogPage() {
           </div>
         ) : (
           <div className="w-full max-w-219.75">
-            <div className="grid grid-cols-3 gap-x-2 gap-y-0 xl:gap-x-3 xl:gap-y-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1 md:gap-x-2 gap-y-0 xl:gap-x-3 xl:gap-y-1">
               {filtered.map((item) => (
                 <div key={item.id} className="min-w-0">
                   <BlogCard
@@ -249,87 +218,6 @@ function BlogPage() {
             </div>
           </div>
         )}
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
-        className="w-full mt-9.5 lg:hidden flex flex-col items-center"
-      >
-        {/* <div
-          ref={mobileCarouselRef}
-          onScroll={handleMobileScroll}
-          className="w-full max-w-[24rem] overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        > */}
-        <div
-          ref={mobileCarouselRef}
-          onScroll={handleMobileScroll}
-          className="w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth touch-pan-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {!loading && total === 0 ? (
-            <div className="panel w-full max-w-219.75 p-8 text-center">
-              <h3 className="rf-h5">
-                {hasSearch
-                  ? t({ th: "ไม่พบบทความที่ค้นหา", en: "No matching articles" })
-                  : t({ th: "ยังไม่มีบทความ", en: "No articles yet" })}
-              </h3>
-              <p className="rf-small text-neutral-grey mt-2">
-                {hasSearch
-                  ? t({
-                      th: "ลองล้างคำค้นหาหรือกลับมาตรวจอีกครั้งภายหลัง",
-                      en: "Try clearing the search or check again later.",
-                    })
-                  : t({
-                      th: "ระบบกำลังรอข้อมูลบทความจาก Supabase",
-                      en: "The blog is waiting for content from Supabase.",
-                    })}
-              </p>
-              {hasSearch ? (
-                <button
-                  type="button"
-                  className="button secondary mt-4"
-                  onClick={() => handleSearch("")}
-                >
-                  {t({ th: "ล้างคำค้นหา", en: "Clear search" })}
-                </button>
-              ) : null}
-            </div>
-          ) : (
-            <div className="flex">
-              {filtered.map((item) => (
-                <div key={item.id} className="w-full shrink-0 snap-center">
-                  <BlogCard
-                    title={getLocalizedText(item.title, language)}
-                    slug={item.slug}
-                    image={item.image}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {total > 1 ? (
-          <div className="mt-3 flex items-center gap-2">
-            {filtered.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => scrollToMobileCard(index)}
-                aria-label={t({
-                  th: `ไปยังบทความ ${index + 1}`,
-                  en: `Go to blog ${index + 1}`,
-                })}
-                className={`h-2.5 rounded-full transition-all ${
-                  index === mobileIndex
-                    ? "w-6 bg-[#bcc0aa]"
-                    : "w-2.5 bg-[#d9d9d9]"
-                }`}
-              />
-            ))}
-          </div>
-        ) : null}
       </motion.div>
     </div>
   );
