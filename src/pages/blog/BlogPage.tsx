@@ -208,7 +208,7 @@ function BlogPage() {
           </div>
         ) : (
           <div className="w-full max-w-219.75">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-x-1 md:gap-x-2 gap-y-0 xl:gap-x-3 xl:gap-y-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-1 md:gap-x-2 gap-y-0 xl:gap-x-3 xl:gap-y-1">
               {filtered.map((item) => (
                 <div key={item.id} className="min-w-0">
                   <BlogCard
