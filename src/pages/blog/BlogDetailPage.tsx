@@ -1,4 +1,10 @@
-import { Fragment, type ReactNode, useEffect, useState } from "react";
+import {
+  Fragment,
+  type MouseEvent,
+  type ReactNode,
+  useEffect,
+  useState,
+} from "react";
 import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
@@ -58,6 +64,10 @@ function getSafeHref(value: string | null) {
     return undefined;
   }
 
+  if (value.startsWith("#")) {
+    return /^#[A-Za-z0-9][\w:.-]*$/.test(value) ? value : undefined;
+  }
+
   try {
     const url = new URL(value, window.location.origin);
     return ["http:", "https:", "mailto:", "tel:"].includes(url.protocol)
@@ -66,6 +76,71 @@ function getSafeHref(value: string | null) {
   } catch {
     return undefined;
   }
+}
+
+function handleHashLinkClick(event: MouseEvent<HTMLAnchorElement>, href: string) {
+  if (!href.startsWith("#") || typeof window === "undefined") {
+    return;
+  }
+
+  const target = document.getElementById(href.slice(1));
+  if (!target) {
+    return;
+  }
+
+  event.preventDefault();
+  window.history.pushState(null, "", `${window.location.pathname}${window.location.search}${href}`);
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  target.scrollIntoView({
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+    block: "start",
+  });
+}
+
+function getSafeId(value: string | null) {
+  if (!value) {
+    return undefined;
+  }
+
+  return /^[A-Za-z0-9][\w:.-]*$/.test(value) ? value : undefined;
+}
+
+function getIndentClass(element: HTMLElement) {
+  switch (element.getAttribute("data-indent")) {
+    case "1":
+      return "ml-4 s:ml-6";
+    case "2":
+      return "ml-6 s:ml-12";
+    case "3":
+      return "ml-8 s:ml-18";
+    case "4":
+      return "ml-10 s:ml-24";
+    default:
+      return "";
+  }
+}
+
+function getSafeImageSrc(value: string | null) {
+  if (!value) {
+    return undefined;
+  }
+
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) ? url.toString() : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function getSafeImageWidth(value: string | null) {
+  return value === "320" || value === "480" || value === "640" || value === "800"
+    ? Number(value)
+    : undefined;
 }
 
 function renderRichTextNode(node: ChildNode, key: string): ReactNode {
@@ -87,37 +162,50 @@ function renderRichTextNode(node: ChildNode, key: string): ReactNode {
       return <br key={key} />;
     case "p":
       return (
-        <p key={key} className="rf-body text-neutral-grey whitespace-pre-line">
+        <p
+          key={key}
+          className={`rf-body text-neutral-grey whitespace-pre-line ${getIndentClass(element)}`}
+        >
           {children}
         </p>
       );
+    case "div":
+      return <div key={key}>{children}</div>;
     case "h2":
       return (
-        <h2 key={key} className="rf-body font-bold text-neutral-black pt-3">
+        <h2
+          key={key}
+          id={getSafeId(element.getAttribute("id"))}
+          className={`rf-body scroll-mt-28 font-bold text-neutral-black pt-3 ${getIndentClass(element)}`}
+        >
           {children}
         </h2>
       );
     case "h3":
       return (
-        <h3 key={key} className="rf-body font-bold text-neutral-black pt-2">
+        <h3
+          key={key}
+          id={getSafeId(element.getAttribute("id"))}
+          className={`rf-body scroll-mt-28 font-bold text-neutral-black pt-2 ${getIndentClass(element)}`}
+        >
           {children}
         </h3>
       );
     case "ul":
       return (
-        <ul key={key} className="list-disc space-y-2 pl-6">
+        <ul key={key} className="list-disc space-y-2 pl-6 [&_ul]:mt-2 [&_ol]:mt-2 [&_ul]:list-[circle] [&_ul_ul]:list-[square]">
           {children}
         </ul>
       );
     case "ol":
       return (
-        <ol key={key} className="list-decimal space-y-2 pl-6">
+        <ol key={key} className="list-decimal space-y-2 pl-6 [&_ul]:mt-2 [&_ol]:mt-2 [&_ol]:list-[lower-alpha] [&_ol_ol]:list-[lower-roman]">
           {children}
         </ol>
       );
     case "li":
       return (
-        <li key={key} className="rf-body text-neutral-grey">
+        <li key={key} className="rf-body text-neutral-grey [&>p]:m-0 [&>p]:inline">
           {children}
         </li>
       );
@@ -125,7 +213,7 @@ function renderRichTextNode(node: ChildNode, key: string): ReactNode {
       return (
         <blockquote
           key={key}
-          className="border-l-4 border-accent-pink/40 pl-4 italic text-neutral-grey"
+          className={`border-l-4 border-accent-pink/40 pl-4 italic text-neutral-grey ${getIndentClass(element)}`}
         >
           {children}
         </blockquote>
@@ -140,18 +228,40 @@ function renderRichTextNode(node: ChildNode, key: string): ReactNode {
       return <u key={key}>{children}</u>;
     case "a": {
       const href = getSafeHref(element.getAttribute("href"));
+      const isHashLink = href?.startsWith("#");
       return href ? (
         <a
           key={key}
           href={href}
-          target="_blank"
-          rel="noreferrer"
+          target={isHashLink ? undefined : "_blank"}
+          rel={isHashLink ? undefined : "noreferrer"}
+          onClick={
+            isHashLink ? (event) => handleHashLinkClick(event, href) : undefined
+          }
           className="text-accent-pink underline underline-offset-4"
         >
           {children}
         </a>
       ) : (
         <Fragment key={key}>{children}</Fragment>
+      );
+    }
+    case "img": {
+      const src = getSafeImageSrc(element.getAttribute("src"));
+      if (!src) {
+        return null;
+      }
+
+      const width = getSafeImageWidth(element.getAttribute("width"));
+      return (
+        <img
+          key={key}
+          src={src}
+          alt={element.getAttribute("alt") ?? ""}
+          width={width}
+          className="mx-auto my-6 h-auto max-w-full rounded-xl object-contain"
+          style={width ? { width: `${width}px` } : { width: "100%" }}
+        />
       );
     }
     case "script":
@@ -187,11 +297,22 @@ function BlogRichText({ value }: { value: string }) {
   }
 
   const document = new DOMParser().parseFromString(value, "text/html");
+  const hasLegacyDivBlocks = Array.from(document.body.children).some(
+    (element) => element.tagName.toLowerCase() === "div",
+  );
   const nodes = Array.from(document.body.childNodes)
     .map((node, index) => renderRichTextBlock(node, `html-${index}`))
     .filter(Boolean);
 
-  return nodes.length > 0 ? nodes : null;
+  if (nodes.length === 0) {
+    return null;
+  }
+
+  return hasLegacyDivBlocks ? (
+    <div className="blog-rich-content--legacy-div">{nodes}</div>
+  ) : (
+    nodes
+  );
 }
 
 function BlogDetailPage() {

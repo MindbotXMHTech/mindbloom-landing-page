@@ -31,6 +31,10 @@ function hasSupabaseConfig() {
 }
 
 function splitParagraphs(value: string) {
+  if (/<\/?[a-z][\s\S]*>/i.test(value)) {
+    return [value.trim()].filter(Boolean);
+  }
+
   return value
     .split(/\n{2,}/)
     .map((paragraph) => paragraph.trim())

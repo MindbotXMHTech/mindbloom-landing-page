@@ -23,6 +23,10 @@ body {
   color: var(--color-neutral-black);
 }
 
+.blog-rich-content--legacy-div > div + div {
+  margin-top: 0.875rem;
+}
+
 @theme {
   --font-noto:
     "Noto", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
