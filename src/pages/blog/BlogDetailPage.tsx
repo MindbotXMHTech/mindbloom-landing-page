@@ -59,13 +59,20 @@ function hasHtmlTags(value: string) {
   return /<\/?[a-z][\s\S]*>/i.test(value);
 }
 
+function isSafeHeadingId(value: string) {
+  const isLegacyPublicId = /^[A-Za-z0-9][\w:.-]*$/.test(value);
+  const isAdminGeneratedId = /^[a-z0-9ก-๙][a-z0-9ก-๙-]{0,79}$/.test(value);
+
+  return isLegacyPublicId || isAdminGeneratedId;
+}
+
 function getSafeHref(value: string | null) {
   if (!value) {
     return undefined;
   }
 
   if (value.startsWith("#")) {
-    return /^#[A-Za-z0-9][\w:.-]*$/.test(value) ? value : undefined;
+    return isSafeHeadingId(value.slice(1)) ? value : undefined;
   }
 
   try {
@@ -106,7 +113,7 @@ function getSafeId(value: string | null) {
     return undefined;
   }
 
-  return /^[A-Za-z0-9][\w:.-]*$/.test(value) ? value : undefined;
+  return isSafeHeadingId(value) ? value : undefined;
 }
 
 function getIndentClass(element: HTMLElement) {
